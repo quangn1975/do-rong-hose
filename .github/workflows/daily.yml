@@ -2,6 +2,7 @@ name: Cap nhat do rong HOSE
 on:
   schedule:
     - cron: "15 9 * * 1-5"   # 16:15 gio Viet Nam, thu 2 den thu 6
+    - cron: "30 14 * * 1-5"   # 21:30 gio Viet Nam, chay lai buoi toi
   workflow_dispatch: {}
 permissions:
   contents: write
