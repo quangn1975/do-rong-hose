@@ -61,7 +61,7 @@ def main():
         if d is not None:
             frames.append(d)
         if i % 50 == 0:
-            print(i, s)
+            print(i, s, flush=True)
         time.sleep(DELAY)
     full = pd.concat(frames).sort_values(["symbol", "time"])
     g = full.groupby("symbol")["close"]
@@ -78,6 +78,9 @@ def main():
         out[f"pct_ma{n}"] = (agg[f"above{n}"] / agg[f"valid{n}"] * 100).round(2)
     out["so_ma_ma20"] = agg["valid20"]
     out = out[agg["valid20"] >= 100]          # bo cac ngay chua du ma
+    # chay truoc 15:00 gio VN thi phien hom nay chua ket thuc: bo dong hom nay
+    if (dt.datetime.utcnow() + dt.timedelta(hours=7)).hour < 15:
+        out = out[[str(d) != today for d in out.index]]
     out.index.name = "date"
     os.makedirs("data", exist_ok=True)
     out.to_csv(OUT)
