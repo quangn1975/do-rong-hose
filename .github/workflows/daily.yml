@@ -1,0 +1,25 @@
+name: Cap nhat do rong HOSE
+on:
+  schedule:
+    - cron: "15 9 * * 1-5"   # 16:15 gio Viet Nam, thu 2 den thu 6
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -U pandas vnstock
+      - run: python breadth.py
+      - name: Luu ket qua
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/breadth.csv
+          git commit -m "Cap nhat do rong $(date -u +%F)" || echo "Khong co thay doi"
+          git push
