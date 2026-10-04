@@ -1,0 +1,48 @@
+name: So lieu ngay 15 ma chot
+on:
+  schedule:
+    - cron: "12 8 * * 1-5"    # 15:12 gio Viet Nam: so lieu phien vua dong cua
+    - cron: "40 8 * * 1-5"    # 15:40 gio Viet Nam: xep hang RS toan san (khoang 30 phut)
+    - cron: "40 14 * * 1-5"   # 21:40 gio Viet Nam: chay lai so lieu ngay voi RS moi
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  ngay:
+    if: github.event.schedule != '40 8 * * 1-5'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -U pandas vnstock vnai --extra-index-url https://vnstocks.com/api/simple
+      - run: python ngay15.py
+      - name: Luu ket qua
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/thi_truong.csv data/15_ma_chot.csv data/do_rong_ngay.csv
+          git commit -m "So lieu ngay $(date -u +%FT%H:%M)" || echo "Khong co thay doi"
+          git pull --rebase
+          git push
+  rs:
+    if: github.event.schedule == '40 8 * * 1-5' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -U pandas vnstock vnai --extra-index-url https://vnstocks.com/api/simple
+      - run: python ngay15.py rs
+      - name: Luu ket qua
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/rs.csv
+          git commit -m "RS $(date -u +%F)" || echo "Khong co thay doi"
+          git pull --rebase
+          git push
