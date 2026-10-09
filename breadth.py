@@ -12,7 +12,8 @@ from vnstock import Listing, Quote
 START = "2025-01-01"          # du lich su cho MA200 tu giua 2025
 OUT = "data/breadth.csv"
 DELAY = float(os.getenv("VNSTOCK_DELAY", "3.2"))   # khach: ~20 lan goi/phut
-today = (dt.datetime.utcnow() + dt.timedelta(hours=7)).date().isoformat()
+NOW = dt.datetime.utcnow() + dt.timedelta(hours=7)   # gio Viet Nam luc BAT DAU chay
+today = NOW.date().isoformat()
 
 
 def hose_symbols():
@@ -79,7 +80,8 @@ def main():
     out["so_ma_ma20"] = agg["valid20"]
     out = out[agg["valid20"] >= 100]          # bo cac ngay chua du ma
     # chay truoc 15:00 gio VN thi phien hom nay chua ket thuc: bo dong hom nay
-    if (dt.datetime.utcnow() + dt.timedelta(hours=7)).hour < 15:
+    # dung gio luc bat dau chay: neu chay qua nua dem thi khong duoc bo nham phien vua xong
+    if NOW.hour < 15:
         out = out[[str(d) != today for d in out.index]]
     out.index.name = "date"
     os.makedirs("data", exist_ok=True)
