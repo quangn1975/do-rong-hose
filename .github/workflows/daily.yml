@@ -23,4 +23,8 @@ jobs:
           git config user.email "github-actions@users.noreply.github.com"
           git add data/breadth.csv
           git commit -m "Cap nhat do rong $(date -u +%F)" || echo "Khong co thay doi"
-          git push
+          for i in 1 2 3 4 5; do
+            git pull --rebase && git push && exit 0
+            sleep 15
+          done
+          exit 1
