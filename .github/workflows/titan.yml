@@ -24,9 +24,9 @@ jobs:
         env:
           VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
         run: python -c "import os; from vnstock import register_user; register_user(api_key=os.environ['VNSTOCK_API_KEY'])" > /dev/null 2>&1 || true
-      - name: Quet thu 1 ma (FPT)
+      - name: Quet VN100
         working-directory: /tmp/titan
-        run: timeout 300 python main.py --inspect FPT > "$GITHUB_WORKSPACE/data/titan_fpt.txt" 2>&1 || true
+        run: timeout 2400 python main.py > "$GITHUB_WORKSPACE/data/titan_vn100.txt" 2>&1 || true
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
