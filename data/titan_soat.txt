@@ -1,0 +1,16 @@
+== file ==
+./.gitignore
+./README.md
+./config/__init__.py
+./config/settings.py
+./core/__init__.py
+./core/data_feed.py
+./core/titan_math.py
+./main.py
+./requirements.txt
+./strategies/__init__.py
+./strategies/alpha_scanner.py
+./ui/__init__.py
+./ui/terminal.py
+== lenh nhay cam (ky vong chi co os.system clear) ==
+./ui/terminal.py:32:    os.system('cls' if os.name == 'nt' else 'clear')

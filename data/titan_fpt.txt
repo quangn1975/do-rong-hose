@@ -1,0 +1,101 @@
+
+  TITAN QUANT x VNSTOCK: DEEP DIVE MODE
+  Analyzing: FPT (DI Lengths 1-40)
+
+  Fetching data and testing all 40 DI lengths...
+
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+
+[vnstock] Thư viện gửi số liệu đo lường tuỳ chọn (tên hàm, thời gian chạy, lỗi) để cải thiện sản phẩm.
+          Không thu thập giá trị tham số bạn truyền vào, gồm mã chứng khoán và khoảng thời gian tra cứu.
+          Tắt: đặt VNSTOCK_TELEMETRY=off hoặc gọi vnai.disable_telemetry()
+          Chi tiết: https://vnstocks.com/onboard/chinh-sach-quyen-rieng-tu
+Không xác định được gói tài trợ nên tạm áp hạn mức cấp Cộng đồng (60 lượt/phút). Nếu bạn đang tài trợ, nguyên nhân thường là thư viện `vnii` chưa cài được hoặc còn ở bản cũ — chạy `pip install -U --extra-index-url https://vnstocks.com/api/simple vnii` rồi thử lại.
+Authentication failed: License Error: Device limit exceeded
+   Your free tier allows up to 1 registered device(s).
+   Currently registered: 1/1
+   Device limit exceeded
+
+Please visit https://vnstocks.com/account?section=devices to remove unused devices.
+Device limit exceeded but user is paid
+👋 Chào mừng bạn đến với Vnstock! bản Cộng đồng (60 req/phút, tối đa 8 kỳ BCTC). ⭐ Tham gia Vnstock Sponsor (bản Mở rộng 180-600 req/phút): vnstocks.com/insiders-program
+
+===========================================================================
+  DEEP DIVE INSPECTION: FPT
+===========================================================================
+
+  DI Length Range: 1-40
+  Best: DI=36 (Alpha: +34.0%)
+  Worst: DI=23 (Alpha: +11.3%)
+
+  Len  Alpha      Trades  Chart                                   
+  ----------------------------------------------------------------------
+  1    +27.4%     97      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  2    +26.7%     65      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  3    +30.9%     50      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  4    +32.8%     47      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  5    +31.8%     42      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  6    +28.7%     38      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  7    +31.4%     34      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  8    +20.3%     32      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  9    +23.3%     29      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  10   +20.7%     28      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  11   +21.6%     28      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  12   +24.3%     26      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  13   +23.4%     26      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  14   +23.4%     26      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  15   +18.0%     25      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  16   +16.7%     25      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  17   +15.5%     26      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  18   +16.5%     23      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  19   +18.6%     23      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  20   +17.5%     23      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  21   +16.8%     23      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  22   +19.2%     23      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  23   +11.3%     23      ▓▓▓▓▓▓▓▓▓▓▓
+  24   +13.7%     21      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  25   +13.2%     20      ▓▓▓▓▓▓▓▓▓▓▓▓▓
+  26   +16.0%     21      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  27   +15.9%     21      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  28   +17.2%     21      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  29   +19.9%     20      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  30   +20.1%     18      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  31   +25.0%     17      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  32   +27.0%     16      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  33   +25.2%     16      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  34   +26.2%     14      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  35   +28.2%     14      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  36   +34.0%     14      ███████████████████████████████████ << MAX
+  37   +33.0%     14      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  38   +30.7%     15      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  39   +29.7%     15      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  40   +29.7%     15      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ----------------------------------------------------------------------
+
+  Valid Lengths: 0/40
+  Positive Alpha: 40/40
+  Alpha Range: +11.3% to +34.0%
+  Average Alpha: +23.0%
+
+  RECOMMENDATION:
+  Best DI = 36 but fails guardrails. Consider other stocks.
+
+===========================================================================
+
