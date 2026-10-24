@@ -1,0 +1,10 @@
+Không xác định được gói tài trợ nên tạm áp hạn mức cấp Cộng đồng (60 lượt/phút). Nếu bạn đang tài trợ, nguyên nhân thường là thư viện `vnii` chưa cài được hoặc còn ở bản cũ — chạy `pip install -U --extra-index-url https://vnstocks.com/api/simple vnii` rồi thử lại.
+co khoa: True do dai: 40
+vnstock 4.0.9
+vnai 2.6.3
+vnstock_data khong co
+register_user (api_key: Optional[str] = None) -> bool
+✓ API key đã được lưu thành công! (API key saved successfully!)
+Cấp tài khoản được kiểm với máy chủ khi bạn dùng thư viện.
+(Your plan tier is checked with the server when you use the library.)
+dang ky: True
