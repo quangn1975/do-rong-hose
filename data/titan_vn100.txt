@@ -1,0 +1,2478 @@
+TERM environment variable not set.
+
+================================================================================
+       TITAN QUANT x VNSTOCK: VN100 ADAPTIVE SCANNER v3.0
+================================================================================
+
+  Universe: VN100 (~100 stocks) | Data: 2 Years
+  Strategy: Impulse Ignition | DI Range: 1-40 Optimization
+  Alpha Guardrails: Active
+
+--------------------------------------------------------------------------------
+
+  Starting scan of 120 VN100 stocks...
+
+  Scanning: ACB      [1/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+
+[vnstock] Thư viện gửi số liệu đo lường tuỳ chọn (tên hàm, thời gian chạy, lỗi) để cải thiện sản phẩm.
+          Không thu thập giá trị tham số bạn truyền vào, gồm mã chứng khoán và khoảng thời gian tra cứu.
+          Tắt: đặt VNSTOCK_TELEMETRY=off hoặc gọi vnai.disable_telemetry()
+          Chi tiết: https://vnstocks.com/onboard/chinh-sach-quyen-rieng-tu
+Không xác định được gói tài trợ nên tạm áp hạn mức cấp Cộng đồng (60 lượt/phút). Nếu bạn đang tài trợ, nguyên nhân thường là thư viện `vnii` chưa cài được hoặc còn ở bản cũ — chạy `pip install -U --extra-index-url https://vnstocks.com/api/simple vnii` rồi thử lại.
+Authentication failed: License Error: Device limit exceeded
+   Your free tier allows up to 1 registered device(s).
+   Currently registered: 1/1
+   Device limit exceeded
+
+Please visit https://vnstocks.com/account?section=devices to remove unused devices.
+Device limit exceeded but user is paid
+👋 Chào mừng bạn đến với Vnstock! bản Cộng đồng (60 req/phút, tối đa 8 kỳ BCTC). ⭐ Tham gia Vnstock Sponsor (bản Mở rộng 180-600 req/phút): vnstocks.com/insiders-program
+  Scanning: BCM      [2/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: BID      [3/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: BVH      [4/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: CTG      [5/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: FPT      [6/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: GAS      [7/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: GVR      [8/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: HDB      [9/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: HPG      [10/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: MBB      [11/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: MSN      [12/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: MWG      [13/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: PLX      [14/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: POW      [15/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: SAB      [16/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:15:14 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: SHB      [17/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:15:51 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: SSB      [18/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:16:27 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: SSI      [19/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: STB      [20/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:17:06 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: TCB      [21/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:17:37 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: TPB      [22/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VCB      [23/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:17:51 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: VHM      [24/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VIB      [25/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:18:07 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: VIC      [26/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:18:42 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+2026-10-24 10:19:17 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: VJC      [27/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VNM      [28/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VPB      [29/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:20:02 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: VRE      [30/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:20:16 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: DIG      [31/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:20:29 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: DXG      [32/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:21:06 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: KDH      [33/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:21:42 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: NLG      [34/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: PDR      [35/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: KBC      [36/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: DXS      [37/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:22:28 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: NVL      [38/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: CEO      [39/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: HDG      [40/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:23:08 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: IJC      [41/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: SCR      [42/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: TDH      [43/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:23:50 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: HAR      [44/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VRC      [45/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:24:29 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: NHA      [46/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: LDG      [47/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: NBB      [48/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:24:47 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: TIP      [49/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:25:23 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: IDC      [50/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:25:59 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: VND      [51/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:26:35 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: HCM      [52/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VCI      [53/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VIX      [54/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: FTS      [55/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:27:17 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: BSI      [56/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:27:49 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: CTS      [57/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:28:21 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: AGR      [58/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: SHS      [59/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:28:58 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: TVS      [60/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:29:14 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: APG      [61/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:29:28 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+2026-10-24 10:30:00 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: TCI      [62/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:30:14 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+2026-10-24 10:30:46 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: ART      [63/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: EVF      [64/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:31:04 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: ORS      [65/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:31:38 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: DSC      [66/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: BVS      [67/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:32:14 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+2026-10-24 10:32:47 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: PSI      [68/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:33:22 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: MBS      [69/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: GEX      [70/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: PC1      [71/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: REE      [72/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: CTD      [73/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:34:08 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: FCN      [74/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: HBC      [75/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:34:45 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: HHV      [76/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: LCG      [77/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VCG      [78/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:35:24 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: CII      [79/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:35:56 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: HT1      [80/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:36:06 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+2026-10-24 10:36:38 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: DGC      [81/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: DCM      [82/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:37:17 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: DPM      [83/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: LAS      [84/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:37:32 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: CSV      [85/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:38:06 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: PVD      [86/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: PVT      [87/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: GIL      [88/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:38:24 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: NT2      [89/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: FRT      [90/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: PNJ      [91/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:39:05 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: DGW      [92/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VGC      [93/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:39:19 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+2026-10-24 10:39:54 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: PAN      [94/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: HAG      [95/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: HNG      [96/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:40:36 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: ASM      [97/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:41:08 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: AMV      [98/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:41:44 - vnstock.core.utils.client - ERROR - API request failed: HTTPSConnectionPool(host='iq.vietcap.com.vn', port=443): Read timed out. (read timeout=30)
+  Scanning: CMG      [99/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: ELC      [100/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: ITD      [101/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: SAM      [102/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VGI      [103/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: ONE      [104/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VTP      [105/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VHC      [106/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: ANV      [107/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: IDI      [108/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: ABT      [109/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:42:30 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: HSL      [110/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: LSS      [111/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: HAP      [112/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: BBC      [113/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:42:53 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: GMD      [114/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scanning: VOS      [115/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:43:11 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: DVP      [116/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:43:23 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: PHP      [117/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:43:36 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: TMS      [118/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:43:50 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: HAH      [119/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+2026-10-24 10:44:03 - vnstock.explorer.vci.financial - WARNING - Handshake thất bại: HTTPSConnectionPool(host='trading.vietcap.com.vn', port=443): Read timed out. (read timeout=10)
+  Scanning: VSC      [120/120] (Testing DI 1-40...)
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+  Scan complete!                                                  
+
+Ticker        Price Trend    Str    OptLen      Alpha  Valid Signal    
+--------------------------------------------------------------------------------
+TVS           13.30 BULL     Weak        8     +57.8%    YES BUY       
+HSL            7.54 BEAR     Mod         3    +349.3%    YES WATCH     
+VIX           12.70 BEAR     Weak       21    +207.5%    YES WATCH     
+LDG            2.42 BEAR     Strong      1    +139.8%    YES WATCH     
+VHM           64.30 BEAR     Weak        1    +125.5%    YES WATCH     
+GEX           24.10 BULL     Mod         8    +117.8%    YES WATCH     
+APG            4.08 BEAR     Mod         5     +99.7%    YES WATCH     
+FRT          150.00 BEAR     Strong      1     +84.5%    YES WATCH     
+TCI            9.50 BEAR     Strong      6     +79.7%    YES WATCH     
+CEO           11.50 BEAR     Weak       24     +78.4%    YES WATCH     
+DSC            9.78 BEAR     Strong      1     +72.6%    YES WATCH     
+VRE           25.00 BULL     Strong      2     +72.0%    YES WATCH     
+DGC           33.70 BEAR     Strong      1     +70.7%    YES WATCH     
+HAR            2.54 BEAR     Weak        2     +70.0%    YES WATCH     
+DIG           10.15 BULL     Weak       18     +67.8%    YES WATCH     
+PDR           12.15 BEAR     Weak       37     +58.3%    YES WATCH     
+GIL            8.67 BULL     Mod        15     +56.5%    YES WATCH     
+SHS           12.80 BEAR     Weak       15     +54.5%    YES WATCH     
+SCR            4.11 BEAR     Weak       33     +53.1%    YES WATCH     
+SHB           10.90 BULL     Mod         2     +52.4%    YES WATCH     
+GMD           57.10 BEAR     Weak        1     +52.3%    YES WATCH     
+IJC            7.36 BULL     Strong      2     +51.3%    YES WATCH     
+SAM            6.00 BEAR     Strong      1     +50.5%    YES WATCH     
+VTP           47.55 BULL     Weak        2     +49.7%    YES WATCH     
+ANV           19.05 BULL     Mod        24     +49.0%    YES WATCH     
+KDH           15.10 BULL     Strong      3     +47.8%    YES WATCH     
+ELC           11.45 BEAR     Mod        13     +46.6%    YES WATCH     
+VSC           15.10 BULL     Strong      1     +46.2%    YES WATCH     
+LAS           12.10 BULL     Strong     15     +45.3%    YES WATCH     
+BCM           41.65 BULL     Strong      3     +44.8%    YES WATCH     
+PLX           35.45 BULL     Strong      3     +44.6%    YES WATCH     
+GVR           31.75 BULL     Weak        4     +44.5%    YES WATCH     
+SSI           19.95 BULL     Mod         6     +42.7%    YES WATCH     
+PVD           18.70 BULL     Strong      6     +41.6%    YES WATCH     
+SSB           16.65 BULL     Strong      3     +41.6%    YES WATCH     
+NVL           10.60 BEAR     Weak        7     +40.6%    YES WATCH     
+HDG           15.55 BEAR     Weak       24     +40.0%    YES WATCH     
+DXG           10.45 BEAR     Weak       21     +39.9%    YES WATCH     
+PAN           18.10 BEAR     Weak        1     +37.6%    YES WATCH     
+PHP           46.90 BEAR     Weak        3     +36.6%    YES WATCH     
+IDC           36.00 BULL     Mod         6     +34.9%    YES WATCH     
+GAS           78.30 BULL     Strong      2     +34.6%    YES WATCH     
+BVS           27.30 BULL     Strong      3     +33.2%    YES WATCH     
+VCB           56.80 BULL     Weak        6     +32.7%    YES WATCH     
+VOS           12.10 BULL     Strong      1     +31.3%    YES WATCH     
+KBC           27.00 BULL     Strong      3     +30.8%    YES WATCH     
+MBS           15.70 BEAR     Mod        35     +29.2%    YES WATCH     
+VJC          129.70 BEAR     Weak       13     +29.0%    YES WATCH     
+VHC           52.10 BULL     Strong      4     +26.2%    YES WATCH     
+BVH           69.00 BEAR     Mod        10     +24.9%    YES WATCH     
+HT1           13.55 BULL     Strong      3     +24.8%    YES WATCH     
+TIP           15.90 BULL     Mod        13     +24.1%    YES WATCH     
+PC1           19.50 BULL     Strong      2     +23.2%    YES WATCH     
+FCN           10.80 BULL     Weak       13     +22.5%    YES WATCH     
+ABT           49.90 BULL     Mod         7     +22.0%    YES WATCH     
+DGW           46.20 BULL     Weak       21     +18.3%    YES WATCH     
+NT2           24.10 BULL     Mod        35     +15.2%    YES WATCH     
+ITD           10.60 BEAR     Mod        39     +14.7%    YES WATCH     
+VNM           57.60 BEAR     Weak       10     +14.7%    YES WATCH     
+BID           34.25 BULL     Mod         4     +13.8%    YES WATCH     
+HAP            7.15 BEAR     Strong      1     +13.0%    YES WATCH     
+HCM           24.00 BULL     Weak        4     +12.9%    YES WATCH     
+VGC           44.50 BEAR     Weak        9     +12.7%    YES WATCH     
+DVP           74.70 BULL     Weak       12     +11.5%    YES WATCH     
+MSN           74.20 BULL     Mod        27     +11.0%    YES WATCH     
+HDB           22.55 BULL     Strong      1      +7.0%    YES WATCH     
+TPB           13.00 BULL     Strong      3      +4.9%    YES WATCH     
+VGI           77.70 BEAR     Weak       35      +3.9%    YES WATCH     
+MWG           75.50 BULL     Weak       22      +3.2%    YES WATCH     
+DPM           21.65 BEAR     Weak       20      +0.5%    YES WATCH     
+ONE            9.50 BEAR     Mod        40      +0.1%    YES WATCH     
+ART            1.30 BEAR     Strong     31     +72.5%     NO AVOID     
+NHA            7.50 BEAR     Weak       32     +46.2%     NO AVOID     
+CMG           19.75 BEAR     Mod         2     +37.1%     NO AVOID     
+FPT           57.00 BEAR     Mod        36     +34.0%     NO AVOID     
+ASM            4.73 BEAR     Mod        18     +33.8%     NO AVOID     
+IDI            5.45 BULL     Mod        18     +28.7%     NO AVOID     
+NLG           23.30 BULL     Strong      7     +25.4%     NO AVOID     
+TMS           31.90 BEAR     Strong     31     +14.0%     NO AVOID     
+AGR           11.60 BULL     Weak       10     +11.8%     NO AVOID     
+LCG            6.73 BEAR     Weak       19      +6.8%     NO AVOID     
+LSS            7.84 BEAR     Weak       37      +3.8%     NO AVOID     
+VCI           19.60 BULL     Strong      3      +3.2%     NO AVOID     
+HHV            9.66 BEAR     Weak       36      +1.8%     NO AVOID     
+VIB           14.20 BULL     Weak       36      -2.5%     NO AVOID     
+PVT           23.70 BEAR     Weak        7      -3.6%     NO AVOID     
+NBB           17.20 BEAR     Weak       27      -4.9%     NO AVOID     
+EVF           11.95 BEAR     Weak       33      -7.8%     NO AVOID     
+SAB           43.20 BEAR     Weak       37      -8.6%     NO AVOID     
+HPG           20.95 BEAR     Mod         2      -8.6%     NO AVOID     
+REE           45.90 BULL     Mod         5      -9.0%     NO AVOID     
+POW           12.55 BEAR     Weak       15     -10.2%     NO AVOID     
+BBC           97.00 BULL     Strong      8     -10.3%     NO AVOID     
+VPB           24.10 BEAR     Weak        5     -11.6%     NO AVOID     
+ACB           21.30 BULL     Weak       14     -12.0%     NO AVOID     
+CTG           30.95 BULL     Strong      1     -13.1%     NO AVOID     
+HAG           14.70 BULL     Weak       40     -23.8%     NO AVOID     
+MBB           19.80 BULL     Weak        6     -26.8%     NO AVOID     
+VIC          236.50 BULL     Mod         1     -33.7%     NO AVOID     
+HAH           51.30 BULL     Strong      1     -48.6%     NO AVOID     
+--------------------------------------------------------------------------------
+
+================================================================================
+  SCAN COMPLETE
+  Total: 100 stocks | Opportunities: 71 | Buy Signals: 1
+================================================================================
+
