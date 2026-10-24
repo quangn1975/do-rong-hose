@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
-      - run: pip install -U pandas vnstock vnai --extra-index-url https://vnstocks.com/api/simple
+      - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
       - name: Dang ky khoa vnstock (neu co)
         env:
           VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
