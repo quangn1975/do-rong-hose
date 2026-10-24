@@ -35,6 +35,7 @@ jobs:
       - name: Chay auto33
         env:
           VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+          VNSTOCK_DELAY: "1.4"
         run: python auto33.py
       - run: |
           git config user.name "github-actions"
