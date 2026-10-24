@@ -107,6 +107,31 @@ def khoi_ngoai():
     d.sort_values("nn_rong_ty", ascending=False).to_csv("data/khoi_ngoai.csv", index=False)
 
 
+def chi_so_vn():
+    """Den thi truong cua VN-Index: MA50, MA200, day nen SOS, so phien duoi day SOS, death cross."""
+    vn = lich_su("VNINDEX", 420).reset_index(drop=True)
+    c, h, l, o, v = vn["close"], vn["high"], vn["low"], vn["open"], vn["volume"]
+    rng = h - l
+    sos = ((c > o) & (rng > rng.rolling(14).mean().shift(1)) & (v > 1.2 * v.rolling(20).mean().shift(1))
+           & ((c - l) / rng.where(rng > 0) >= 0.8) & (c > h.rolling(5).max().shift(1)))
+    idx = sos[sos].index
+    ma50, ma200 = c.rolling(50).mean().iloc[-1], c.rolling(200).mean().iloc[-1]
+    if len(idx):
+        k = idx[-1]
+        day = float(l[k]); ngay = vn.at[k, "time"]
+        dem = 0
+        for x in c.iloc[k + 1:][::-1]:
+            if x < day: dem += 1
+            else: break
+    else:
+        day, ngay, dem = "", "", 0
+    rows = [("ngay", vn["time"].iloc[-1]), ("close", round(float(c.iloc[-1]), 2)), ("ma50", round(float(ma50), 2)),
+            ("ma200", round(float(ma200), 2)), ("ngay_sos", ngay), ("day_sos", day), ("so_phien_duoi_sos", dem),
+            ("den_long", "Xau" if dem > 3 else "Tot"), ("den_ma200", "Xau" if c.iloc[-1] < ma200 else "Tot"),
+            ("death_cross", int(ma50 < ma200))]
+    pd.DataFrame(rows, columns=["khoa", "gia_tri"]).to_csv("data/vnindex_chi_so.csv", index=False)
+
+
 def tin_hieu(ck):
     vn = lich_su("VNINDEX", 420)
     c, h, v = vn["close"], vn["high"], vn["volume"]
@@ -127,6 +152,7 @@ if __name__ == "__main__":
     ck = can_kiet()
     time.sleep(DELAY)
     tin_hieu(ck)
+    chi_so_vn()
     time.sleep(DELAY)
     try:
         khoi_ngoai()

@@ -19,7 +19,7 @@ jobs:
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/can_kiet33.csv data/khoi_ngoai.csv data/tin_hieu.csv data/cot_bang_gia.txt
+          git add data/can_kiet33.csv data/khoi_ngoai.csv data/tin_hieu.csv data/cot_bang_gia.txt data/vnindex_chi_so.csv
           git commit -m "auto33" || exit 0
           git pull --rebase
           git push
