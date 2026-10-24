@@ -1,4 +1,4 @@
-# 33 ma lon. 30 ma theo tab Kiem dinh + MCH + BSR; ma thu 33 de trong, dien vao day (moi dong 1 ma)
+# 33 ma lon: 30 ma theo tab Kiem dinh + MCH + BSR + MSR
 ACB
 BCM
 BID
@@ -31,3 +31,4 @@ VPB
 VRE
 MCH
 BSR
+MSR
