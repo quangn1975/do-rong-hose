@@ -1,0 +1,39 @@
+name: kiemtra_khoa
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -U pandas vnstock vnai --extra-index-url https://vnstocks.com/api/simple
+      - name: Kiem tra khoa
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          mkdir -p data
+          python - <<'PY' > data/vnstock_khoa.txt 2>&1
+          import os, inspect, importlib.metadata as m
+          k = os.environ.get("VNSTOCK_API_KEY", "")
+          print("co khoa:", bool(k), "do dai:", len(k))
+          for p in ("vnstock","vnai","vnstock_data"):
+              try: print(p, m.version(p))
+              except Exception as e: print(p, "khong co")
+          from vnstock import register_user
+          print("register_user", inspect.signature(register_user))
+          if k:
+              try:
+                  r = register_user(api_key=k); print("dang ky:", str(r)[:200].replace(k,"***"))
+              except Exception as e:
+                  print("loi:", type(e).__name__, str(e)[:300].replace(k,"***"))
+          PY
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "kiem tra khoa" || exit 0
+          git pull --rebase
+          git push
