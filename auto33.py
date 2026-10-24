@@ -6,16 +6,20 @@ import pandas as pd
 from vnstock import Quote
 from ngay15 import lich_su, ma_hose, DELAY, now
 
+DFS = {}
 MA33 = [l.strip().upper() for l in open("ma33.txt") if l.strip() and not l.startswith("#")]
 
 
 def can_kiet():
     close = {}
+    global DFS
+    DFS = {}
     for s in MA33:
         df = lich_su(s, 420)
         time.sleep(DELAY)
         if df is not None:
             close[s] = df.set_index("time")["close"]
+            DFS[s] = df.reset_index(drop=True)
     c = pd.DataFrame(close).sort_index().ffill()
     p20 = (c > c.rolling(20).mean()).sum(axis=1) / c.notna().sum(axis=1) * 100
     p50 = (c > c.rolling(50).mean()).sum(axis=1) / c.notna().sum(axis=1) * 100
@@ -132,6 +136,39 @@ def chi_so_vn():
     pd.DataFrame(rows, columns=["khoa", "gia_tri"]).to_csv("data/vnindex_chi_so.csv", index=False)
 
 
+def dem_sos():
+    """So ma trong 33 ma co nen SOS o phien cuoi (5 dieu cua anh Long)."""
+    n, tong = 0, 0
+    for s, d in DFS.items():
+        if len(d) < 30: continue
+        c, h, l, o, v = d["close"], d["high"], d["low"], d["open"], d["volume"]
+        rng = h - l
+        r = rng.iloc[-1]
+        ok = (c.iloc[-1] > o.iloc[-1] and r > rng.iloc[-15:-1].mean() and v.iloc[-1] > 1.2 * v.iloc[-21:-1].mean()
+              and r > 0 and (c.iloc[-1] - l.iloc[-1]) / r >= 0.8 and c.iloc[-1] > h.iloc[-6:-1].max())
+        tong += 1
+        n += int(ok)
+    return n, tong
+
+
+def nn_lich_su():
+    """Moi phien (sau 15h) ghi tong NN mua rong HOSE (ty); kiem tra 5 phien lien tiep mua rong."""
+    p = "data/nn_lich_su.csv"
+    try:
+        kn = pd.read_csv("data/khoi_ngoai.csv")
+        tong = round(float(kn["nn_rong_ty"].sum()), 1)
+    except Exception:
+        return 0
+    ngay = now.date().isoformat()
+    h = pd.read_csv(p) if os.path.exists(p) else pd.DataFrame(columns=["date", "nn_rong_ty"])
+    if now.weekday() < 5 and (now.hour * 60 + now.minute) >= 15 * 60:
+        h = h[h["date"] != ngay]
+        h = pd.concat([h, pd.DataFrame([[ngay, tong]], columns=h.columns)])
+        h.sort_values("date").to_csv(p, index=False)
+    h = h.sort_values("date")
+    return int(len(h) >= 5 and (h["nn_rong_ty"].tail(5) > 0).all())
+
+
 def tin_hieu(ck):
     vn = lich_su("VNINDEX", 420)
     c, h, v = vn["close"], vn["high"], vn["volume"]
@@ -144,6 +181,8 @@ def tin_hieu(ck):
         ("Lay lai MA200", int(c.iloc[-1] > ma200.iloc[-1])),
         ("MA50 tren MA200 (golden cross)", int(ma50.iloc[-1] > ma200.iloc[-1])),
         ("Can kiet 33 ma trong 3 phien", int(ck["cua_A_mo"].iloc[-1])),
+        ("Nen SOS trong cac ma lon", int(dem_sos()[0] >= 7)),
+        ("Khoi ngoai mua rong 5 phien", nn_lich_su()),
     ]
     pd.DataFrame([(t, a, b) for a, b in rows], columns=["date", "tin_hieu", "da_co"]).to_csv("data/tin_hieu.csv", index=False)
 
@@ -151,10 +190,10 @@ def tin_hieu(ck):
 if __name__ == "__main__":
     ck = can_kiet()
     time.sleep(DELAY)
-    tin_hieu(ck)
-    chi_so_vn()
-    time.sleep(DELAY)
     try:
         khoi_ngoai()
     except Exception as e:
         print("khoi ngoai loi", repr(e)[:300])
+    time.sleep(DELAY)
+    tin_hieu(ck)
+    chi_so_vn()
