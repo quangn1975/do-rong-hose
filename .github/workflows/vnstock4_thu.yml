@@ -1,0 +1,59 @@
+name: vnstock4_thu
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
+      - name: Thu
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          mkdir -p data
+          cat > /tmp/t4.py <<'P'
+          import os, inspect, pkgutil, importlib
+          out=[]
+          k=os.environ.get("VNSTOCK_API_KEY","")
+          try:
+              from vnstock import register_user
+              register_user(api_key=k); out.append("dang ky OK")
+          except Exception as e:
+              out.append("dang ky loi "+type(e).__name__+" "+str(e)[:120].replace(k,"***"))
+          import vnstock
+          out.append("version "+str(getattr(vnstock,"__version__","?")))
+          # liet ke ham co chu khoi ngoai / tu doanh / nha dau tu
+          kw=("foreign","proprietary","tu_doanh","investor","trade","flow","order","fund")
+          for name in dir(vnstock):
+              out.append("vnstock."+name)
+          try:
+              from vnstock import Vnstock
+              s=Vnstock().stock(symbol="HPG",source="VCI")
+              for ns in ("trading","quote","company","finance","listing"):
+                  o=getattr(s,ns,None)
+                  if o is None: continue
+                  out.append("== "+ns+": "+", ".join(n for n in dir(o) if not n.startswith("_")))
+              tr=s.trading
+              for fn in [n for n in dir(tr) if any(x in n.lower() for x in kw) and not n.startswith("_")]:
+                  out.append("##### "+fn)
+                  try:
+                      r=getattr(tr,fn)()
+                      out.append(str(list(r.columns))+"\n"+r.tail(5).to_string())
+                  except Exception as e:
+                      out.append("LOI "+repr(e)[:300].replace(k,"***"))
+          except Exception as e:
+              out.append("LOI chung "+repr(e)[:300].replace(k,"***"))
+          open("data/vnstock4_thu.txt","w").write("\n".join(out))
+          P
+          python /tmp/t4.py > data/vnstock4_thu_log.txt 2>&1 || true
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "vnstock4 thu" || exit 0
+          git pull --rebase
+          git push
