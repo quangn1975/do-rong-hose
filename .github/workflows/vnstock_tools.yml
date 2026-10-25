@@ -14,7 +14,7 @@ jobs:
         run: |
           mkdir -p data
           export VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1
-          { /tmp/v5/bin/vnstock version; echo ======; /tmp/v5/bin/vnstock tools; } > data/vnstock5_tools.txt 2>&1 || true
+          { /tmp/v5/bin/vnstock tools Market.equity; echo ======; /tmp/v5/bin/vnstock tools Market.index; echo ======; /tmp/v5/bin/vnstock tools Reference.company; } > data/vnstock5_tools2.txt 2>&1 || true
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
