@@ -1,0 +1,41 @@
+usage: vnstock [-h] [--json] <lệnh> ...
+
+Tài khoản và chẩn đoán cho vnstock.
+
+tuỳ chọn:
+  -h, --help        xem hướng dẫn này rồi thoát
+  --json            in JSON cho máy đọc
+
+lệnh:
+    register (login)
+                    đăng nhập bằng khoá API trên máy này
+    install         cài thư viện bổ sung mà cấp của khoá được dùng
+    logout          xoá khoá và quyền đã lưu trên máy này
+    status          tài khoản, thiết bị, hạn dùng và các thư viện đã cài
+    usage           phần trăm hạn mức đã dùng
+    env             thư mục trạng thái, profile, máy chủ, cách ghi tệp
+    doctor          bảy phép kiểm, kèm gợi ý sửa
+    policy          chính sách đang áp dụng: nguồn/host/bản bị tắt, luật của
+                    cấp mình đang có
+    version         phiên bản các thư viện thế hệ 5 và bản mới nhất
+    settings        xem hoặc đặt ngôn ngữ hiển thị
+    tools           xem cây hàm để tự truy xuất dữ liệu, tương tự show_api()
+    onboard         hướng dẫn ngắn cho trợ lý AI trước khi dùng vnstock
+    doc             xem cú pháp, tham số và ví dụ của một hàm
+    report          tổng hợp thông tin môi trường để gửi khi cần hỗ trợ
+    skills          danh sách skill cho trợ lý AI trên vnstocks.com
+    update          cập nhật các thư viện thế hệ 5 đã cài
+    completion      tạo kịch bản gợi ý lệnh bằng phím Tab cho shell
+
+Mở giao diện tương tác: gõ vnstock không kèm lệnh. Đổi ngôn ngữ: vnstock
+settings language vi|en|both
+=====
+usage: vnstock logout [-h]
+
+tuỳ chọn:
+  -h, --help  xem hướng dẫn này rồi thoát
+=====
+usage: vnstock [-h] [--json] <lệnh> ...
+vnstock: error: argument <lệnh>: invalid choice: 'device' (choose from 'register', 'login', 'install', 'logout', 'status', 'usage', 'env', 'doctor', 'policy', 'version', 'settings', 'tools', 'api', 'onboard', 'doc', 'report', 'skills', 'update', 'completion')
+=====
+['login', 'logout']
