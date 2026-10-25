@@ -1,0 +1,28 @@
+### 1. chi dat bien moi truong, KHONG login: status
+Lỗi (VNSTOCK_AUTH_DEVICE_NOT_REGISTERED): Thiết bị chưa được đăng ký
+  → Đăng nhập lại trên máy này để đăng ký thiết bị.
+(English: vnstock settings language en)
+### 2. goi ham khong login
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/v5/lib/python3.11/site-packages/vnstock/ui/market.py", line 565, in _report
+    market_report(
+_core.AuthError: Thiết bị chưa được đăng ký
+(English: vnstock settings language en)
+### 3. register bang CLI
+usage: vnstock register [-h] [--key KEY] [--stdin]
+
+tuỳ chọn:
+  -h, --help  xem hướng dẫn này rồi thoát
+  --key KEY   khoá API; bỏ trống để nhập ẩn
+  --stdin     đọc khoá từ stdin (cho agent và CI)
+### 4. doctor
+✘ Chính sách từ vnstocks.com: Thiết bị chưa được đăng ký
+(English: vnstock settings language en)
+✘ Khoá API: VNSTOCK_AUTH_DEVICE_NOT_REGISTERED Thiết bị chưa được đăng ký
+(English: vnstock settings language en)
+✘ Hạn mức: Thiết bị chưa được đăng ký
+(English: vnstock settings language en)
+✔ Bộ khung phân loại báo cáo tài chính (chuẩn VAS): đã có bản theo cấp của bạn
+✔ Nguồn cài đặt vnstocks.com: kết nối được, bản vnstock mới nhất là 5.2.0
+  → Kiểm tra kết nối tới vnstocks.com rồi thử lại.
+(English: vnstock settings language en)
