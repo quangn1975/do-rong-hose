@@ -1,1 +1,2 @@
-dk loi AttributeError register_user() đã bỏ. Đăng nhập bằng lệnh `vnstock register`, hoặc vnstock.login('<khoá>') trong notebook.
+dk loi EntitlementError Đã đạt số thiết bị tối đa của cấp tài khoản
+(English: vnstock settings language en)
