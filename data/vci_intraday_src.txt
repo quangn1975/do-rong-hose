@@ -1,0 +1,86 @@
+    @optimize_execution("VCI")
+    def intraday(
+        self,
+        page_size: Optional[int] = 100,
+        last_time: Optional[Union[str, int, float]] = None,
+        last_time_format: Optional[str] = None,
+        show_log: bool = False,
+    ) -> pd.DataFrame:
+        """
+        Retrieve the matched trades of any symbol from the VCI data source.
+
+        Args:
+            - page_size (optional): records returned per request.
+              Defaults to 100.
+            - last_time (optional): cut-off used to fetch trades after a given
+              point. Either an epoch timestamp (int/float) or a datetime
+              string. Defaults to None.
+            - last_time_format (optional): format used to parse last_time when
+              it is a string. By default 'YYYY-MM-DD HH:MM:SS' and
+              'YYYY-MM-DD' are both tried.
+            - show_log (optional): show debug logs. Defaults to False.
+        """
+        # Validator: Intraday data is not supported for indices
+        if self.asset_type == "index":
+            raise ValueError(
+                f"Dữ liệu intraday không được hỗ trợ cho chỉ số {self.symbol}."
+            )
+
+        market_status = trading_hours("HOSE")
+        if (
+            market_status["is_trading_hour"] is False
+            and market_status["data_status"] == "preparing"
+        ):
+            raise ValueError(
+                f"{market_status['time']}: Dữ liệu khớp lệnh không "
+                f"thể truy cập trong thời gian chuẩn bị phiên mới. "
+                f"Vui lòng quay lại sau."
+            )
+
+        if self.symbol is None:
+            raise ValueError(
+                "Vui lòng nhập mã chứng khoán cần truy xuất khi khởi tạo Trading Class."
+            )
+
+        if page_size and page_size > 30_000:
+            logger.warning(
+                "Bạn đang yêu cầu truy xuất quá nhiều dữ liệu, "
+                "điều này có thể gây lỗi quá tải."
+            )
+
+        # Parse last_time to epoch timestamp
+        parsed_last_time = convert_time_flexible(last_time, last_time_format)
+
+        url = f"{self.base_url}{_INTRADAY_URL}/LEData/getAll"
+        payload = {
+            "symbol": self.symbol,
+            "limit": page_size,
+            "truncTime": parsed_last_time,
+        }
+
+        # Fetch data using the send_request utility
+        data = send_request(
+            url=url,
+            headers=self.headers,
+            method="POST",
+            payload=payload,
+            show_log=show_log,
+        )
+
+        # Ensure data is a list
+        if isinstance(data, dict):
+            data = data.get("data", []) if "data" in data else []
+
+        # Transform data using intraday_to_df utility
+        df = intraday_to_df(
+            data=data,
+            column_map=_INTRADAY_MAP,
+            dtype_map=_INTRADAY_DTYPE,
+            symbol=self.symbol,
+            asset_type=self.asset_type,
+            source=self.data_source,
+        )
+
+        return df
+
+(self, symbol: Optional[str] = None, page_size: int = 100, page: int = 1, **kwargs: Any) -> pandas.core.frame.DataFrame
