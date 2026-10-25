@@ -10,41 +10,11 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: python -m venv /tmp/v5 && /tmp/v5/bin/pip install -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
-      - name: Thu du lieu
-        env:
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+      - name: Tim cach giai phong thiet bi
         run: |
           mkdir -p data
           export VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1
-          V=/tmp/v5/bin/vnstock
-          { for f in foreign_flow proprietary_flow trade_history session_stats trades; do echo "##### DOC $f"; $V doc Market.equity.$f; done; } > data/vnstock5_doc.txt 2>&1 || true
-          cat > /tmp/t.py <<'P'
-          import os, vnstock, traceback
-          try:
-              vnstock.login(os.environ.get('VNSTOCK_API_KEY',''))
-          except Exception as e:
-              print('dk loi', type(e).__name__, str(e)[:150])
-          from vnstock import Market
-          out=[]
-          pd=__import__("pandas"); pd.set_option("display.width",250); pd.set_option("display.max_columns",40)
-          for fn in ["foreign_flow","proprietary_flow","trade_history","session_stats","trades","order_book","block_trades","odd_lot","volume_profile","summary"]:
-              out.append("##### "+fn)
-              try:
-                  m=getattr(Market().equity("HPG"),fn)
-                  try: r=m(limit=3)
-                  except TypeError: r=m()
-                  out.append(str(list(getattr(r,"columns",[])))+"\n"+str(r.head(3).to_string() if hasattr(r,"head") else r)[:1500])
-              except Exception as e:
-                  out.append("LOI "+repr(e)[:300])
-          out.append("##### index trade_history VNINDEX")
-          try:
-              r=Market().index("VNINDEX").trade_history(limit=3)
-              out.append(str(list(r.columns))+"\n"+r.head(3).to_string()[:1500])
-          except Exception as e:
-              out.append("LOI "+repr(e)[:300])
-          open("data/vnstock5_thu.txt","w").write("\n".join(out))
-          P
-          /tmp/v5/bin/python /tmp/t.py > data/vnstock5_thu_log.txt 2>&1 || true
+          { /tmp/v5/bin/vnstock --help; echo =====; /tmp/v5/bin/vnstock logout --help; echo =====; /tmp/v5/bin/vnstock device --help; echo =====; /tmp/v5/bin/python -c "import vnstock;print([n for n in dir(vnstock) if any(x in n.lower() for x in ('log','regist','device','license','auth'))])"; } > data/vnstock5_cli.txt 2>&1 || true
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
