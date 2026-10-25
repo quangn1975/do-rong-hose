@@ -26,13 +26,22 @@ jobs:
               print('dk loi', type(e).__name__, str(e)[:150])
           from vnstock import Market
           out=[]
-          for fn in ["foreign_flow","proprietary_flow","trade_history","session_stats"]:
+          pd=__import__("pandas"); pd.set_option("display.width",250); pd.set_option("display.max_columns",40)
+          for fn in ["foreign_flow","proprietary_flow","trade_history","session_stats","trades","order_book","block_trades","odd_lot","volume_profile","summary"]:
               out.append("##### "+fn)
               try:
-                  r=getattr(Market().equity("HPG"),fn)(limit=5)
-                  out.append(str(getattr(r,"columns",""))+"\n"+str(r.tail(5).to_string() if hasattr(r,"tail") else r))
+                  m=getattr(Market().equity("HPG"),fn)
+                  try: r=m(limit=3)
+                  except TypeError: r=m()
+                  out.append(str(list(getattr(r,"columns",[])))+"\n"+str(r.head(3).to_string() if hasattr(r,"head") else r)[:1500])
               except Exception as e:
-                  out.append("LOI "+repr(e)[:500])
+                  out.append("LOI "+repr(e)[:300])
+          out.append("##### index trade_history VNINDEX")
+          try:
+              r=Market().index("VNINDEX").trade_history(limit=3)
+              out.append(str(list(r.columns))+"\n"+r.head(3).to_string()[:1500])
+          except Exception as e:
+              out.append("LOI "+repr(e)[:300])
           open("data/vnstock5_thu.txt","w").write("\n".join(out))
           P
           /tmp/v5/bin/python /tmp/t.py > data/vnstock5_thu_log.txt 2>&1 || true
