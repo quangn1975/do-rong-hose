@@ -1,0 +1,78 @@
+
+[vnstock] Số liệu đo lường tuỳ chọn (tên hàm, thời gian chạy, lỗi) đang TẮT; chỉ gửi khi bạn bật bằng vnai.enable_telemetry().
+          Khi dùng khoá API, thư viện vẫn gửi dữ liệu cần thiết để cấp quyền: mã thiết bị, phiên bản thư viện, số lượt gọi.
+          Không bao giờ thu thập giá trị tham số bạn truyền vào (mã chứng khoán, khoảng thời gian), tên tệp hay nội dung thư mục làm việc.
+          Xem chính xác thứ được gửi: vnai.data_disclosure()
+          Chi tiết: https://vnstocks.com/policies/privacy
+Không xác định được gói tài trợ nên tạm áp hạn mức cấp Cộng đồng (60 lượt/phút). Nếu bạn đang tài trợ, nguyên nhân thường là thư viện `vnii` chưa cài được hoặc còn ở bản cũ — chạy `pip install -U --extra-index-url https://vnstocks.com/api/simple vnii` rồi thử lại.
+
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+Authentication failed: License Error: Device limit exceeded
+   Your free tier allows up to 1 registered device(s).
+   Currently registered: 1/1
+   Device limit exceeded
+
+Please visit https://vnstocks.com/account?section=devices to remove unused devices.
+Device limit exceeded but user is paid
+2026-10-25 05:15:16 - vnstock.explorer.vci.quote - WARNING - Bạn đang yêu cầu truy xuất quá nhiều dữ liệu, điều này có thể gây lỗi quá tải.
+👋 Chào mừng bạn đến với Vnstock! Bản Cộng đồng (60 req/phút, hiển thị tối đa 8 kỳ BCTC). ⭐ Tham gia Vnstock Sponsor (bản Mở rộng 180-600 req/phút): vnstocks.com/insiders-program
+HPG OK 10.3 s
+2026-10-25 05:15:22 - vnstock.explorer.vci.quote - WARNING - Bạn đang yêu cầu truy xuất quá nhiều dữ liệu, điều này có thể gây lỗi quá tải.
+
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+VCB OK 2.8 s
+2026-10-25 05:15:28 - vnstock.explorer.vci.quote - WARNING - Bạn đang yêu cầu truy xuất quá nhiều dữ liệu, điều này có thể gây lỗi quá tải.
+
+  ╭──────────────────────────────────────────────────────────╮
+  │  ⚠️  VNSTOCK DEPRECATION NOTICE (31/08/2025)             │
+  │                                                          │
+  │  Lớp Vnstock và các phương thức cũ (stock, fx, crypto,   │
+  │  world_index, fund...) đã chính thức bị ngừng hỗ trợ.    │
+  │                                                          │
+  │  Để hệ thống ổn định và nhận được cập nhật mới nhất,     │
+  │  vui lòng chuyển sang dùng bộ thư viện `vnstock.api`.    │
+  │                                                          │
+  │  👉 Xem hướng dẫn Migration: /vnstock-migration          │
+  ╰──────────────────────────────────────────────────────────╯
+
+Mẫu code chuyển đổi (Migration Example):
+--------------------------------------
+Cũ (Old):  stock = Vnstock().stock('ACB')
+Mới (New): from vnstock.api.quote import Quote
+          q = Quote(symbol='ACB', source='VCI')
+
+SSI OK 2.8 s
