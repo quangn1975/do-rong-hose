@@ -1,0 +1,45 @@
+Thư viện thế hệ 5 trên máy này:
+  vnstock           5.2.0 (lõi 5.2.0)  ✓ mới nhất
+  vnstock-quant     chưa cài
+  vnstock-news      chưa cài
+  vnstock-pipeline  chưa cài
+Python 3.11.17 · Linux x86_64
+Giao thức xác thực: v2
+Mọi thư viện thế hệ 5 trên máy này đều đang ở bản mới nhất.
+(English: vnstock settings language en)
+======
+Market  Cổng truy xuất dữ liệu thị trường cho mọi nhóm tài sản.
+├─ bond(symbol)                 ▸ 5  Truy xuất dữ liệu thị trường của một trái phiếu niêm yết.
+├─ commodity(symbol, **kwargs)  ▸ 1  Truy xuất dữ liệu thị trường của một hợp đồng hàng hoá.
+├─ crypto(symbol, **kwargs)     ▸ 10  Truy xuất dữ liệu thị trường của một cặp tiền mã hoá.
+├─ equity(symbol)               ▸ 12  Truy xuất dữ liệu thị trường của một hoặc nhiều mã cổ phiếu.
+├─ etf(symbol)                  ▸ 12  Truy xuất dữ liệu thị trường của một chứng chỉ quỹ ETF.
+├─ forex(symbol, **kwargs)      ▸ 1  Truy xuất dữ liệu thị trường của một cặp tỷ giá ngoại tệ.
+├─ fund(symbol=None, **kwargs)  ▸ 7  Truy xuất dữ liệu của một quỹ mở (NAV, hiệu suất, cổ tức, danh mục).
+├─ futures(symbol)              ▸ 5  Truy xuất dữ liệu thị trường của một hợp đồng tương lai.
+├─ index(symbol, **kwargs)      ▸ 4  Truy xuất dữ liệu thị trường của một chỉ số trong nước hoặc quốc tế.
+└─ warrant(symbol)              ▸ 5  Truy xuất dữ liệu thị trường của một chứng quyền.
+
+Fundamental  Cổng truy xuất báo cáo tài chính và chỉ số tài chính doanh nghiệp.
+└─ equity(symbol)  ▸ 6  Truy xuất báo cáo tài chính theo mã chứng khoán.
+
+Reference  Cổng tra cứu thông tin tham chiếu: công ty, danh sách mã, ngành, chỉ số, quỹ, trái phiếu, phái sinh.
+├─ bond(symbol=None)     ▸ 2  Thông tin trái phiếu.
+├─ company(symbol)       ▸ 9  Lấy thông tin tham chiếu của một công ty.
+├─ fund(symbol=None)     ▸ 4  Danh sách quỹ mở, cùng hồ sơ, biểu phí và tài liệu của từng quỹ.
+├─ futures(symbol=None)  ▸ 2  Thông tin hợp đồng tương lai.
+├─ index(symbol)         ▸ 3  Thông tin chỉ số: danh sách chỉ số, nhóm chỉ số, mã thành phần.
+└─ warrant(symbol=None)  ▸ 2  Thông tin chứng quyền.
+
+Analytics  Cổng truy xuất số liệu phân tích định giá thị trường.
+└─ valuation(index='VNINDEX')  ▸ 3  Truy xuất định giá lịch sử của một chỉ số thị trường.
+
+Macro  Cổng truy xuất dữ liệu kinh tế vĩ mô.
+├─ currency  ▸ 5  Truy xuất nhóm tỷ giá và lãi suất.
+└─ economy   ▸ 8  Truy xuất nhóm chỉ số kinh tế vĩ mô Việt Nam.
+
+Retail  Dữ liệu bán lẻ: tỷ giá ngân hàng.
+└─ exchange_rate [VCB]  Lấy bảng tỷ giá Vietcombank niêm yết trong một ngày.
+
+▸ N là số hàm bên trong. Mở một nhánh: vnstock tools Market.equity · chi tiết một hàm: vnstock doc Market.equity.ohlcv
+(English: vnstock settings language en)
