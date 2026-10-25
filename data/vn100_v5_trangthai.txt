@@ -1,2 +1,3 @@
-2026-10-25 14:55 (gio VN)
-OK 102/102 ma, 0 ma khong co du lieu
+2026-10-25 15:58 (gio VN)
+KHONG dang nhap duoc (v5): EntitlementError Đã đạt số thiết bị tối đa của cấp tài khoản
+(English: vnstock settings language en)
