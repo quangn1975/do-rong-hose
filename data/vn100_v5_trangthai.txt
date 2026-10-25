@@ -1,0 +1,3 @@
+2026-10-25 12:36 (gio VN)
+KHONG lay duoc (v5): InternalError Máy chủ giấy phép trả về phản hồi không mong đợi
+(English: vnstock settings language en)
