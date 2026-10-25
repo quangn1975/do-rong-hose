@@ -1,0 +1,39 @@
+Market.equity(symbol)  Truy xuất dữ liệu thị trường của một hoặc nhiều mã cổ phiếu.
+├─ block_trades [KBS]      Lấy giao dịch thoả thuận trên sàn của mã.
+├─ foreign_flow [VCI]      Lấy giao dịch khối ngoại của mã.
+├─ odd_lot [KBS]           Lấy giao dịch lô lẻ của mã.
+├─ ohlcv [VCI]             Lấy giá lịch sử OHLCV của mã.
+├─ order_book [KBS]        Lấy sổ lệnh: các bước giá chờ mua, chờ bán.
+├─ proprietary_flow [VCI]  Lấy giao dịch tự doanh của mã.
+├─ quote [KBS]             Lấy bảng giá hiện tại của mã.
+├─ session_stats [VCI]     Lấy thống kê cuối phiên của mã.
+├─ summary [KBS]           Lấy các chỉ số tóm tắt của mã trong phiên.
+├─ trade_history [VCI]     Lấy thống kê giao dịch theo ngày của mã, mỗi phiên một dòng.
+├─ trades [VCI]            Lấy danh sách lệnh khớp của mã.
+└─ volume_profile [KBS]    Lấy khối lượng khớp trong phiên theo từng mức giá của mã.
+
+▸ N là số hàm bên trong. Mở một nhánh: vnstock tools Market.equity · chi tiết một hàm: vnstock doc Market.equity.ohlcv
+(English: vnstock settings language en)
+======
+Market.index(symbol, **kwargs)  Truy xuất dữ liệu thị trường của một chỉ số trong nước hoặc quốc tế.
+├─ ohlcv [KBS]          Lấy giá lịch sử OHLCV của mã.
+├─ quote [KBS]          Lấy bảng giá hiện tại của mã.
+├─ summary [KBS]        Lấy các chỉ số tóm tắt của mã trong phiên.
+└─ trade_history [VCI]  Lấy thống kê giao dịch theo ngày của chỉ số.
+
+▸ N là số hàm bên trong. Mở một nhánh: vnstock tools Market.equity · chi tiết một hàm: vnstock doc Market.equity.ohlcv
+(English: vnstock settings language en)
+======
+Reference.company(symbol)  Lấy thông tin tham chiếu của một công ty.
+├─ affiliate [VCI]        Lấy danh sách công ty liên kết.
+├─ capital_history [KBS]  Lấy lịch sử thay đổi vốn điều lệ của công ty.
+├─ events [VCI]           Lấy sự kiện của công ty.
+├─ info [VCI]             Lấy hồ sơ công ty.
+├─ insider_trading [KBS]  Lấy giao dịch của người nội bộ với cổ phiếu công ty.
+├─ officers [VCI]         Lấy danh sách ban lãnh đạo công ty.
+├─ ownership [KBS]        Lấy cơ cấu sở hữu của công ty.
+├─ shareholders [VCI]     Lấy danh sách cổ đông hoặc cơ cấu sở hữu của công ty.
+└─ subsidiaries [VCI]     Lấy danh sách công ty con và công ty liên kết, hoặc lọc lấy một loại.
+
+▸ N là số hàm bên trong. Mở một nhánh: vnstock tools Market.equity · chi tiết một hàm: vnstock doc Market.equity.ohlcv
+(English: vnstock settings language en)
