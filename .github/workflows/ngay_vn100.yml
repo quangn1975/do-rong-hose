@@ -9,7 +9,7 @@ concurrency:
   group: auto33
   cancel-in-progress: false
 jobs:
-  run:
+  do_rong:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -17,13 +17,6 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
-      - name: Dong tien lon (vnstock 5)
-        env:
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
-        run: |
-          python -m venv /tmp/v5
-          /tmp/v5/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock || true
-          VNSTOCK_TELEMETRY=off /tmp/v5/bin/python ngay_vn100_v5.py || true
       - name: Dang ky khoa
         env:
           VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
@@ -39,13 +32,31 @@ jobs:
                   print("dang ky loi", type(e).__name__)
           PY
       - name: VN100 do rong + khoi ngoai
-        env:
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
         run: python ngay_vn100.py
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add -A data
-          git commit -m "VN100 18h" || exit 0
-          git pull --rebase
-          git push
+          git commit -m "VN100 18h: do rong" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
+  dong_tien:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    needs: do_rong
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Dong tien lon (vnstock 5) - may sach, khong cai ban 4
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          python -m venv /tmp/v5
+          /tmp/v5/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
+          VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v5/bin/python ngay_vn100_v5.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "VN100 18h: dong tien lon" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
