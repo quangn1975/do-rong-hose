@@ -16,37 +16,32 @@ jobs:
         run: |
           mkdir -p data
           cat > /tmp/t4.py <<'P'
-          import os, inspect, pkgutil, importlib
+          import os
           out=[]
           k=os.environ.get("VNSTOCK_API_KEY","")
           try:
               from vnstock import register_user
               register_user(api_key=k); out.append("dang ky OK")
           except Exception as e:
-              out.append("dang ky loi "+type(e).__name__+" "+str(e)[:120].replace(k,"***"))
-          import vnstock
-          out.append("version "+str(getattr(vnstock,"__version__","?")))
-          # liet ke ham co chu khoi ngoai / tu doanh / nha dau tu
-          kw=("foreign","proprietary","tu_doanh","investor","trade","flow","order","fund")
-          for name in dir(vnstock):
-              out.append("vnstock."+name)
+              out.append("dang ky loi "+str(e)[:100].replace(k,"***"))
+          def show(t,f):
+              out.append("##### "+t)
+              try:
+                  r=f(); out.append(str(list(r.columns))+"\n"+r.tail(6).to_string())
+              except Exception as e:
+                  out.append("LOI "+repr(e)[:300].replace(k,"***"))
+          from vnstock import Vnstock, Market
+          s=Vnstock().stock(symbol="HPG",source="VCI")
+          show("company.trading_stats",lambda: s.company.trading_stats())
+          show("quote.intraday",lambda: s.quote.intraday(page_size=20))
+          out.append("Market: "+", ".join(n for n in dir(Market) if not n.startswith("_")))
           try:
-              from vnstock import Vnstock
-              s=Vnstock().stock(symbol="HPG",source="VCI")
-              for ns in ("trading","quote","company","finance","listing"):
-                  o=getattr(s,ns,None)
-                  if o is None: continue
-                  out.append("== "+ns+": "+", ".join(n for n in dir(o) if not n.startswith("_")))
-              tr=s.trading
-              for fn in [n for n in dir(tr) if any(x in n.lower() for x in kw) and not n.startswith("_")]:
-                  out.append("##### "+fn)
-                  try:
-                      r=getattr(tr,fn)()
-                      out.append(str(list(r.columns))+"\n"+r.tail(5).to_string())
-                  except Exception as e:
-                      out.append("LOI "+repr(e)[:300].replace(k,"***"))
-          except Exception as e:
-              out.append("LOI chung "+repr(e)[:300].replace(k,"***"))
+              e=Market().equity("HPG")
+              out.append("Market.equity: "+", ".join(n for n in dir(e) if not n.startswith("_")))
+              for fn in ("foreign_flow","proprietary_flow"):
+                  show("Market.equity."+fn,lambda fn=fn: getattr(e,fn)(limit=5))
+          except Exception as ex:
+              out.append("LOI Market "+repr(ex)[:300])
           open("data/vnstock4_thu.txt","w").write("\n".join(out))
           P
           python /tmp/t4.py > data/vnstock4_thu_log.txt 2>&1 || true
