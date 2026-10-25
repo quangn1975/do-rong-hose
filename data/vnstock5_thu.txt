@@ -1,8 +1,73 @@
 ##### foreign_flow
-LOI EntitlementError("Chức năng 'market.equity.foreign_flow' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
+Index(['time', 'buy_vol', 'buy_val', 'sell_vol', 'sell_val', 'net_vol',
+       'net_val'],
+      dtype='str')
+                       time    buy_vol       buy_val   sell_vol      sell_val    net_vol       net_val
+0 2026-10-23 00:00:00+07:00   693750.0  1.460302e+10  3775267.0  7.944957e+10 -3081517.0 -6.484654e+10
+1 2026-10-22 00:00:00+07:00  4569696.0  9.714094e+10  1757434.0  3.744891e+10  2812262.0  5.969203e+10
+2 2026-10-21 00:00:00+07:00  1030750.0  2.185390e+10  1773588.0  3.771732e+10  -742838.0 -1.586343e+10
+3 2026-10-20 00:00:00+07:00  8197700.0  1.716184e+11  1266659.0  2.660917e+10  6931041.0  1.450092e+11
+4 2026-10-19 00:00:00+07:00   377583.0  7.862090e+09  1893911.0  3.943471e+10 -1516328.0 -3.157262e+10
 ##### proprietary_flow
-LOI EntitlementError("Chức năng 'market.equity.proprietary_flow' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
+Index(['time', 'buy_vol', 'buy_val', 'sell_vol', 'sell_val', 'net_vol',
+       'net_val'],
+      dtype='str')
+                       time    buy_vol       buy_val   sell_vol      sell_val    net_vol       net_val
+0 2026-10-23 00:00:00+07:00  1909300.0  4.020828e+10  1432300.0  3.009002e+10   477000.0  1.011826e+10
+1 2026-10-22 00:00:00+07:00  2082580.0  4.432314e+10  2239700.0  4.761954e+10  -157120.0 -3.296392e+09
+2 2026-10-21 00:00:00+07:00  4894700.0  1.039473e+11  8378950.0  1.777879e+11 -3484250.0 -7.384062e+10
+3 2026-10-20 00:00:00+07:00  2918100.0  6.106137e+10  1879200.0  3.933072e+10  1038900.0  2.173064e+10
+4 2026-10-19 00:00:00+07:00  2243300.0  4.683118e+10  1720600.0  3.564952e+10   522700.0  1.118165e+10
 ##### trade_history
-LOI EntitlementError("Chức năng 'market.equity.price_history' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
+Index(['trading_date', 'end_trading_date', 'market_cap', 'total_shares',
+       'ceiling_price', 'floor_price', 'reference_price', 'open', 'close',
+       'match_price', 'price_change', 'percent_price_change', 'high', 'low',
+       'average_price', 'average_price_adjusted', 'matched_volume',
+       'matched_value', 'deal_volume', 'deal_value', 'total_volume',
+       'total_value', 'total_buy_trade', 'total_buy_trade_volume',
+       'total_sell_trade', 'total_sell_trade_volume',
+       'reference_price_adjusted', 'open_price_adjusted',
+       'close_price_adjusted', 'price_change_adjusted',
+       'percent_price_change_adjusted', 'highest_price_adjusted',
+       'lowest_price_adjusted', 'total_net_trade_volume',
+       'total_buy_unmatched_volume', 'total_sell_unmatched_volume',
+       'price_change_value', 'average_buy_trade_volume',
+       'average_sell_trade_volume'],
+      dtype='str')
+               trading_date     end_trading_date    market_cap  total_shares  ceiling_price  floor_price  reference_price     open    close  match_price  price_change  percent_price_change     high      low  average_price  average_price_adjusted  matched_volume  matched_value  deal_volume    deal_value  total_volume   total_value  total_buy_trade  total_buy_trade_volume  total_sell_trade  total_sell_trade_volume  reference_price_adjusted  open_price_adjusted  close_price_adjusted  price_change_adjusted  percent_price_change_adjusted  highest_price_adjusted  lowest_price_adjusted  total_net_trade_volume  total_buy_unmatched_volume  total_sell_unmatched_volume price_change_value  average_buy_trade_volume  average_sell_trade_volume
+0 2026-10-23 00:00:00+07:00  2026-10-23T00:00:00  1.768801e+14  8.442965e+09        22700.0      19800.0          21250.0  21200.0  20950.0      20950.0        -300.0             -0.014118  21250.0  20950.0   21015.714085            21015.714085      12966248.0   2.728146e+11    2923700.0  6.112400e+10    15889948.0  3.339386e+11           9275.0              23225880.0            8530.0               34974400.0                   21250.0              21200.0               20950.0                 -300.0                      -0.014118                 21250.0                20950.0             -11748520.0                  10259632.0                   22008152.0       -300 (-1.4%)               2504.138005                4100.164127
+1 2026-10-22 00:00:00+07:00  2026-10-22T00:00:00  1.794130e+14  8.442965e+09        22600.0      19700.0          21150.0  21200.0  21250.0      21250.0         100.0              0.004728  21500.0  21150.0   21265.725474            21265.725474      14569173.0   3.098240e+11          0.0  0.000000e+00    14569173.0  3.098240e+11           8013.0              25743521.0           11561.0               34642747.0                   21150.0              21200.0               21250.0                  100.0                       0.004728                 21500.0                21150.0              -8899226.0                  11174348.0                   20073574.0       +100 (+0.5%)               3212.719456                2996.518208
+2 2026-10-21 00:00:00+07:00  2026-10-21T00:00:00  1.785687e+14  8.442965e+09        22550.0      19650.0          21100.0  21100.0  21150.0      21150.0          50.0              0.002370  21450.0  20950.0   21239.988520            21239.988520      26183849.0   5.559898e+11     198000.0  4.360400e+09    26381849.0  5.603502e+11          10888.0              36846701.0           14580.0               54769544.0                   21100.0              21100.0               21150.0                   50.0                       0.002370                 21450.0                20950.0             -17922843.0                  10662852.0                   28585695.0        +50 (+0.2%)               3384.156962                3756.484499
+3 2026-10-20 00:00:00+07:00  2026-10-20T00:00:00  1.781466e+14  8.442965e+09        21950.0      19150.0          20550.0  20550.0  21100.0      21100.0         550.0              0.026764  21200.0  20550.0   20949.171291            20949.171291      25506913.0   5.342763e+11    1423700.0  2.989770e+10    26930613.0  5.641740e+11          10805.0              48678698.0           13365.0               41471196.0                   20550.0              20550.0               21100.0                  550.0                       0.026764                 21200.0                20550.0               7207502.0                  23171785.0                   15964283.0       +550 (+2.7%)               4505.201111                3102.970146
+4 2026-10-19 00:00:00+07:00  2026-10-19T00:00:00  1.735029e+14  8.442965e+09        22350.0      19450.0          20900.0  21000.0  20550.0      20550.0        -350.0             -0.016746  21050.0  20550.0   20868.286629            20868.286629      13249564.0   2.753875e+11    2465700.0  5.256314e+10    15715264.0  3.279506e+11           7546.0              19801269.0            8520.0               38663106.0                   20900.0              21000.0               20550.0                 -350.0                      -0.016746                 21050.0                20550.0             -18861837.0                   6551705.0                   25413542.0       -350 (-1.7%)               2624.074874                4537.923239
 ##### session_stats
-LOI EntitlementError("Chức năng 'market.equity.session_stats' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
+Index(['symbol', 'average_match_volume', 'average_match_value',
+       'average_deal_volume', 'average_deal_value', 'average_volume',
+       'average_value', 'total_match_volume', 'total_match_value',
+       'total_deal_volume', 'total_deal_value', 'total_volume', 'total_value',
+       'fr_buy_volume_total', 'fr_buy_value_total', 'fr_sell_volume_total',
+       'fr_sell_value_total', 'fr_net_volume_total', 'fr_net_value_total',
+       'fr_buy_volume_matched', 'fr_buy_value_matched',
+       'fr_sell_volume_matched', 'fr_sell_value_matched', 'fr_buy_volume_deal',
+       'fr_buy_value_deal', 'fr_sell_volume_deal', 'fr_sell_value_deal',
+       'fr_buy_volume_total_avg', 'fr_buy_value_total_avg',
+       'fr_sell_volume_total_avg', 'fr_sell_value_total_avg',
+       'fr_net_volume_total_avg', 'fr_net_value_total_avg',
+       'fr_buy_volume_matched_avg', 'fr_buy_value_matched_avg',
+       'fr_sell_volume_matched_avg', 'fr_sell_value_matched_avg',
+       'fr_buy_volume_deal_avg', 'fr_buy_value_deal_avg',
+       'fr_sell_volume_deal_avg', 'fr_sell_value_deal_avg',
+       'fr_net_volume_matched', 'fr_net_value_matched',
+       'fr_net_volume_matched_avg', 'fr_net_value_matched_avg',
+       'fr_net_volume_deal', 'fr_net_value_deal', 'fr_net_volume_deal_avg',
+       'fr_net_value_deal_avg', 'total_buy_trade_volume',
+       'total_sell_trade_volume', 'total_buy_trade_volume_avg',
+       'total_sell_trade_volume_avg', 'total_buy_trade', 'total_sell_trade',
+       'total_buy_trade_avg', 'total_sell_trade_avg',
+       'total_buy_unmatched_volume_avg', 'total_sell_unmatched_volume_avg',
+       'total_buy_unmatched_volume', 'total_sell_unmatched_volume',
+       'total_net_trade_volume', 'total_net_trade_volume_avg',
+       'average_buy_volume_per_trade', 'average_sell_volume_per_trade'],
+      dtype='str')
+  symbol  average_match_volume  average_match_value  average_deal_volume  average_deal_value  average_volume  average_value  total_match_volume  total_match_value  total_deal_volume  total_deal_value  total_volume   total_value  fr_buy_volume_total  fr_buy_value_total  fr_sell_volume_total  fr_sell_value_total  fr_net_volume_total  fr_net_value_total  fr_buy_volume_matched  fr_buy_value_matched  fr_sell_volume_matched  fr_sell_value_matched  fr_buy_volume_deal  fr_buy_value_deal  fr_sell_volume_deal  fr_sell_value_deal  fr_buy_volume_total_avg  fr_buy_value_total_avg  fr_sell_volume_total_avg  fr_sell_value_total_avg  fr_net_volume_total_avg  fr_net_value_total_avg  fr_buy_volume_matched_avg  fr_buy_value_matched_avg  fr_sell_volume_matched_avg  fr_sell_value_matched_avg  fr_buy_volume_deal_avg  fr_buy_value_deal_avg  fr_sell_volume_deal_avg  fr_sell_value_deal_avg  fr_net_volume_matched  fr_net_value_matched  fr_net_volume_matched_avg  fr_net_value_matched_avg  fr_net_volume_deal  fr_net_value_deal  fr_net_volume_deal_avg  fr_net_value_deal_avg  total_buy_trade_volume  total_sell_trade_volume  total_buy_trade_volume_avg  total_sell_trade_volume_avg  total_buy_trade  total_sell_trade  total_buy_trade_avg  total_sell_trade_avg  total_buy_unmatched_volume_avg  total_sell_unmatched_volume_avg  total_buy_unmatched_volume  total_sell_unmatched_volume  total_net_trade_volume  total_net_trade_volume_avg  average_buy_volume_per_trade  average_sell_volume_per_trade
+0    HPG          1.033959e+07         5.469574e+11         522263.81589        1.592832e+10    1.086185e+07   5.628787e+11        4.880284e+10       2.581639e+15       2.465085e+09      7.518166e+13  5.126793e+10  2.656788e+15         7.119415e+09        2.135835e+14          7.718955e+09         2.409853e+14         -599540354.0       -2.740175e+13           6.445440e+09          1.900359e+14            7.123285e+09           2.207273e+14         578261031.0       1.823875e+13          536888875.0        1.708988e+13             1.510591e+06            4.531796e+10              1.637801e+06             5.113203e+10           -127209.920221           -5.814077e+09               1.623128e+06              4.785593e+10                1.793827e+06               5.558483e+10           145621.010073           4.592987e+09            135202.436414            4.303670e+09           -677845390.0         -3.069144e+13             -170698.914631             -7.728895e+09          41372156.0       1.148875e+12            10418.573659           2.893163e+08            8.458473e+10             8.839034e+10                1.792049e+07                 1.872677e+07       27972978.0        22073464.0           5926.47839           4676.581356                    7.580908e+06                     8.387182e+06                3.578189e+10                 3.958750e+10           -3.805613e+09              -806273.835381                   3023.801385                    4004.371136
