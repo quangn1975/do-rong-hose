@@ -1,0 +1,28 @@
+### register
+Lỗi (VNSTOCK_AUTH_PROTOCOL): Máy chủ giấy phép trả về phản hồi không mong đợi
+  → Thử lại sau 3600 giây.
+(English: vnstock settings language en)
+### env
+Thư mục lưu trạng thái: /home/runner/.vnstock
+Profile: production
+Tệp trạng thái: được mã hoá
+Tệp khoá cũ của thư viện 4.x: keep
+Máy chủ tài khoản: https://vnstocks.com (mặc định)
+Ngôn ngữ hiển thị: vi (vnstock settings)
+(English: vnstock settings language en)
+### file moi trong HOME (chi ten)
+/home/runner/actions-runner/cached/2.338.0/_diag/Runner_20261025-072502-utc.log
+/home/runner/actions-runner/cached/2.338.0/_diag/Worker_20261025-072504-utc.log
+/home/runner/actions-runner/cached/2.338.0/_diag/blocks/e81ab84e-d538-40e9-8f29-374c801bdd4f_1be47303-e3d6-4943-939a-48ee9498f60d.1
+/home/runner/actions-runner/cached/2.338.0/_diag/blocks/e81ab84e-d538-40e9-8f29-374c801bdd4f_2f70fdb9-5265-5a90-84c2-14538d1c8ebb.1
+/home/runner/actions-runner/cached/2.338.0/_diag/pages/e81ab84e-d538-40e9-8f29-374c801bdd4f_1be47303-e3d6-4943-939a-48ee9498f60d_1.log
+/home/runner/actions-runner/cached/2.338.0/_diag/pages/e81ab84e-d538-40e9-8f29-374c801bdd4f_2f70fdb9-5265-5a90-84c2-14538d1c8ebb_1.log
+/home/runner/actions-runner/cached/2.338.0/.runner
+/home/runner/actions-runner/cached/2.338.0/.credentials
+/home/runner/actions-runner/cached/2.338.0/.agent
+/home/runner/actions-runner/cached/2.338.0/.setup_info
+/home/runner/.vnstock/auth/device_id
+### status
+Lỗi (VNSTOCK_AUTH_DEVICE_NOT_REGISTERED): Thiết bị chưa được đăng ký
+  → Đăng nhập lại trên máy này để đăng ký thiết bị.
+(English: vnstock settings language en)
