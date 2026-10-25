@@ -10,11 +10,26 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: python -m venv /tmp/v5 && /tmp/v5/bin/pip install -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
-      - name: Liet ke API
+      - name: Thu du lieu
         run: |
           mkdir -p data
           export VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1
-          { /tmp/v5/bin/vnstock tools Market.equity; echo ======; /tmp/v5/bin/vnstock tools Market.index; echo ======; /tmp/v5/bin/vnstock tools Reference.company; } > data/vnstock5_tools2.txt 2>&1 || true
+          V=/tmp/v5/bin/vnstock
+          { for f in foreign_flow proprietary_flow trade_history session_stats trades; do echo "##### DOC $f"; $V doc Market.equity.$f; done; } > data/vnstock5_doc.txt 2>&1 || true
+          cat > /tmp/t.py <<'P'
+          import vnstock, traceback
+          from vnstock import Market
+          out=[]
+          for fn in ["foreign_flow","proprietary_flow","trade_history","session_stats"]:
+              out.append("##### "+fn)
+              try:
+                  r=getattr(Market.equity("HPG"),fn)()
+                  out.append(str(getattr(r,"columns",""))+"\n"+str(r.tail(5).to_string() if hasattr(r,"tail") else r))
+              except Exception as e:
+                  out.append("LOI "+repr(e)[:500])
+          open("data/vnstock5_thu.txt","w").write("\n".join(out))
+          P
+          /tmp/v5/bin/python /tmp/t.py > data/vnstock5_thu_log.txt 2>&1 || true
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
