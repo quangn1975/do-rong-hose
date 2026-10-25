@@ -1,0 +1,51 @@
+name: ngay_vn100
+on:
+  schedule:
+    - cron: "0 11 * * 1-5"      # 18:00 gio Viet Nam
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: auto33
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
+      - name: Dang ky khoa
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          k=os.environ.get("VNSTOCK_API_KEY","")
+          if k:
+              try:
+                  from vnstock import register_user
+                  register_user(api_key=k)
+              except Exception as e:
+                  print("dang ky loi", type(e).__name__)
+          PY
+      - name: VN100 do rong + khoi ngoai
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: python ngay_vn100.py
+      - name: Thu vnstock the he 5 (tu doanh...)
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          python -m venv /tmp/v5
+          /tmp/v5/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock || true
+          VNSTOCK_TELEMETRY=off /tmp/v5/bin/python ngay_vn100_v5.py || true
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "VN100 18h" || exit 0
+          git pull --rebase
+          git push
