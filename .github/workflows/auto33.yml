@@ -18,26 +18,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
-      - name: Dang ky khoa vnstock (neu co)
-        env:
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
-        run: |
-          python - <<'PY'
-          import os, inspect
-          k = os.environ.get("VNSTOCK_API_KEY", "")
-          print("co khoa:", bool(k), "do dai:", len(k))
-          if k:
-              try:
-                  from vnstock import register_user
-                  print("register_user", inspect.signature(register_user))
-                  register_user(api_key=k)
-                  print("dang ky OK")
-              except Exception as e:
-                  print("dang ky loi:", type(e).__name__, str(e)[:200].replace(k, "***"))
-          PY
       - name: Chay auto33
-        env:
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
         run: python auto33.py
       - run: |
           git config user.name "github-actions"

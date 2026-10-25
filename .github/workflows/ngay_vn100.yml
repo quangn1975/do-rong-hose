@@ -17,20 +17,6 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
-      - name: Dang ky khoa
-        env:
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
-        run: |
-          python - <<'PY'
-          import os
-          k=os.environ.get("VNSTOCK_API_KEY","")
-          if k:
-              try:
-                  from vnstock import register_user
-                  register_user(api_key=k)
-              except Exception as e:
-                  print("dang ky loi", type(e).__name__)
-          PY
       - name: VN100 do rong + khoi ngoai
         run: python ngay_vn100.py
       - run: |
