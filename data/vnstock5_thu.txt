@@ -1,8 +1,8 @@
 ##### foreign_flow
-LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
+LOI EntitlementError("Chức năng 'market.equity.foreign_flow' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
 ##### proprietary_flow
-LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
+LOI EntitlementError("Chức năng 'market.equity.proprietary_flow' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
 ##### trade_history
-LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
+LOI EntitlementError("Chức năng 'market.equity.price_history' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
 ##### session_stats
-LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
+LOI EntitlementError("Chức năng 'market.equity.session_stats' không thuộc quyền của cấp Cộng đồng.\n(English: vnstock settings language en)")
