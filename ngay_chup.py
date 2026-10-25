@@ -29,21 +29,24 @@ def main():
     mo = pd.read_csv("data/vn100_ma_moc.csv").set_index("ma")
     pb = Trading(source="VCI").price_board(ds)
     pb.columns = ["_".join(str(x) for x in c) if isinstance(c, tuple) else str(c) for c in pb.columns]
-    col = lambda suf: next((c for c in pb.columns if c.endswith(suf)), None)
-    d = pd.DataFrame({"ma": pb[col("symbol")], "gia": pd.to_numeric(pb[col("match_price")], errors="coerce"),
-                      "kl": pd.to_numeric(pb[col("accumulated_volume")], errors="coerce")})
-    if col("ref_price"):
-        d["tham_chieu"] = pd.to_numeric(pb[col("ref_price")], errors="coerce")
-    else:
-        d["tham_chieu"] = d["ma"].map(mo["dong_cua"])
-    d["nn_rong_ty"] = ((pd.to_numeric(pb[col("foreign_buy_volume")], errors="coerce")
-                        - pd.to_numeric(pb[col("foreign_sell_volume")], errors="coerce")) * d["gia"] / 1e9)
-    # mã chưa khớp lệnh thì lấy giá tham chiếu
-    d["gia"] = d["gia"].where(d["gia"] > 0, d["tham_chieu"])
+    ex = lambda *names: next((n for n in names if n in pb.columns), None)
+    num = lambda name: pd.to_numeric(pb[name], errors="coerce") if name else pd.Series(float("nan"), index=pb.index)
+    c_gia = ex("match_match_price")          # giá khớp gần nhất (không dùng match_avg_match_price = giá trung bình)
+    c_tc = ex("match_reference_price", "listing_ref_price")
+    c_atc = ex("match_match_price_atc")
+    c_mua = ex("match_foreign_buy_value"); c_ban = ex("match_foreign_sell_value")
+    d = pd.DataFrame({"ma": pb[ex("listing_symbol", "symbol")], "gia": num(c_gia), "gia_atc": num(c_atc),
+                      "tham_chieu": num(c_tc), "kl": num(ex("match_accumulated_volume")),
+                      "nn_rong_ty": (num(c_mua) - num(c_ban)) / 1e9})
+    # lưu mẫu cột để kiểm tra khi cần
+    pb[[c for c in (ex("listing_symbol"), c_gia, c_atc, c_tc, ex("match_avg_match_price"), ex("match_highest"),
+                    ex("match_lowest"), c_mua, c_ban, ex("match_trading_session_id")) if c]].head(8).to_csv("data/chup_cot_mau.csv", index=False)
+    # mã chưa khớp lệnh trong phiên thì lấy giá tham chiếu; sau 14:30 ưu tiên giá ATC
+    d["gia"] = d["gia"].where(d["gia"] > 0, d["gia_atc"].where(d["gia_atc"] > 0, d["tham_chieu"]))
     d = d.dropna(subset=["gia"])
     res = {}
     for n in (20, 50, 200):
-        m = d["ma"].map(mo[f"ma{n}"])
+        m = d["ma"].map(mo[f"ma{n}"]) * 1000   # mốc MA lưu theo nghìn đồng, bảng giá theo đồng
         ok = m.notna()
         res[n] = round((d.loc[ok, "gia"] > m[ok]).sum() / max(ok.sum(), 1) * 100, 1)
     tang = int((d["gia"] > d["tham_chieu"]).sum()); giam = int((d["gia"] < d["tham_chieu"]).sum())
