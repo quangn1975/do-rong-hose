@@ -23,7 +23,7 @@ jobs:
           for fn in ["foreign_flow","proprietary_flow","trade_history","session_stats"]:
               out.append("##### "+fn)
               try:
-                  r=getattr(Market.equity("HPG"),fn)()
+                  r=getattr(Market().equity("HPG"),fn)(limit=5)
                   out.append(str(getattr(r,"columns",""))+"\n"+str(r.tail(5).to_string() if hasattr(r,"tail") else r))
               except Exception as e:
                   out.append("LOI "+repr(e)[:500])
