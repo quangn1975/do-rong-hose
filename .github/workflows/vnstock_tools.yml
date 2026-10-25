@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: python -m venv /tmp/v5 && /tmp/v5/bin/pip install -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
-      - name: Thu dang nhap CI
+      - name: Tim thu muc trang thai
         env:
           VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
         run: |
@@ -18,13 +18,11 @@ jobs:
           export VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1
           V=/tmp/v5/bin
           {
-            echo "### 1. chi dat bien moi truong, KHONG login: status"; $V/vnstock status
-            echo "### 2. goi ham khong login"; $V/python -c "
-          from vnstock import Market
-          print(Market().equity('HPG').proprietary_flow(limit=1))" 2>&1 | tail -5
-            echo "### 3. register bang CLI"; $V/vnstock register --help
-            echo "### 4. doctor"; $V/vnstock doctor
-          } 2>&1 | sed "s/$VNSTOCK_API_KEY/***/g" > data/vnstock5_ci.txt || true
+            echo "### register"; echo "$VNSTOCK_API_KEY" | $V/vnstock register --stdin | tail -3
+            echo "### env"; $V/vnstock env
+            echo "### file moi trong HOME (chi ten)"; find "$HOME" -newermt "-10 minutes" -type f -not -path "*/tmp/*" -not -path "*/.cache/pip/*" -not -path "*/work/*" 2>/dev/null | head -40
+            echo "### status"; $V/vnstock status | head -12
+          } 2>&1 | sed "s/$VNSTOCK_API_KEY/***/g" > data/vnstock5_env.txt || true
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
