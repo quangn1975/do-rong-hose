@@ -1,0 +1,30 @@
+name: chup_phien
+on:
+  schedule:
+    - cron: "30 3 * * 1-5"     # 10:30 gio Viet Nam
+    - cron: "25 4 * * 1-5"     # 11:25
+    - cron: "10 7 * * 1-5"     # 14:10
+    - cron: "25 7 * * 1-5"     # 14:25
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: chup
+  cancel-in-progress: false
+jobs:
+  chup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
+      - name: Chup do rong VN100 trong phien
+        run: python ngay_chup.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "chup phien" || exit 0
+          for i in 1 2 3 4; do git pull --rebase && git push && break; sleep 5; done

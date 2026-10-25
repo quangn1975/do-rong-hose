@@ -36,6 +36,13 @@ def do_rong(syms):
         ma = c.rolling(n).mean()
         out[f"pct_ma{n}"] = ((c > ma).sum(axis=1) / ma.notna().sum(axis=1).where(ma.notna().sum(axis=1) > 0) * 100).round(1)
     out["so_ma"] = c.notna().sum(axis=1)
+    # mốc MA chốt phiên của từng mã: dùng cho bản chụp trong phiên (ngay_chup.py)
+    mo = pd.DataFrame({"ma": c.columns, "dong_cua": c.iloc[-1].values,
+                       "ma20": c.rolling(20).mean().iloc[-1].values,
+                       "ma50": c.rolling(50).mean().iloc[-1].values,
+                       "ma200": c.rolling(200).mean().iloc[-1].values})
+    mo["ngay"] = c.index[-1]
+    mo.round(2).to_csv("data/vn100_ma_moc.csv", index=False)
     out.index.name = "date"
     out.tail(260).to_csv("data/vn100_do_rong.csv")
     print(out.tail(3))
