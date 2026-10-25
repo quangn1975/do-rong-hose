@@ -47,6 +47,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
+      - name: Giu nguyen ma thiet bi vnstock giua cac lan chay (khong ton them suat thiet bi)
+        uses: actions/cache@v4
+        with:
+          path: ~/.vnstock
+          key: vnstock-state-${{ github.run_id }}
+          restore-keys: vnstock-state-
       - name: Dong tien lon (vnstock 5) - may sach, khong cai ban 4
         env:
           VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
