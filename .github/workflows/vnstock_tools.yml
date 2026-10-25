@@ -11,13 +11,19 @@ jobs:
         with: { python-version: "3.11" }
       - run: python -m venv /tmp/v5 && /tmp/v5/bin/pip install -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
       - name: Thu du lieu
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
         run: |
           mkdir -p data
           export VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1
           V=/tmp/v5/bin/vnstock
           { for f in foreign_flow proprietary_flow trade_history session_stats trades; do echo "##### DOC $f"; $V doc Market.equity.$f; done; } > data/vnstock5_doc.txt 2>&1 || true
           cat > /tmp/t.py <<'P'
-          import vnstock, traceback
+          import os, vnstock, traceback
+          try:
+              vnstock.register_user(api_key=os.environ.get('VNSTOCK_API_KEY',''))
+          except Exception as e:
+              print('dk loi', type(e).__name__, str(e)[:150])
           from vnstock import Market
           out=[]
           for fn in ["foreign_flow","proprietary_flow","trade_history","session_stats"]:
