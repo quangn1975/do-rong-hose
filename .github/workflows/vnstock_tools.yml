@@ -21,7 +21,7 @@ jobs:
           cat > /tmp/t.py <<'P'
           import os, vnstock, traceback
           try:
-              vnstock.register_user(api_key=os.environ.get('VNSTOCK_API_KEY',''))
+              vnstock.login(os.environ.get('VNSTOCK_API_KEY',''))
           except Exception as e:
               print('dk loi', type(e).__name__, str(e)[:150])
           from vnstock import Market
