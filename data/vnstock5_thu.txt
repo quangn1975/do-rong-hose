@@ -1,0 +1,8 @@
+##### foreign_flow
+LOI TypeError("Market.equity() missing 1 required positional argument: 'symbol'")
+##### proprietary_flow
+LOI TypeError("Market.equity() missing 1 required positional argument: 'symbol'")
+##### trade_history
+LOI TypeError("Market.equity() missing 1 required positional argument: 'symbol'")
+##### session_stats
+LOI TypeError("Market.equity() missing 1 required positional argument: 'symbol'")

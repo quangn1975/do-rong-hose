@@ -1,0 +1,91 @@
+##### DOC foreign_flow
+Market().equity(symbol).foreign_flow(limit=None, source=None, *, start=None, end=None, **_)
+Nguồn mặc định: VCI
+
+Lấy giao dịch khối ngoại của mã.
+
+Tham số:
+  limit   Số phiên tối đa
+  source  Nguồn
+  start   Ngày bắt đầu
+  end     Ngày kết thúc
+
+Gọi thử:
+  from vnstock import Market
+  Market().equity("FPT").foreign_flow()
+
+Xem đầy đủ cả hai ngôn ngữ: vnstock doc Market.equity.foreign_flow --full
+(English: vnstock settings language en)
+##### DOC proprietary_flow
+Market().equity(symbol).proprietary_flow(limit=None, source=None, *, start=None, end=None, **_)
+Nguồn mặc định: VCI
+
+Lấy giao dịch tự doanh của mã.
+
+Tham số:
+  limit   Số phiên tối đa
+  source  Nguồn
+  start   Ngày bắt đầu
+  end     Ngày kết thúc
+
+Gọi thử:
+  from vnstock import Market
+  Market().equity("FPT").proprietary_flow()
+
+Xem đầy đủ cả hai ngôn ngữ: vnstock doc Market.equity.proprietary_flow --full
+(English: vnstock settings language en)
+##### DOC trade_history
+Market().equity(symbol).trade_history(start=None, end=None, limit=None, resolution='1D', *, source=None, **_)
+Nguồn mặc định: VCI
+
+Lấy thống kê giao dịch theo ngày của mã, mỗi phiên một dòng.
+
+Tham số:
+  start       Ngày bắt đầu
+  end         Ngày kết thúc
+  limit       Số phiên tối đa
+  resolution  Khung thời gian
+  source      Nguồn
+
+Gọi thử:
+  from vnstock import Market
+  Market().equity("FPT").trade_history()
+
+Xem đầy đủ cả hai ngôn ngữ: vnstock doc Market.equity.trade_history --full
+(English: vnstock settings language en)
+##### DOC session_stats
+Market().equity(symbol).session_stats(limit=None, *, source=None, start=None, end=None, **_)
+Nguồn mặc định: VCI
+
+Lấy thống kê cuối phiên của mã.
+
+Tham số:
+  limit   Số phiên tối đa
+  source  Nguồn
+  start   Ngày bắt đầu
+  end     Ngày kết thúc
+
+Gọi thử:
+  from vnstock import Market
+  Market().equity("FPT").session_stats()
+
+Xem đầy đủ cả hai ngôn ngữ: vnstock doc Market.equity.session_stats --full
+(English: vnstock settings language en)
+##### DOC trades
+Market().equity(symbol).trades(limit=None, *, last_id=None, side=None, source=None, **_)
+Nguồn mặc định: VCI
+
+Lấy danh sách lệnh khớp của mã.
+
+Tham số:
+  limit    Số lệnh khớp tối đa, mặc định 100.000 với hợp đồng tương lai và 1.000 với nhóm khác
+  last_id  Mốc mã lệnh để lấy tiếp trang sau
+  side     Lọc theo chiều mua/bán
+  source   Nguồn
+
+Gọi thử:
+  from vnstock import Market
+  Market().equity("FPT").trades()
+
+Xem đầy đủ cả hai ngôn ngữ: vnstock doc Market.equity.trades --full
+(English: vnstock settings language en)
