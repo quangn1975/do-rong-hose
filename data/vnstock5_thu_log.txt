@@ -1,0 +1,1 @@
+dk loi AttributeError register_user() đã bỏ. Đăng nhập bằng lệnh `vnstock register`, hoặc vnstock.login('<khoá>') trong notebook.

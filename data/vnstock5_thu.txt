@@ -1,8 +1,8 @@
 ##### foreign_flow
-LOI EntitlementError('Chạy trong CI (GitHub Actions) cần khoá API; cấp Khách chỉ dành cho chạy thử.\n(English: vnstock settings language en)')
+LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
 ##### proprietary_flow
-LOI EntitlementError('Chạy trong CI (GitHub Actions) cần khoá API; cấp Khách chỉ dành cho chạy thử.\n(English: vnstock settings language en)')
+LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
 ##### trade_history
-LOI EntitlementError('Chạy trong CI (GitHub Actions) cần khoá API; cấp Khách chỉ dành cho chạy thử.\n(English: vnstock settings language en)')
+LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
 ##### session_stats
-LOI EntitlementError('Chạy trong CI (GitHub Actions) cần khoá API; cấp Khách chỉ dành cho chạy thử.\n(English: vnstock settings language en)')
+LOI AuthError('Thiết bị chưa được đăng ký\n(English: vnstock settings language en)')
