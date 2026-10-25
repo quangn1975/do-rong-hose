@@ -24,10 +24,12 @@ def ds_vn100():
 
 def do_rong(syms):
     close = {}
+    ohlc = []
     for i, s in enumerate(syms):
         df = lich_su(s, 420)
         if df is not None:
             close[s] = df.set_index("time")["close"]
+            t = df.tail(70).copy(); t.insert(0, "ma", s); ohlc.append(t)
         if i % 20 == 0: print(i, s, flush=True)
         time.sleep(DELAY)
     c = pd.DataFrame(close).sort_index().ffill()
@@ -43,6 +45,8 @@ def do_rong(syms):
                        "ma200": c.rolling(200).mean().iloc[-1].values})
     mo["ngay"] = c.index[-1]
     mo.round(2).to_csv("data/vn100_ma_moc.csv", index=False)
+    if ohlc:  # 70 phiên OHLCV từng mã (nghìn đồng) cho bộ quét quet_ma.py
+        pd.concat(ohlc).rename(columns={"time": "ngay"}).to_csv("data/vn100_gia_70p.csv", index=False)
     out.index.name = "date"
     out.tail(260).to_csv("data/vn100_do_rong.csv")
     print(out.tail(3))
