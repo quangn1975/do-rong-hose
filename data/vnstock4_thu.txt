@@ -1,64 +1,20 @@
 dang ky OK
-version ?
-vnstock.Broker
-vnstock.Company
-vnstock.EXCHANGES
-vnstock.Finance
-vnstock.Fund
-vnstock.Fundamental
-vnstock.INDEX_GROUPS
-vnstock.INDICES_INFO
-vnstock.INDICES_MAP
-vnstock.Listing
-vnstock.Market
-vnstock.Quote
-vnstock.Reference
-vnstock.Retail
-vnstock.SECTOR_IDS
-vnstock.Trading
-vnstock.Vnstock
-vnstock._
-vnstock._Vnstock
-vnstock.__all__
-vnstock.__builtins__
-vnstock.__cached__
-vnstock.__doc__
-vnstock.__file__
-vnstock.__loader__
-vnstock.__name__
-vnstock.__package__
-vnstock.__path__
-vnstock.__spec__
-vnstock._ensure_explorer_modules_loaded
-vnstock._ensure_vnai_initialized
-vnstock._explorer_modules_loaded
-vnstock._get_vnstock
-vnstock._leftover_notice
-vnstock._vnai_initialized
-vnstock.agent_status
-vnstock.api
-vnstock.base
-vnstock.change_api_key
-vnstock.check_sponsor_package
-vnstock.check_status
-vnstock.config
-vnstock.connector
-vnstock.constants
-vnstock.core
-vnstock.disable_agent
-vnstock.enable_agent
-vnstock.explorer
-vnstock.register_user
-vnstock.remove_agent_files
-vnstock.setup_agent
-vnstock.show_api
-vnstock.show_doc
-vnstock.show_docs
-vnstock.ui
-vnstock.update_notice
-vnstock.vnai
-== trading: SUPPORTED_SOURCES, data_source, price_board, source, source_module, symbol
-== quote: SUPPORTED_SOURCES, data_source, history, intraday, price_depth, source, source_module, symbol
-== company: SUPPORTED_SOURCES, affiliate, data_source, dividends, events, insider_deals, news, officers, overview, profile, ratio_summary, shareholders, source, source_module, subsidiaries, symbol, trading_stats
-== finance: SUPPORTED_PERIODS, SUPPORTED_SOURCES, balance_sheet, cash_flow, data_source, get_all, income_statement, period, ratio, source, source_module, symbol
-== listing: SUPPORTED_SOURCES, all_bonds, all_covered_warrant, all_future_indices, all_government_bonds, all_symbols, data_source, industries_icb, source, source_module, symbol, symbols_by_exchange, symbols_by_group, symbols_by_industries
+##### company.trading_stats
+['symbol', 'organ_code', 'current_price', 'market_cap', 'number_of_shares_mkt_cap', 'issue_share', 'ticker', 'tag', 'rating', 'rating_as_of', 'en_organ_name', 'en_organ_short_name', 'vi_organ_name', 'vi_organ_short_name', 'com_type_code', 'com_group_code', 'sector', 'sector_vn', 'average_match_value1_month', 'average_match_volume1_month', 'highest_price1_year', 'lowest_price1_year', 'foreigner_percentage', 'maximum_foreign_percentage', 'state_percentage', 'analyst', 'upside_to_target_percent', 'dividend_per_share_tsr', 'projected_tsr_percentage', 'target_price', 'en_profile', 'profile', 'in_cu', 'icb_code_lv2', 'icb_code_lv4', 'free_float', 'free_float_percentage', 'listing_date', 'first_price', 'first_volume', 'prev_insight', 'fund_info', 'is_bank', 'listing', 'bank']
+  symbol organ_code  current_price    market_cap  number_of_shares_mkt_cap  issue_share ticker   tag rating rating_as_of                       en_organ_name en_organ_short_name                      vi_organ_name vi_organ_short_name com_type_code com_group_code           sector          sector_vn  average_match_value1_month  average_match_volume1_month  highest_price1_year  lowest_price1_year  foreigner_percentage  maximum_foreign_percentage  state_percentage    analyst  upside_to_target_percent  dividend_per_share_tsr  projected_tsr_percentage  target_price                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             en_profile                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     profile  in_cu icb_code_lv2 icb_code_lv4  free_float  free_float_percentage         listing_date  first_price  first_volume                                                                                                         prev_insight fund_info  is_bank  listing   bank
+0    HPG        HPG        20950.0  1.768801e+14              8.442965e+09   8442964520    HPG  None    BUY    18-Aug-26  Hoa Phat Group Joint Stock Company      Hoa Phat Group  Công ty Cổ phần Tập đoàn Hòa Phát            Hòa Phát            CT        VNINDEX  Basic Resources  Tài nguyên Cơ bản                3.838552e+11                   18660904.0              26514.0             19600.0              0.217202                        0.49               0.0  Huy Hoang                  0.560859                   600.0                  0.589499       32700.0  <div style="FONT-FAMILY: Arial; FONT-SIZE: 10pt;">\r\n<p class="MsoNormal">Hoa Phat Group Joint Stock Company (HPG) is a multi-sectoral industrial Group in Vietnam. Starting from a company specializing in trading construction machines since August 1992, currently, Hoa Phat Group operates mainly in the fields of iron and steel, steel products, household electrical appliances, agriculture, and real estate. In which, Steel field plays a key role and is the core business of the group contributing more than 90% of revenue and profit. HPG is currently the largest steel producer in Vietnam as well as Southeast Asia, with an annual production capacity of 16 million tons. In 2025, the Company further strengthened its position as the market leader in Vietnam&rsquo;s construction steel segment, holding an estimated 37% market share. HPG is also the only Vietnamese enterprise capable of producing hot-rolled coil (HRC) steel. HPG has been listed and traded on the Ho Chi Minh City Stock Exchange (HOSE) since 2007.</p>\r\n</div>\r\n<quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-portal></quillbot-extension-portal>  <div style="FONT-FAMILY: Arial; FONT-SIZE: 10pt;">\r\n<p>C&ocirc;ng ty Cổ phần Tập đo&agrave;n Ho&agrave; Ph&aacute;t (HPG)&nbsp;l&agrave; một trong những Tập đo&agrave;n sản xuất c&ocirc;ng nghiệp&nbsp;đa ng&agrave;nh tại Việt Nam. Khởi đầu từ một C&ocirc;ng ty chuy&ecirc;n bu&ocirc;n b&aacute;n c&aacute;c loại m&aacute;y x&acirc;y dựng từ th&aacute;ng 8/1992, hiện tại&nbsp;Tập đo&agrave;n H&ograve;a Ph&aacute;t hoạt động chủ yếu&nbsp;trong c&aacute;c lĩnh vực gang th&eacute;p, sản phẩm th&eacute;p, điện m&aacute;y gia dụng, n&ocirc;ng nghiệp v&agrave; bất động sản. Trong đ&oacute;, lĩnh vực Th&eacute;p&nbsp; đ&oacute;ng vai tr&ograve; chủ đạo v&agrave; l&agrave; mảng kinh doanh cốt l&otilde;i của tập đo&agrave;n với việc đ&oacute;ng g&oacute;p&nbsp;hơn 90% doanh thu v&agrave; lợi nhuận. HPG hiện l&agrave; nh&agrave; sản xuất th&eacute;p lớn nhất Việt Nam cũng như khu vực Đ&ocirc;ng Nam &Aacute; với c&ocirc;ng suất đạt 16&nbsp;triệu tấn/ năm. Năm 2025, c&ocirc;ng ty&nbsp;tiếp tục củng cố vị thế thị phần số 1 cả nước về th&eacute;p x&acirc;y dựng&nbsp;với khoảng 37%, v&agrave; l&agrave; doanh nghiệp Việt Nam duy nhất sản xuất được Th&eacute;p cuộn c&aacute;n n&oacute;ng HRC.&nbsp;HPG được ni&ecirc;m yết v&agrave; giao dịch&nbsp;Sở Giao dịch Chứng kho&aacute;n Th&agrave;nh phố Hồ Ch&iacute; Minh (HOSE)&nbsp;từ năm 2007.</p>\r\n</div>\r\n<quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-portal></quillbot-extension-portal><quillbot-extension-portal></quillbot-extension-portal>   True         1700         1757  5065778712                    0.6  2007-11-15T00:00:00       127000             0  {'targetPrice': 35400.0, 'rating': 'BUY', 'ratingAsOf': '12-May-26', 'analyst': 'Huy Hoang', 'version': '20260821'}      None    False     True  False
+##### quote.intraday
+['time', 'price', 'volume', 'match_type', 'id']
+                        time  price   volume match_type         id
+14 2026-10-23 14:29:47+07:00  21.15      100       Sell  529730563
+15 2026-10-23 14:29:48+07:00  21.15     2000       Sell  529730602
+16 2026-10-23 14:29:49+07:00  21.15      500       Sell  529730724
+17 2026-10-23 14:29:51+07:00  21.15     5000       Sell  529730801
+18 2026-10-23 14:29:53+07:00  21.20      200        Buy  529731051
+19 2026-10-23 14:45:00+07:00  20.95  1931300        ATC  529732527
+Market: bond, commodity, crypto, equity, etf, forex, fund, futures, index, quote, warrant
+Market.equity: ohlcv, params, quote, symbol, trades
+##### Market.equity.foreign_flow
+LOI AttributeError("'EquityMarket' object has no attribute 'foreign_flow'")
+##### Market.equity.proprietary_flow
+LOI AttributeError("'EquityMarket' object has no attribute 'proprietary_flow'")
