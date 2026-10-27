@@ -1,0 +1,18 @@
+## FPT trang 1: 0 cot ['time', 'price', 'volume', 'match_type', 'id']
+Empty DataFrame
+Columns: [time, price, volume, match_type, id]
+Index: []
+Empty DataFrame
+Columns: [time, price, volume, match_type, id]
+Index: []
+match_type: {}
+LOI FPT IndexError single positional indexer is out-of-bounds
+## MSN trang 1: 0 cot ['time', 'price', 'volume', 'match_type', 'id']
+Empty DataFrame
+Columns: [time, price, volume, match_type, id]
+Index: []
+Empty DataFrame
+Columns: [time, price, volume, match_type, id]
+Index: []
+match_type: {}
+LOI MSN IndexError single positional indexer is out-of-bounds
