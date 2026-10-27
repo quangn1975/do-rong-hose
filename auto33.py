@@ -52,14 +52,11 @@ def phan_phien():
 
 
 def roe(sym):
+    """ROE 4 quy gan nhat (%) tu data/roe_vn.csv (job 18:00 dung vnstock 5 Fundamental.ratio)."""
     try:
-        from vnstock import Finance
-        df = Finance(source="VCI", symbol=sym, period="year").ratio(lang="en")
-        if isinstance(df.columns, pd.MultiIndex):
-            df.columns = ["_".join(str(x) for x in c) for c in df.columns]
-        c = next(c for c in df.columns if "roe" in str(c).lower())
-        v = float(df[c].dropna().iloc[0])
-        return v * 100 if abs(v) < 1.5 else v
+        t = pd.read_csv("data/roe_vn.csv")
+        v = t.loc[t["ma"] == sym, "roe"]
+        return float(v.iloc[0]) if len(v) else None
     except Exception as e:
         print("roe loi", sym, repr(e)[:120])
         return None
