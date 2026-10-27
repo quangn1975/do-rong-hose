@@ -1,52 +1,6 @@
-## FPT trang 1: 214 cot ['time', 'price', 'volume', 'match_type', 'id']
-                       time  price  volume match_type         id
-0 2026-10-27 09:15:00+07:00   56.0     500       Sell  530173877
-1 2026-10-27 09:15:00+07:00   56.0  106000        ATO  530173698
-2 2026-10-27 09:15:02+07:00   56.1     100        Buy  530173916
-                         time  price  volume match_type         id
-212 2026-10-27 09:15:54+07:00   56.0     100        Buy  530175453
-213 2026-10-27 09:15:56+07:00   56.0     100        Buy  530175522
-match_type: {'Sell': 182, 'Buy': 31, 'ATO': 1}
-tong lenh khop lay duoc: 1495 so trang them: 19
-id trung nhau? 0
-KL theo match_type: {'ATO': 106000, 'Buy': 14100, 'Sell': 88800}
-thoi gian dau/cuoi: 2026-10-27 09:15:00+07:00 2026-10-27 09:15:56+07:00
-KL tong tu bang gia: xem so khac
-side buy -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:20+07:00   56.1    4200        Buy  530176193
-1 2026-10-27 09:16:25+07:00   56.0    5000        Buy  530176280
-side sell -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:20+07:00   56.1    4200        Buy  530176193
-1 2026-10-27 09:16:25+07:00   56.0    5000        Buy  530176280
-side b -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:20+07:00   56.1    4200        Buy  530176193
-1 2026-10-27 09:16:25+07:00   56.0    5000        Buy  530176280
-side s -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:20+07:00   56.1    4200        Buy  530176193
-1 2026-10-27 09:16:25+07:00   56.0    5000        Buy  530176280
-## MSN trang 1: 13 cot ['time', 'price', 'volume', 'match_type', 'id']
-                       time  price  volume match_type         id
-0 2026-10-27 09:15:00+07:00   73.0   16600        ATO  530173762
-1 2026-10-27 09:15:03+07:00   73.1     100       Sell  530173993
-2 2026-10-27 09:15:05+07:00   73.1    1100       Sell  530174030
-                        time  price  volume match_type         id
-11 2026-10-27 09:16:22+07:00   73.1     200       Sell  530176220
-12 2026-10-27 09:16:22+07:00   73.1     700       Sell  530176219
-match_type: {'Sell': 8, 'Buy': 4, 'ATO': 1}
-tong lenh khop lay duoc: 55 so trang them: 8
-id trung nhau? 0
-KL theo match_type: {'ATO': 16600, 'Buy': 800, 'Sell': 2800}
-thoi gian dau/cuoi: 2026-10-27 09:15:00+07:00 2026-10-27 09:16:22+07:00
-KL tong tu bang gia: xem so khac
-side buy -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:22+07:00   73.1     300       Sell  530176221
-1 2026-10-27 09:16:22+07:00   73.1     200       Sell  530176220
-side sell -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:22+07:00   73.1     300       Sell  530176221
-1 2026-10-27 09:16:22+07:00   73.1     200       Sell  530176220
-side b -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:22+07:00   73.1     300       Sell  530176221
-1 2026-10-27 09:16:22+07:00   73.1     200       Sell  530176220
-side s -> 2                        time  price  volume match_type         id
-0 2026-10-27 09:16:22+07:00   73.1     300       Sell  530176221
-1 2026-10-27 09:16:22+07:00   73.1     200       Sell  530176220
+LOI TCB EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language en)
+LOI VCB EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language en)
+LOI FPT EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language en)
