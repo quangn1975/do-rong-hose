@@ -3,6 +3,9 @@
 Dung vnstock 5 Market().equity(ma).trades (phan trang bang last_id)."""
 import os, sys, time
 import pandas as pd
+LOG = []
+def log(*a):
+    LOG.append(" ".join(str(x) for x in a)); print(*a)
 K = os.environ.get("VNSTOCK_API_KEY", "")
 p = "data/khoi_ngoai.csv"
 d = pd.read_csv(p)
@@ -16,7 +19,7 @@ try:
     vnstock.login(K)
     from vnstock import Market
 except Exception as e:
-    print("Khong dang nhap duoc v5:", type(e).__name__, str(e)[:120].replace(K or "@@", "***")); sys.exit(0)
+    log("Khong dang nhap duoc v5:", type(e).__name__, str(e)[:120].replace(K or "@@", "***")); open("data/mcd_trangthai.txt","w").write("\n".join(LOG)); sys.exit(0)
 
 def mcd(sym, max_pages=250):
     e = Market().equity(sym)
@@ -48,9 +51,9 @@ for i in cand:
     try:
         v, n = mcd(s)
         if v is not None: d.at[i, "pct_mua_chu_dong"] = v
-        print(s, "mua chu dong", v, "% tren", n, "lenh khop")
+        log(s, "mua chu dong", v, "% tren", n, "lenh khop")
     except Exception as ex:
-        print(s, "loi", type(ex).__name__, str(ex)[:100])
+        log(s, "loi", type(ex).__name__, str(ex)[:100])
 
 def ok(r):
     if r["nn_rong_ty"] <= 5: return 0
@@ -62,4 +65,5 @@ def ok(r):
     return 1
 d["loc_realtime"] = d.apply(ok, axis=1)
 d.to_csv(p, index=False)
-print("Loc realtime dat:", int(d["loc_realtime"].sum()), "ma")
+log("Loc realtime dat:", int(d["loc_realtime"].sum()), "ma")
+open("data/mcd_trangthai.txt", "w").write(d["gio"].iloc[0] + "\n" + "\n".join(LOG))
