@@ -25,10 +25,10 @@ try:
 except Exception as e:
     log("Khong dang nhap duoc v5:", type(e).__name__, str(e)[:120].replace(K or "@@", "***")); open("data/mcd_trangthai.txt","w").write("\n".join(LOG)); sys.exit(0)
 
-def mcd(sym, max_pages=250):
+def mcd(sym, max_pages=60):
+    """Trang 1 tra cac lenh khop moi nhat (toi da 1000); last_id = id nho nhat de lay lenh cu hon. Khu trung theo id."""
     e = Market().equity(sym)
-    buy = sell = 0.0
-    last, seen = None, 0
+    frames, seen, last = [], set(), None
     for _ in range(max_pages):
         kw = {"limit": 1000}
         if last is not None: kw["last_id"] = last
@@ -39,15 +39,17 @@ def mcd(sym, max_pages=250):
             except Exception as ex:
                 log(sym, "trades loi", type(ex).__name__, str(ex)[:120]); time.sleep(8)
         if t is None or not len(t): break
-        mt = t["match_type"].astype(str).str.lower()
-        buy += float(t.loc[mt == "buy", "volume"].sum()); sell += float(t.loc[mt == "sell", "volume"].sum())
-        seen += len(t)
-        nl = t.iloc[-1]["id"]
-        if nl == last: break
-        last = nl
+        t = t[~t["id"].isin(seen)]
+        if not len(t): break
+        seen |= set(t["id"]); frames.append(t)
+        last = min(seen, key=lambda x: int(x))
         time.sleep(0.3)
+    if not frames: return None, 0
+    a = pd.concat(frames)
+    mt = a["match_type"].astype(str).str.lower()
+    buy, sell = float(a.loc[mt == "buy", "volume"].sum()), float(a.loc[mt == "sell", "volume"].sum())
     tot = buy + sell
-    return (round(buy / tot * 100, 1) if tot > 0 else None), seen
+    return (round(buy / tot * 100, 1) if tot > 0 else None), len(a)
 
 d["pct_mua_chu_dong"] = pd.to_numeric(d["pct_mua_chu_dong"], errors="coerce")
 for i in cand:
