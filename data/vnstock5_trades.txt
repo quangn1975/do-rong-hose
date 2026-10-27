@@ -1,6 +1,30 @@
-LOI TCB EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language en)
-LOI VCB EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language en)
-LOI FPT EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language en)
+thu lai TCB 0 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai TCB 1 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai TCB 2 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai TCB 3 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai TCB 4 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai VCB 0 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai VCB 1 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai VCB 2 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai VCB 3 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai VCB 4 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai FPT 0 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai FPT 1 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai FPT 2 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai FPT 3 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
+thu lai FPT 4 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
+(English: vnstock settings language e
