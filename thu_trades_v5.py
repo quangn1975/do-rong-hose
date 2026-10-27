@@ -9,7 +9,13 @@ from vnstock import Market
 for sym in ("TCB", "VCB", "FPT"):
     e = Market().equity(sym)
     try:
-        t = e.trades(limit=1000)
+        t = None
+        for k0 in range(5):
+            try:
+                t = e.trades(limit=1000); break
+            except Exception as ex0:
+                p("thu lai", sym, k0, type(ex0).__name__, str(ex0)[:100]); time.sleep(8)
+        if t is None: continue
         p("##", sym, "trang 1:", len(t), "cot", list(t.columns))
         p(t.head(3).to_string()); p(t.tail(2).to_string())
         p("match_type:", t["match_type"].astype(str).value_counts().to_dict())

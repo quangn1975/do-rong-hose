@@ -29,11 +29,11 @@ def mcd(sym, max_pages=250):
         kw = {"limit": 1000}
         if last is not None: kw["last_id"] = last
         t = None
-        for _try in range(2):
+        for _try in range(4):
             try:
                 t = e.trades(**kw); break
             except Exception as ex:
-                time.sleep(2)
+                log(sym, "trades loi", type(ex).__name__, str(ex)[:120]); time.sleep(8)
         if t is None or not len(t): break
         mt = t["match_type"].astype(str).str.lower()
         buy += float(t.loc[mt == "buy", "volume"].sum()); sell += float(t.loc[mt == "sell", "volume"].sum())
