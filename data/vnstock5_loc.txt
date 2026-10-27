@@ -1,0 +1,10 @@
+## trades limit=2000 LOI InputError Mỗi lần truy vấn, nguồn VCI trả từ 1 đến 1.000 bản ghi khớp lệnh; để lấy nhiều hơn hãy dùng last_id để phân trang
+(English: vnstock settings language en)
+## Fundamental().equity OK
+ham: ['balance_sheet', 'cash_flow', 'download_filing', 'filing', 'financial_health', 'income_statement', 'note', 'ratio', 'symbol']
+## ratio OK
+cot ratio ['period', 'id', 'name', 'order', 'level', 'unit', 'value']
+    period                     id                               name  order level unit      value
+0  2026-Q2  RT_CAT_INFO_VALUATION  ĐỊNH GIÁ & THÔNG TIN DOANH NGHIỆP      1     1             NaN
+1  2026-Q2            RT_VALUE_PE                       ‣ P/E cơ bản      2     2  lần  10.724225
+2  2026-Q2            RT_VALUE_PB                              ‣ P/B      3     2  lần   2.694594
