@@ -34,7 +34,7 @@ if Fundamental is not None:
                     p("cot", fn, list(r.columns)[:80])
                     p("ky co trong du lieu:", sorted(r["period"].astype(str).unique())[-8:])
                     m = r[r["name"].astype(str).str.contains("ROE|ROA|ROIC|vốn chủ", case=False, regex=True)]
-                    p(m.tail(12).to_string()[:3000])
+                    p(r[r["id"]=="RT_PRT_ROE"].tail(10).to_string())
 if t is not None:
     p("id dau/cuoi:", t.iloc[0].to_dict() if len(t) else None, t.iloc[-1].to_dict() if len(t) else None)
     r2 = safe("trades side=buy", lambda: e.trades(limit=3, side="buy"))
