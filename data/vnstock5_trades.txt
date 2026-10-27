@@ -1,30 +1,78 @@
-thu lai TCB 0 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai TCB 1 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai TCB 2 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai TCB 3 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai TCB 4 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai VCB 0 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai VCB 1 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai VCB 2 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai VCB 3 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai VCB 4 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai FPT 0 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai FPT 1 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai FPT 2 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai FPT 3 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
-thu lai FPT 4 EntitlementError Không đọc được sổ đếm lượt gọi trên máy; sổ đang được dựng lại
-(English: vnstock settings language e
+## TCB trang 1: 496 cot ['time', 'price', 'volume', 'match_type', 'id']
+                       time  price  volume match_type         id
+0 2026-10-27 09:15:00+07:00  33.85     100       Sell  530173872
+1 2026-10-27 09:15:00+07:00  33.85    2400       Sell  530173871
+2 2026-10-27 09:15:00+07:00  33.85     100       Sell  530173870
+                         time  price  volume match_type         id
+494 2026-10-27 09:31:30+07:00  33.85     100        Buy  530200581
+495 2026-10-27 09:31:30+07:00  33.85    1600        Buy  530200580
+match_type: {'Sell': 332, 'Buy': 163, 'ATO': 1}
+tong lenh khop lay duoc: 14559 so trang them: 29
+id trung nhau? 14063
+KL theo match_type: {'ATO': 14167000, 'Buy': 12300000, 'Sell': 17524500}
+thoi gian dau/cuoi: 2026-10-27 09:15:00+07:00 2026-10-27 09:28:45+07:00
+KL tong tu bang gia: xem so khac
+side buy -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:32:46+07:00   33.8    2000       Sell  530202584
+1 2026-10-27 09:32:49+07:00   33.8     100       Sell  530202643
+side sell -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:32:46+07:00   33.8    2000       Sell  530202584
+1 2026-10-27 09:32:49+07:00   33.8     100       Sell  530202643
+side b -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:32:46+07:00   33.8    2000       Sell  530202584
+1 2026-10-27 09:32:49+07:00   33.8     100       Sell  530202643
+side s -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:32:46+07:00   33.8    2000       Sell  530202584
+1 2026-10-27 09:32:49+07:00   33.8     100       Sell  530202643
+## VCB trang 1: 199 cot ['time', 'price', 'volume', 'match_type', 'id']
+                       time  price  volume match_type         id
+0 2026-10-27 09:15:00+07:00   56.1   44600        ATO  530173812
+1 2026-10-27 09:15:03+07:00   56.1     700        Buy  530173996
+2 2026-10-27 09:15:05+07:00   56.1     100        Buy  530174050
+                         time  price  volume match_type         id
+197 2026-10-27 09:32:21+07:00   56.3     100       Sell  530202006
+198 2026-10-27 09:32:21+07:00   56.3    1300       Sell  530202004
+match_type: {'Buy': 123, 'Sell': 75, 'ATO': 1}
+tong lenh khop lay duoc: 5246 so trang them: 29
+id trung nhau? 5047
+KL theo match_type: {'ATO': 1382600, 'Buy': 1510800, 'Sell': 1161500}
+thoi gian dau/cuoi: 2026-10-27 09:15:00+07:00 2026-10-27 09:26:44+07:00
+KL tong tu bang gia: xem so khac
+side buy -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:33:35+07:00   56.3    1000       Sell  530203819
+1 2026-10-27 09:33:38+07:00   56.3    1000       Sell  530203866
+side sell -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:33:35+07:00   56.3    1000       Sell  530203819
+1 2026-10-27 09:33:38+07:00   56.3    1000       Sell  530203866
+side b -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:33:35+07:00   56.3    1000       Sell  530203819
+1 2026-10-27 09:33:38+07:00   56.3    1000       Sell  530203866
+side s -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:33:35+07:00   56.3    1000       Sell  530203819
+1 2026-10-27 09:33:38+07:00   56.3    1000       Sell  530203866
+## FPT trang 1: 1000 cot ['time', 'price', 'volume', 'match_type', 'id']
+                       time  price  volume match_type         id
+0 2026-10-27 09:22:14+07:00   55.6    1500        Buy  530184851
+1 2026-10-27 09:22:14+07:00   55.6     200        Buy  530184848
+2 2026-10-27 09:22:14+07:00   55.5     300       Sell  530184843
+                         time  price  volume match_type         id
+998 2026-10-27 09:33:36+07:00   55.9     800       Sell  530203835
+999 2026-10-27 09:33:38+07:00   55.9    1000       Sell  530203870
+match_type: {'Sell': 572, 'Buy': 428}
+tong lenh khop lay duoc: 31000 so trang them: 29
+id trung nhau? 29923
+KL theo match_type: {'Buy': 11560900, 'Sell': 10075300}
+thoi gian dau/cuoi: 2026-10-27 09:22:14+07:00 2026-10-27 09:31:46+07:00
+KL tong tu bang gia: xem so khac
+side buy -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:35:41+07:00   55.9     200        Buy  530206852
+1 2026-10-27 09:35:45+07:00   55.8    1000       Sell  530206939
+side sell -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:35:41+07:00   55.9     200        Buy  530206852
+1 2026-10-27 09:35:45+07:00   55.8    1000       Sell  530206939
+side b -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:35:41+07:00   55.9     200        Buy  530206852
+1 2026-10-27 09:35:45+07:00   55.8    1000       Sell  530206939
+side s -> 2                        time  price  volume match_type         id
+0 2026-10-27 09:35:41+07:00   55.9     200        Buy  530206852
+1 2026-10-27 09:35:45+07:00   55.8    1000       Sell  530206939
