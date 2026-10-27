@@ -14,8 +14,10 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.vnstock
-          key: vnstock-state-${{ github.run_id }}
-          restore-keys: vnstock-state-
+          key: vnstock-state-v2-${{ github.run_id }}
+          restore-keys: |
+            vnstock-state-v2-
+            vnstock-state-40437374207
       - env:
           VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
         run: |

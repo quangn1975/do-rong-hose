@@ -7,6 +7,10 @@ LOG = []
 def log(*a):
     LOG.append(" ".join(str(x) for x in a)); print(*a)
 K = os.environ.get("VNSTOCK_API_KEY", "")
+from datetime import datetime, timezone, timedelta
+_n = datetime.now(timezone(timedelta(hours=7)))
+if _n.weekday() >= 5 or not (9 * 60 <= _n.hour * 60 + _n.minute <= 14 * 60 + 50):
+    print("Ngoai gio giao dich, bo qua"); sys.exit(0)
 p = "data/khoi_ngoai.csv"
 d = pd.read_csv(p)
 if "nn_rong_ty" not in d.columns:

@@ -20,20 +20,6 @@ jobs:
       - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
       - name: Chay auto33
         run: python auto33.py
-      - name: Giu nguyen ma thiet bi vnstock giua cac lan chay
-        uses: actions/cache@v4
-        with:
-          path: ~/.vnstock
-          key: vnstock-state-${{ github.run_id }}
-          restore-keys: vnstock-state-
-      - name: Ty le mua chu dong trong phien (vnstock 5) cho bo loc realtime
-        continue-on-error: true
-        env:
-          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
-        run: |
-          python -m venv /tmp/v5
-          /tmp/v5/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
-          VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v5/bin/python mcd_v5.py
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
@@ -41,3 +27,33 @@ jobs:
           git commit -m "auto33" || exit 0
           git pull --rebase
           git push
+  mcd:
+    runs-on: ubuntu-latest
+    needs: run
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Giu nguyen ma thiet bi vnstock (may sach, khong cai ban 4)
+        uses: actions/cache@v4
+        with:
+          path: ~/.vnstock
+          key: vnstock-state-v2-${{ github.run_id }}
+          restore-keys: |
+            vnstock-state-v2-
+            vnstock-state-40437374207
+      - name: Ty le mua chu dong trong phien (vnstock 5) cho bo loc realtime
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          python -m venv /tmp/v5
+          /tmp/v5/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
+          VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v5/bin/python mcd_v5.py || true
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "mua chu dong" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
