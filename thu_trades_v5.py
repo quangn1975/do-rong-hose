@@ -1,41 +1,27 @@
-"""Thu trades cua vnstock 5 trong phien (cau truc, thu tu, match_type, phan trang)."""
+"""Thu phan trang trades (last_id) cua vnstock 5 trong phien."""
 import os, time
+import pandas as pd
 K = os.environ.get("VNSTOCK_API_KEY", "")
 out = []
 def p(*a): out.append(" ".join(str(x) for x in a))
 import vnstock
 vnstock.login(K)
 from vnstock import Market
-for sym in ("TCB", "VCB", "FPT"):
+def get(e, **kw):
+    for k in range(4):
+        try: return e.trades(**kw)
+        except Exception as ex:
+            p("loi", type(ex).__name__, str(ex)[:100]); time.sleep(6)
+for sym in ("HPG", "VIC"):
     e = Market().equity(sym)
-    try:
-        t = None
-        for k0 in range(5):
-            try:
-                t = e.trades(limit=1000); break
-            except Exception as ex0:
-                p("thu lai", sym, k0, type(ex0).__name__, str(ex0)[:100]); time.sleep(8)
-        if t is None: continue
-        p("##", sym, "trang 1:", len(t), "cot", list(t.columns))
-        p(t.head(3).to_string()); p(t.tail(2).to_string())
-        p("match_type:", t["match_type"].astype(str).value_counts().to_dict())
-        n, tot, last = len(t), t.copy(), t.iloc[-1]["id"]
-        for k in range(30):
-            time.sleep(0.5)
-            t2 = e.trades(limit=1000, last_id=last)
-            if t2 is None or not len(t2): break
-            import pandas as pd; tot = pd.concat([tot, t2])
-            n += len(t2); last = t2.iloc[-1]["id"]
-        p("tong lenh khop lay duoc:", n, "so trang them:", k)
-        p("id trung nhau?", tot["id"].duplicated().sum())
-        g = tot.groupby(tot["match_type"].astype(str))["volume"].sum(); p("KL theo match_type:", g.to_dict())
-        p("thoi gian dau/cuoi:", tot["time"].iloc[0], tot["time"].iloc[-1])
-        p("KL tong tu bang gia:", "xem so khac")
-        for sd in ("buy", "sell", "b", "s"):
-            try:
-                r = e.trades(limit=2, side=sd); p("side", sd, "->", len(r), r.to_string()[:300])
-            except Exception as ex:
-                p("side", sd, "LOI", str(ex)[:150])
-    except Exception as ex:
-        p("LOI", sym, type(ex).__name__, str(ex)[:300].replace(K or "@@", "***"))
+    t1 = get(e, limit=1000)
+    p("##", sym, "trang1:", len(t1), "id min/max", t1["id"].min(), t1["id"].max(), "time", t1["time"].min(), t1["time"].max())
+    p("   id dau/cuoi trang:", t1["id"].iloc[0], t1["id"].iloc[-1], "| 3 dong dau:", t1["id"].head(3).tolist(), "| 3 dong cuoi:", t1["id"].tail(3).tolist())
+    seen = set(t1["id"])
+    for name, lid in (("min_id", t1["id"].min()), ("max_id", t1["id"].max()), ("dong_cuoi", t1["id"].iloc[-1]), ("dong_dau", t1["id"].iloc[0])):
+        t2 = get(e, limit=1000, last_id=lid)
+        if t2 is None or not len(t2): p("   last_id =", name, "->", 0, "dong"); continue
+        new = len(set(t2["id"]) - seen)
+        p("   last_id =", name, "->", len(t2), "dong, moi:", new, "id min/max", t2["id"].min(), t2["id"].max(), "time", t2["time"].min(), t2["time"].max())
+        time.sleep(0.5)
 open("data/vnstock5_trades.txt", "w").write("\n".join(out)[:20000])
