@@ -1,10 +1,31 @@
-## trades limit=2000 LOI InputError Mỗi lần truy vấn, nguồn VCI trả từ 1 đến 1.000 bản ghi khớp lệnh; để lấy nhiều hơn hãy dùng last_id để phân trang
-(English: vnstock settings language en)
+## trades limit=1000 OK
+cot: ['time', 'price', 'volume', 'match_type', 'id']
+Empty DataFrame
+Columns: [time, price, volume, match_type, id]
+Index: []
+so dong 0
+gia tri match_type {}
+gia tri id {}
 ## Fundamental().equity OK
 ham: ['balance_sheet', 'cash_flow', 'download_filing', 'filing', 'financial_health', 'income_statement', 'note', 'ratio', 'symbol']
 ## ratio OK
 cot ratio ['period', 'id', 'name', 'order', 'level', 'unit', 'value']
-    period                     id                               name  order level unit      value
-0  2026-Q2  RT_CAT_INFO_VALUATION  ĐỊNH GIÁ & THÔNG TIN DOANH NGHIỆP      1     1             NaN
-1  2026-Q2            RT_VALUE_PE                       ‣ P/E cơ bản      2     2  lần  10.724225
-2  2026-Q2            RT_VALUE_PB                              ‣ P/B      3     2  lần   2.694594
+ky co trong du lieu: ['2024-Q4', '2025', '2025-Q1', '2025-Q2', '2025-Q3', '2025-Q4', '2026-Q1', '2026-Q2']
+       period                            id                                         name  order level    unit     value
+2262  2018-Q1  RT_LEV_EQUITY_TO_LIABILITIES                   ‣ Vốn chủ sở hữu / Tổng Nợ     43     2     lần  0.000000
+2263  2018-Q1       RT_LEV_EQUITY_TO_ASSETS              ‣ Vốn chủ sở hữu / Tổng tài sản     44     2     lần  0.000000
+2278  2018-Q1       RT_BANK_EQUITY_TO_LOANS                    ‣ Vốn chủ / Dư nợ cho vay     59     2       %  0.000000
+2293     2018               RT_VALUE_EQUITY                             ‣ Vốn chủ sở hữu     14     2  tỷ VNĐ  0.024825
+2296     2018                    RT_PRT_ROE                                      ‣ ROE %     17     2       %  0.187066
+2297     2018                    RT_PRT_ROA                                      ‣ ROA %     18     2       %  0.095702
+2298     2018                   RT_PRT_ROIC                                     ‣ ROIC %     19     2       %  0.143591
+2318     2018                     RT_LEV_DE                     ‣ Nợ trên vốn chủ sở hữu     39     2     lần  1.014019
+2319     2018            RT_LEV_LOAN_EQUITY    ‣ Vay ngắn và dài hạn trên vốn chủ sở hữu     40     2     lần  0.471450
+2322     2018  RT_LEV_EQUITY_TO_LIABILITIES                   ‣ Vốn chủ sở hữu / Tổng Nợ     43     2     lần  0.000000
+2323     2018       RT_LEV_EQUITY_TO_ASSETS              ‣ Vốn chủ sở hữu / Tổng tài sản     44     2     lần  0.000000
+2338     2018       RT_BANK_EQUITY_TO_LOANS                    ‣ Vốn chủ / Dư nợ cho vay     59     2       %  0.000000
+id dau/cuoi: None None
+## trades side=buy OK
+Empty DataFrame
+Columns: [time, price, volume, match_type, id]
+Index: []
