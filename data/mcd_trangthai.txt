@@ -1,6 +1,14 @@
-2026-10-27 09:38
-TCB trades loi NetworkError Nguồn 'vci' không trả về dữ liệu dùng được sau 2 lần thử.
-(English: vnstock settings language en)
-TCB mua chu dong 26.8 % tren 952 lenh khop
-VJC mua chu dong 99.2 % tren 178 lenh khop
+2026-10-27 13:59
+MSN mua chu dong 42.3 % tren 2397 lenh khop
+VIB mua chu dong 56.4 % tren 2214 lenh khop
+HPG mua chu dong 71.7 % tren 4086 lenh khop
+VCB mua chu dong 49.3 % tren 2711 lenh khop
+TCB mua chu dong 35.0 % tren 8174 lenh khop
+SHB mua chu dong 64.0 % tren 6083 lenh khop
+VJC mua chu dong 74.7 % tren 998 lenh khop
+FRT mua chu dong 40.6 % tren 526 lenh khop
+HVN mua chu dong 43.3 % tren 872 lenh khop
+CTD mua chu dong 52.0 % tren 871 lenh khop
+NVL mua chu dong 32.1 % tren 1938 lenh khop
+VRE mua chu dong 36.7 % tren 1735 lenh khop
 Loc realtime dat: 0 ma
