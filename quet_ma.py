@@ -18,6 +18,7 @@ ngay = px["ngay"].max()
 cols = ["ngay", "trang_thai", "pct_ma20", "ma", "ly_do", "gia_vao", "cat_lo", "cat_lo_pct",
         "kl_x_tb20", "ty_le_lenh_5p", "khoang_cach_ma20_pct", "ngoai_rong_5p_ty"]
 rows = []
+sos_rows = []
 
 for ma, g in px.groupby("ma"):
     g = g.reset_index(drop=True)
@@ -34,6 +35,15 @@ for ma, g in px.groupby("ma"):
     hom_qua = float(c.iloc[-2])
     ret1 = gia / hom_qua - 1
     kc = gia / ma20 - 1
+    # nen SOS (5 dieu cua anh Long, cung dinh nghia voi dem_sos trong auto33.py) trong 10 phien gan nhat
+    rng = h - l
+    sos = ((c > g["open"]) & (rng > rng.rolling(14).mean().shift(1)) & (v > 1.2 * v.rolling(20).mean().shift(1))
+           & ((c - l) / rng.where(rng > 0) >= 0.8) & (c > h.rolling(5).max().shift(1)))
+    gần = sos.iloc[-10:]
+    if gần.any():
+        k = gần[gần].index[-1]
+        day = float(l.iloc[k])
+        sos_rows.append([ma, g["ngay"].iloc[k], len(g) - 1 - k, round(day, 2), round(gia, 2), round(gia / day - 1, 4)])
     # bo qua ma nghi dieu chinh gia (nhay >10.5% 1 phien trong 35 phien gan nhat)
     if (c.pct_change().tail(35).abs() > 0.105).any():
         continue
@@ -54,5 +64,7 @@ else:
     df.loc[0] = [ngay, trang_thai, p20, "", "Không có mã đạt điều kiện" if trang_thai != "Nóng"
                  else "Thị trường Nóng: không mở mới", "", "", "", "", "", "", ""]
 df.to_csv("data/quet_ma.csv", index=False)
+pd.DataFrame(sos_rows, columns=["ma", "ngay_sos", "so_phien_tu_sos", "day_sos", "gia_dong", "cach_day_sos_pct"]).sort_values(
+    "so_phien_tu_sos").to_csv("data/sos_tung_ma.csv", index=False)
 print(trang_thai, p20, len(rows), "ma")
 print(df.to_string(index=False))
