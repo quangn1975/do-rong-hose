@@ -11,19 +11,17 @@ ham: ['balance_sheet', 'cash_flow', 'download_filing', 'filing', 'financial_heal
 ## ratio OK
 cot ratio ['period', 'id', 'name', 'order', 'level', 'unit', 'value']
 ky co trong du lieu: ['2024-Q4', '2025', '2025-Q1', '2025-Q2', '2025-Q3', '2025-Q4', '2026-Q1', '2026-Q2']
-       period                            id                                         name  order level    unit     value
-2262  2018-Q1  RT_LEV_EQUITY_TO_LIABILITIES                   ‣ Vốn chủ sở hữu / Tổng Nợ     43     2     lần  0.000000
-2263  2018-Q1       RT_LEV_EQUITY_TO_ASSETS              ‣ Vốn chủ sở hữu / Tổng tài sản     44     2     lần  0.000000
-2278  2018-Q1       RT_BANK_EQUITY_TO_LOANS                    ‣ Vốn chủ / Dư nợ cho vay     59     2       %  0.000000
-2293     2018               RT_VALUE_EQUITY                             ‣ Vốn chủ sở hữu     14     2  tỷ VNĐ  0.024825
-2296     2018                    RT_PRT_ROE                                      ‣ ROE %     17     2       %  0.187066
-2297     2018                    RT_PRT_ROA                                      ‣ ROA %     18     2       %  0.095702
-2298     2018                   RT_PRT_ROIC                                     ‣ ROIC %     19     2       %  0.143591
-2318     2018                     RT_LEV_DE                     ‣ Nợ trên vốn chủ sở hữu     39     2     lần  1.014019
-2319     2018            RT_LEV_LOAN_EQUITY    ‣ Vay ngắn và dài hạn trên vốn chủ sở hữu     40     2     lần  0.471450
-2322     2018  RT_LEV_EQUITY_TO_LIABILITIES                   ‣ Vốn chủ sở hữu / Tổng Nợ     43     2     lần  0.000000
-2323     2018       RT_LEV_EQUITY_TO_ASSETS              ‣ Vốn chủ sở hữu / Tổng tài sản     44     2     lần  0.000000
-2338     2018       RT_BANK_EQUITY_TO_LOANS                    ‣ Vốn chủ / Dư nợ cho vay     59     2       %  0.000000
+       period          id       name  order level unit     value
+1756  2019-Q4  RT_PRT_ROE    ‣ ROE %     17     2    %  0.198602
+1816  2019-Q3  RT_PRT_ROE    ‣ ROE %     17     2    %  0.203013
+1876  2019-Q2  RT_PRT_ROE    ‣ ROE %     17     2    %  0.194431
+1936  2019-Q1  RT_PRT_ROE    ‣ ROE %     17     2    %  0.187294
+1996     2019  RT_PRT_ROE    ‣ ROE %     17     2    %  0.198602
+2056  2018-Q4  RT_PRT_ROE    ‣ ROE %     17     2    %  0.187066
+2116  2018-Q3  RT_PRT_ROE    ‣ ROE %     17     2    %  0.235415
+2176  2018-Q2  RT_PRT_ROE    ‣ ROE %     17     2    %  0.229813
+2236  2018-Q1  RT_PRT_ROE    ‣ ROE %     17     2    %  0.231120
+2296     2018  RT_PRT_ROE    ‣ ROE %     17     2    %  0.187066
 id dau/cuoi: None None
 ## trades side=buy OK
 Empty DataFrame
