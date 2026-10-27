@@ -17,7 +17,7 @@ try:
 except Exception as e:
     Fundamental = None; p("Khong import duoc Fundamental", repr(e)[:200])
 e = Market().equity("FPT")
-t = safe("trades limit=2000", lambda: e.trades(limit=2000))
+t = safe("trades limit=1000", lambda: e.trades(limit=1000))
 if t is not None:
     p("cot:", list(t.columns)); p(t.head(4).to_string()); p("so dong", len(t))
     for c in t.columns:
@@ -31,5 +31,12 @@ if Fundamental is not None:
             if hasattr(f, fn):
                 r = safe(fn, lambda: getattr(f, fn)())
                 if r is not None:
-                    p("cot", fn, list(r.columns)[:80]); p(r.head(3).to_string()[:2500])
+                    p("cot", fn, list(r.columns)[:80])
+                    p("ky co trong du lieu:", sorted(r["period"].astype(str).unique())[-8:])
+                    m = r[r["name"].astype(str).str.contains("ROE|ROA|ROIC|vốn chủ", case=False, regex=True)]
+                    p(m.tail(12).to_string()[:3000])
+if t is not None:
+    p("id dau/cuoi:", t.iloc[0].to_dict() if len(t) else None, t.iloc[-1].to_dict() if len(t) else None)
+    r2 = safe("trades side=buy", lambda: e.trades(limit=3, side="buy"))
+    if r2 is not None: p(r2.to_string())
 open("data/vnstock5_loc.txt", "w").write("\n".join(out)[:20000])
