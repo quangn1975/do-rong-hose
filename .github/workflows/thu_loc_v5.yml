@@ -5,7 +5,7 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -22,6 +22,7 @@ jobs:
           python -m venv /tmp/v5
           /tmp/v5/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
           VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v5/bin/python thu_loc_v5.py || true
+          VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v5/bin/python roe_v5.py || true
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
