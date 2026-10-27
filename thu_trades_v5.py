@@ -6,7 +6,7 @@ def p(*a): out.append(" ".join(str(x) for x in a))
 import vnstock
 vnstock.login(K)
 from vnstock import Market
-for sym in ("FPT", "MSN"):
+for sym in ("TCB", "VCB", "FPT"):
     e = Market().equity(sym)
     try:
         t = e.trades(limit=1000)
@@ -18,7 +18,7 @@ for sym in ("FPT", "MSN"):
             time.sleep(0.5)
             t2 = e.trades(limit=1000, last_id=last)
             if t2 is None or not len(t2): break
-            tot = tot._append(t2) if hasattr(tot, "_append") else tot
+            import pandas as pd; tot = pd.concat([tot, t2])
             n += len(t2); last = t2.iloc[-1]["id"]
         p("tong lenh khop lay duoc:", n, "so trang them:", k)
         p("id trung nhau?", tot["id"].duplicated().sum())
