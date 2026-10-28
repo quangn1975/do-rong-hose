@@ -1,14 +1,27 @@
-2026-10-27 13:59
-MSN mua chu dong 42.3 % tren 2397 lenh khop
-VIB mua chu dong 56.4 % tren 2214 lenh khop
-HPG mua chu dong 71.7 % tren 4086 lenh khop
-VCB mua chu dong 49.3 % tren 2711 lenh khop
-TCB mua chu dong 35.0 % tren 8174 lenh khop
-SHB mua chu dong 64.0 % tren 6083 lenh khop
-VJC mua chu dong 74.7 % tren 998 lenh khop
-FRT mua chu dong 40.6 % tren 526 lenh khop
-HVN mua chu dong 43.3 % tren 872 lenh khop
-CTD mua chu dong 52.0 % tren 871 lenh khop
-NVL mua chu dong 32.1 % tren 1938 lenh khop
-VRE mua chu dong 36.7 % tren 1735 lenh khop
-Loc realtime dat: 0 ma
+2026-10-28 14:41
+TCB mua chu dong 44.1 % tren 10402 lenh khop
+MSN mua chu dong 57.3 % tren 4414 lenh khop
+VCB mua chu dong 63.1 % tren 7206 lenh khop
+HDB mua chu dong 71.3 % tren 5986 lenh khop
+VPB mua chu dong 47.6 % tren 7160 lenh khop
+BVH mua chu dong 61.5 % tren 2458 lenh khop
+FRT mua chu dong 35.4 % tren 2145 lenh khop
+VIX mua chu dong 38.2 % tren 7325 lenh khop
+PNJ trades loi NetworkError Nguồn 'vci' không trả về dữ liệu dùng được sau 2 lần thử.
+(English: vnstock settings language en)
+PNJ trades loi NetworkError Nguồn 'vci' không trả về dữ liệu dùng được sau 2 lần thử.
+(English: vnstock settings language en)
+PNJ trades loi NetworkError Nguồn 'vci' không trả về dữ liệu dùng được sau 2 lần thử.
+(English: vnstock settings language en)
+PNJ mua chu dong 39.2 % tren 4410 lenh khop
+NVL mua chu dong 28.1 % tren 3145 lenh khop
+TPB mua chu dong 52.9 % tren 4447 lenh khop
+POW mua chu dong 66.3 % tren 2393 lenh khop
+PVT mua chu dong 25.2 % tren 3195 lenh khop
+VCG mua chu dong 53.0 % tren 2037 lenh khop
+DCM mua chu dong 45.3 % tren 1668 lenh khop
+VIC mua chu dong 48.6 % tren 3313 lenh khop
+NT2 mua chu dong 22.5 % tren 1327 lenh khop
+VND mua chu dong 41.7 % tren 2453 lenh khop
+BSR mua chu dong 41.2 % tren 4072 lenh khop
+Loc realtime dat: 2 ma
