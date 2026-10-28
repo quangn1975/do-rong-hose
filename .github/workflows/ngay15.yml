@@ -25,8 +25,12 @@ jobs:
           git config user.email "github-actions@users.noreply.github.com"
           git add data/thi_truong.csv data/15_ma_chot.csv data/do_rong_ngay.csv
           git commit -m "So lieu ngay $(date -u +%FT%H:%M)" || echo "Khong co thay doi"
-          git pull --rebase
-          git push
+          for i in 1 2 3 4 5 6; do
+            git pull --rebase && git push && exit 0
+            echo "Bi tranh luot day len, thu lai lan $i"
+            sleep $((i * 7))
+          done
+          exit 1
   rs:
     if: github.event.schedule == '40 8 * * 1-5' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
@@ -44,5 +48,9 @@ jobs:
           git config user.email "github-actions@users.noreply.github.com"
           git add data/rs.csv
           git commit -m "RS $(date -u +%F)" || echo "Khong co thay doi"
-          git pull --rebase
-          git push
+          for i in 1 2 3 4 5 6; do
+            git pull --rebase && git push && exit 0
+            echo "Bi tranh luot day len, thu lai lan $i"
+            sleep $((i * 7))
+          done
+          exit 1
