@@ -68,3 +68,10 @@ pd.DataFrame(sos_rows, columns=["ma", "ngay_sos", "so_phien_tu_sos", "day_sos", 
     "so_phien_tu_sos").to_csv("data/sos_tung_ma.csv", index=False)
 print(trang_thai, p20, len(rows), "ma")
 print(df.to_string(index=False))
+
+# --- Bang xac nhan xu huong theo loai nha dau tu (chay rieng; loi o day khong lam hong ket qua quet ma) ---
+import subprocess, sys
+try:
+    subprocess.run([sys.executable, "xac_nhan_xu_huong.py"], check=False, timeout=300)
+except Exception as e:
+    print("xac_nhan_xu_huong loi:", e)

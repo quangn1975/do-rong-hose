@@ -1,0 +1,9 @@
+lop,chi_bao,trang_thai,so_lieu,den_ngay,tinh_vao_dem,ghi_chu
+1. Giá VN-Index,Vượt đỉnh 20 phiên (trong 5 phiên gần đây),KHÔNG,đóng cửa 1756,29/10,-1,Khớp luật 'vượt kháng cự mới mua'. Ít đổi trạng thái nên ít nhiễu.
+1. Giá VN-Index,Giá trên MA20,CÓ,MA20 = 1736,29/10,1,MA20 = giá trung bình 20 phiên.
+1. Giá VN-Index,MA20 dốc lên (so 5 phiên trước),KHÔNG,,29/10,-1,
+2. Độ rộng VN100,% mã trên MA20,Giữa (53%),53%,29/10,1,"Luật của anh: trên 70% ngừng mở mới; dưới 30% là cạn kiệt. Độ rộng chỉ là 1 lớp, không dùng một mình."
+"3. Loại nhà đầu tư (vnstock, VN100)",Tự doanh ròng 20 phiên,MUA RÒNG,+1801 tỷ,28/10,1,"Tự doanh = công ty chứng khoán đánh bằng vốn của mình. Là chỉ báo tốt nhất trong các loại nhà đầu tư em đã thử, nhưng vẫn chưa đủ chắc."
+"3. Loại nhà đầu tư (vnstock, VN100)",Cỡ lệnh mua so với cỡ lệnh bán (5 phiên),LỆNH MUA NHỎ HƠN THƯỜNG LỆ,tỷ số 0.75,28/10,-1,Đo xem tiền lớn có đang mua nhiều hơn bán không (so với trung vị 60 phiên của chính nó). Tỷ số dưới 1 là bình thường.
+"3. Loại nhà đầu tư (vnstock, VN100)",Khối ngoại ròng 5 phiên,YẾU HƠN THƯỜNG LỆ,-1757 tỷ,28/10,0,"Chỉ để theo dõi, KHÔNG tính vào số đếm: 1 năm qua khối ngoại 'mạnh hơn thường lệ' lại đi trước giai đoạn yếu hơn."
+Tổng hợp,Số chỉ báo báo TĂNG,3/6,,,0,"Chỉ là đếm đơn giản, chưa kiểm chứng. Dùng để xác nhận xu hướng đang diễn ra, không phải để dự đoán."
