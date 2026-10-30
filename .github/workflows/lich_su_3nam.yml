@@ -1,0 +1,24 @@
+name: lich_su_3nam
+on: workflow_dispatch      # chay tay 1 lan de lay 3 nam gia cho phan hoc may
+permissions:
+  contents: write
+concurrency:
+  group: auto33
+  cancel-in-progress: false
+jobs:
+  lay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -U pandas vnstock vnai vnii --extra-index-url https://vnstocks.com/api/simple
+      - name: Tai 3 nam gia ngay
+        run: python lich_su_3nam.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "lich su 3 nam" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
