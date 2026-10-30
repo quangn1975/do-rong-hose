@@ -61,7 +61,11 @@ def ngoai(syms):
                       "nn_mua": pb[col("foreign_buy_volume")], "nn_ban": pb[col("foreign_sell_volume")]})
     d["nn_rong"] = d["nn_mua"] - d["nn_ban"]
     d["nn_rong_ty"] = (d["nn_rong"] * d["gia"] / 1e9).round(2)
-    d["ngay"] = now.strftime("%Y-%m-%d"); d["gio"] = now.strftime("%H:%M")
+    # Chay sau nua dem / truoc 9h sang thi so lieu la cua phien truoc -> ghi dung ngay phien
+    from datetime import timedelta
+    p = now if now.hour >= 9 else now - timedelta(days=1)
+    while p.weekday() >= 5: p -= timedelta(days=1)
+    d["ngay"] = p.strftime("%Y-%m-%d"); d["gio"] = now.strftime("%H:%M")
     d.sort_values("nn_rong_ty", ascending=False).to_csv("data/vn100_ngoai.csv", index=False)
 
 
