@@ -35,10 +35,16 @@ if not os.getenv("KHONG_CAP_NHAT"):
         if df is not None and len(df):
             df = df.rename(columns={"time": "ngay"})
             df.insert(0, "ma", s)
-            cu = d0[d0["ma"] == s]["close"].median()
-            if cu and df["close"].median() / cu > 5:      # VCI doi don vi dong -> nghin dong
+            # So voi gia 20 phien gan nhat dang co: chi coi la doi don vi khi lech ~1000 lan
+            # (khong dung trung binh ca 3 nam, vi ma tang manh nhu VIC se bi nhan nham)
+            cu = d0[d0["ma"] == s].sort_values("ngay")["close"].tail(20).median()
+            ti = df["close"].tail(20).median() / cu if cu else 1
+            if ti > 50:                                   # VCI tra dong -> doi ve nghin dong
                 for c in ("open", "high", "low", "close"):
                     df[c] = df[c] / 1000
+            elif ti < 0.02:                               # nguoc lai
+                for c in ("open", "high", "low", "close"):
+                    df[c] = df[c] * 1000
             moi.append(df)
         time.sleep(DELAY)
     if moi:
