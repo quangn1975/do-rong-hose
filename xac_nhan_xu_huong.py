@@ -66,6 +66,6 @@ v, ts = last("codlenh5_cao"); r_, _ = last("codlenh5"); add("3. Loại nhà đ�
 v, ts = last("ngoai5_manh"); n_, _ = last("ngoai5_ty"); add("3. Loại nhà đầu tư (vnstock, VN100)", "Khối ngoại ròng 5 phiên", "MẠNH HƠN THƯỜNG LỆ" if v else "YẾU HƠN THƯỜNG LỆ", f"{n_:+.0f} tỷ", ts, 0,
     "Chỉ để theo dõi, KHÔNG tính vào số đếm: 1 năm qua khối ngoại 'mạnh hơn thường lệ' lại đi trước giai đoạn yếu hơn.")
 tot = [r for r in rows if r[5] != 0]; up = sum(1 for r in tot if r[5] > 0)
-rows.append(["Tổng hợp", "Số chỉ báo báo TĂNG", f"{up}/{len(tot)}", "", "", 0, "Chỉ là đếm đơn giản, chưa kiểm chứng. Dùng để xác nhận xu hướng đang diễn ra, không phải để dự đoán."])
+rows.append(["Tổng hợp", "Số chỉ báo báo TĂNG", f"{up} trên {len(tot)}", "", "", 0, "Chỉ là đếm đơn giản, chưa kiểm chứng. Dùng để xác nhận xu hướng đang diễn ra, không phải để dự đoán."])
 pd.DataFrame(rows, columns=["lop", "chi_bao", "trang_thai", "so_lieu", "den_ngay", "tinh_vao_dem", "ghi_chu"]).to_csv("data/xac_nhan_xu_huong.csv", index=False)
 print("OK", up, "/", len(tot))
