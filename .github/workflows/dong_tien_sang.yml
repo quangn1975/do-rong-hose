@@ -1,0 +1,41 @@
+name: dong_tien_sang
+# Nguon vnstock 5 (khoi ngoai, tu doanh, lenh mua/ban) chi co so cua phien hom truoc vao sang hom sau.
+# Chay luc 8:30 sang gio VN (thu 3 - thu 7) de lay so phien hom qua, truoc gio mo cua.
+on:
+  schedule:
+    - cron: "30 1 * * 2-6"      # 8:30 sang gio Viet Nam
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: auto33
+  cancel-in-progress: false
+jobs:
+  dong_tien:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Giu nguyen ma thiet bi vnstock giua cac lan chay
+        uses: actions/cache@v4
+        with:
+          path: ~/.vnstock
+          key: vnstock-state-v2-${{ github.run_id }}
+          restore-keys: |
+            vnstock-state-v2-
+            vnstock-state-40437374207
+      - name: Dong tien lon (vnstock 5)
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          python -m venv /tmp/v5
+          /tmp/v5/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages vnstock
+          VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v5/bin/python ngay_vn100_v5.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "Sang: dong tien lon phien hom qua" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
