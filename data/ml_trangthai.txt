@@ -1,5 +1,5 @@
-2026-11-04 01:35 (gio VN)
+2026-11-05 01:42 (gio VN)
 Cap nhat gia: 35/35 ma
-Hoc tu 26643 dong, den ngay 2026-10-27
-Ngay 2026-11-03: do rong ro 20% tren MA20 (nguong < 30%) -> DAT
-Lenh giay: mo moi 1, vua dong 0, dang mo 4
+Hoc tu 26678 dong, den ngay 2026-10-28
+Ngay 2026-11-04: do rong ro 40% tren MA20 (nguong < 30%) -> chua dat
+Lenh giay: mo moi 0, vua dong 0, dang mo 4
