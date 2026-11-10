@@ -83,6 +83,7 @@ for i, s in enumerate(syms):
     if i % 50 == 0: log(f"gia {i}/{len(syms)} {s} ({round(time.time() - t0)} giay)")
 px = pd.DataFrame(closes).sort_index()
 px = px[px.index < TODAY] if PHIEN_DANG_CHAY else px
+px = px.ffill(limit=5)   # ma khong khop lenh vai phien: giu gia phien truoc, toi da 5 phien
 st.append(log(f"Gia: {px.shape[1]}/{len(syms)} ma, {px.shape[0]} phien ({px.index.min()} -> {px.index.max()}), {len(loi)} ma loi, {round(time.time() - t0)} giay"))
 if px.shape[1] < 300 or px.shape[0] < 220:
     ghi_trang_thai("HONG - thieu du lieu gia, giu nguyen bang cu"); sys.exit(1)
@@ -136,6 +137,11 @@ for ix in ("VNINDEX", "VN30", "VN100"):
     m = pd.concat(parts, axis=1).sort_index()
     m = m[m.index < TODAY] if PHIEN_DANG_CHAY else m
     if "Điểm đóng cửa" in m.columns: m = m[m["Điểm đóng cửa"].notna()]
+    if ix in ("VN30", "VN100"):   # SSI khong tra so ma tang/giam theo ro con: tu dem tu gia dong cua tung ma
+        tv = px[[x for x in (vn30 if ix == "VN30" else vn100) if x in px.columns]]
+        ch = tv.diff().where(tv.notna() & tv.shift(1).notna())
+        m["Số mã tăng"] = (ch > 0).sum(axis=1).reindex(m.index); m["Số mã giảm"] = (ch < 0).sum(axis=1).reindex(m.index)
+        m["Số mã đứng giá"] = (ch == 0).sum(axis=1).reindex(m.index); m["Số mã trần"] = float("nan"); m["Số mã sàn"] = float("nan")
     m = m.tail(N_PHIEN_RO); m.insert(0, "Rổ", ix); m.index.name = "Ngày"
     ro_rows.append(m.reset_index())
     log("ro", ix, len(m), "phien")
@@ -147,6 +153,7 @@ if ro_rows:
         if c not in ro.columns: ro[c] = float("nan")
     ro["_tt"] = ro["Rổ"].map({"VNINDEX": 0, "VN30": 1, "VN100": 2})
     ro = ro.sort_values(["Ngày", "_tt"], ascending=[False, True])[cols]
+    for c in ("Số mã tăng", "Số mã giảm", "Số mã đứng giá", "Số mã trần", "Số mã sàn"): ro[c] = ro[c].astype("Int64")
     ro.to_csv(f"{OUT}/ro_dong_tien.csv", index=False)
     st.append(log(f"Ro dong tien: {len(ro)} dong, phien moi nhat {ro['Ngày'].max()}"))
     vni = ro[ro["Rổ"] == "VNINDEX"].set_index("Ngày")["Điểm đóng cửa"]
@@ -172,7 +179,8 @@ for i, s in enumerate(vn100):
             "Số lệnh đặt mua": cot(h, "total_buy_trade").values, "Số lệnh đặt bán": cot(h, "total_sell_trade").values,
             "KL TB mỗi lệnh mua": (cot(h, "total_buy_trade_volume") / cot(h, "total_buy_trade")).round(0).values,
             "KL TB mỗi lệnh bán": (cot(h, "total_sell_trade_volume") / cot(h, "total_sell_trade")).round(0).values})
-        d["Lệnh mua / lệnh bán (lần)"] = (d["KL TB mỗi lệnh mua"] / d["KL TB mỗi lệnh bán"]).round(2)
+        for c_ in ("Số lệnh đặt mua", "Số lệnh đặt bán", "KL TB mỗi lệnh mua", "KL TB mỗi lệnh bán"): d[c_] = d[c_].round(0).astype("Int64")
+        d["Lệnh mua / lệnh bán (lần)"] = (d["KL TB mỗi lệnh mua"].astype(float) / d["KL TB mỗi lệnh bán"].astype(float)).round(2)
         for n in (20, 50, 200):
             if s in px.columns:
                 t = tren[n][s]; d[f"Trên MA{n}"] = d["Ngày"].map(lambda x: "" if pd.isna(t.get(x, float("nan"))) else ("x" if t.get(x) == 1 else "-"))
