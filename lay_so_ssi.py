@@ -1,4 +1,4 @@
-"""Lay so thi truong tu SSI (khoa SSI trong Secrets, KHONG dang nhap vnstock, khong OTP).
+"""Lay so thi truong THANG tu SSI bang bo cong cu chinh thuc ssi-sdk (khoa SSI trong Secrets, khong OTP, KHONG dung vnstock).
 Chay tren GitHub sau gio dong cua. Ghi ra thu muc so/:
   do_rong.csv        - moi phien 1 dong: % ma tren MA20/MA50/MA200 cua VN30, VN100, HOSE
   ro_dong_tien.csv   - moi phien x moi ro (VNINDEX, VN30, VN100): diem, so ma tang/giam, khoi ngoai, tu doanh
@@ -11,7 +11,7 @@ from datetime import datetime, timezone, timedelta
 import pandas as pd
 
 SECRETS = [v for v in (os.environ.get(k, "") for k in ("SSI_API_KEY", "SSI_API_SECRET")) if v]
-OUT = "so"; os.makedirs(OUT, exist_ok=True)
+OUT = os.getenv("THU_MUC_RA", "so"); os.makedirs(OUT, exist_ok=True)
 VN = timezone(timedelta(hours=7))
 now = datetime.now(VN)
 TODAY = now.strftime("%Y-%m-%d")
@@ -30,38 +30,47 @@ def ghi_trang_thai(kq):
     open(f"{OUT}/trang_thai.txt", "w", encoding="utf-8").write(
         f"Lan chay: {now.strftime('%d/%m/%Y %H:%M')} (gio VN)\nKet qua: {kq}\n" + "\n".join(st) + "\n")
 
-from vnstock import Market, Reference
-M = Market("ssi"); R = Reference("ssi")
-
-def goi(fn, lan=4, nghi=3):
+from ssi_sdk import Auth, Config   # bo cong cu CHINH THUC cua SSI (pypi.org/project/ssi-sdk), khong dung thu vien vnstock
+_auth = Auth(Config(api_key=os.environ["SSI_API_KEY"], api_secret=os.environ["SSI_API_SECRET"]))
+_auth.authenticate()   # du lieu thi truong: khong can OTP
+def api(path, **params):
+    """Goi 1 dia chi du lieu cua SSI, tra ve danh sach dong. Het phien dang nhap thi dang nhap lai 1 lan."""
     err = None
-    for i in range(lan):
+    for i in range(4):
         try:
-            return fn()
+            body = _auth.rest_client.get("/api/v3/data/" + path, params=params)
+            if isinstance(body, dict): body = body.get("data")
+            return body or []
         except Exception as e:
-            err = e; time.sleep(nghi * (i + 1))
+            err = e
+            if "Authentication" in type(e).__name__:
+                try: _auth.authenticate()
+                except Exception: pass
+            time.sleep(2 * (i + 1))
     raise err
-def ngay(s):
-    return pd.to_datetime(s).dt.strftime("%Y-%m-%d")
-def cot(df, *names):
-    for n in names:
-        if n in df.columns: return pd.to_numeric(df[n], errors="coerce")
-    return pd.Series([float("nan")] * len(df), index=df.index)
+def so(df, c):
+    return pd.to_numeric(df[c], errors="coerce") if c in df.columns else pd.Series([float("nan")] * len(df), index=df.index)
 def bo_hom_nay(df, c="ngay"):
     return df[df[c] < TODAY] if PHIEN_DANG_CHAY else df
+def d_ssi(s): return s.replace("-", "/")            # 2026-11-09 -> 2026/11/09
+def d_iso(x): return str(x)[:10].replace("/", "-")   # 2026/11/09 -> 2026-11-09
+def gia_ngay(symbol, start):
+    r = api("ohlc", symbol=symbol, **{"from": d_ssi(start) + " 00:00:00", "to": d_ssi(END) + " 23:59:59"}, timeFrame="1d", pageIndex=1, pageSize=1000)
+    d = pd.DataFrame(r)
+    if not len(d): return d
+    d["ngay"] = d["tradingDate"].map(d_iso)
+    return d.drop_duplicates("ngay", keep="last").sort_values("ngay")
 
 # ---------- 1. Danh sach ----------
 try:
-    hose = goi(lambda: R.equity().list(exchange="HOSE"))
-    hose = hose[hose["type"].astype(str).str.lower().eq("stock")] if "type" in hose.columns else hose
-    vn30 = sorted(goi(lambda: R.index("VN30").members())["symbol"].astype(str))
-    vn100 = sorted(goi(lambda: R.index("VN100").members())["symbol"].astype(str))
+    hose = pd.DataFrame(api("securitiesByBoard", board="HOSE"))
+    hose = hose[hose["stockType"].astype(str).str.lower().eq("stock")].drop_duplicates("symbol")
+    vn30 = sorted(pd.DataFrame(api("securitiesByBoard", index="VN30"))["symbol"].astype(str))
+    vn100 = sorted(pd.DataFrame(api("securitiesByBoard", index="VN100"))["symbol"].astype(str))
 except Exception as e:
     st.append(log("LOI danh sach:", type(e).__name__, str(e)[:200])); ghi_trang_thai("HONG - khong lay duoc danh sach"); sys.exit(1)
 syms = sorted(set(hose["symbol"].astype(str)) | set(vn30) | set(vn100))
-ds = pd.DataFrame({"Mã": hose["symbol"].astype(str).values,
-                   "Tên công ty": hose.get("organ_name", pd.Series([""] * len(hose))).astype(str).values,
-                   "Ngành": hose.get("icb_name", pd.Series([""] * len(hose))).astype(str).values})
+ds = pd.DataFrame({"Mã": hose["symbol"].astype(str).values, "Tên công ty": hose["symbolNameVi"].astype(str).values, "Ngành": hose["icbName"].fillna("").astype(str).values})
 ds["Thuộc VN30"] = ds["Mã"].isin(vn30).map({True: "x", False: ""})
 ds["Thuộc VN100"] = ds["Mã"].isin(vn100).map({True: "x", False: ""})
 ds = ds.sort_values(["Thuộc VN30", "Thuộc VN100", "Mã"], ascending=[False, False, True])
@@ -73,10 +82,9 @@ closes, loi = {}, []
 t0 = time.time()
 for i, s in enumerate(syms):
     try:
-        d = goi(lambda: M.equity(s).ohlcv(start=START_GIA, end=END))
-        if d is None or not len(d): loi.append(s); continue
-        x = pd.Series(pd.to_numeric(d["close"], errors="coerce").values, index=ngay(d["time"]).values)
-        closes[s] = x[~x.index.duplicated(keep="last")]
+        d = gia_ngay(s, START_GIA)
+        if not len(d): loi.append(s); continue
+        closes[s] = pd.Series((so(d, "close") / 1000).values, index=d["ngay"].values)
     except Exception as e:
         loi.append(s)
         if len(loi) <= 3: log("loi gia", s, type(e).__name__, str(e)[:150])
@@ -104,44 +112,43 @@ dr = dr[dr["_dem_HOSE"] >= 200].drop(columns=[c for c in dr.columns if c.startsw
 
 # ---------- 3. Theo ro: diem, do rong tang/giam, khoi ngoai, tu doanh ----------
 ro_rows = []
+ix_gia = {}
 for ix in ("VNINDEX", "VN30", "VN100"):
-    parts = []
-    try:
-        o = goi(lambda: M.index(ix).ohlcv(start=START_RO, end=END))
-        parts.append(pd.DataFrame({"Điểm đóng cửa": pd.to_numeric(o["close"], errors="coerce").values,
-                                   "Khối lượng (triệu cp)": (pd.to_numeric(o["volume"], errors="coerce") / 1e6).round(1).values}, index=ngay(o["time"]).values))
-    except Exception as e: st.append(log("loi diem", ix, type(e).__name__, str(e)[:150]))
-    try:
-        h = goi(lambda: M.index(ix).trade_history(start=START_RO, end=END))
-        parts.append(pd.DataFrame({"Tăng/giảm (%)": (cot(h, "percent_price_change") * 100).round(2).values,
-                                   "GTGD (nghìn tỷ)": (cot(h, "total_value") / 1e12).round(2).values,
-                                   "Số mã tăng": cot(h, "total_stock_up_price").values, "Số mã giảm": cot(h, "total_stock_down_price").values,
-                                   "Số mã đứng giá": cot(h, "total_stock_no_change_price").values,
-                                   "Số mã trần": cot(h, "total_stock_ceiling").values, "Số mã sàn": cot(h, "total_stock_floor").values},
-                                  index=ngay(h["trading_date"]).values))
-    except Exception as e: st.append(log("loi thong ke", ix, type(e).__name__, str(e)[:150]))
-    try:
-        f = goi(lambda: M.index(ix).foreign_flow(start=START_RO, end=END))
-        parts.append(pd.DataFrame({"Khối ngoại ròng (tỷ)": (cot(f, "foreign_net_value", "net_val") / 1e9).round(1).values,
-                                   "Khối ngoại ròng (triệu cp)": (cot(f, "foreign_net_volume", "net_vol") / 1e6).round(2).values}, index=ngay(f["time"]).values))
-    except Exception as e: st.append(log("loi khoi ngoai", ix, type(e).__name__, str(e)[:150]))
-    try:
-        p = goi(lambda: M.index(ix).proprietary_flow(start=START_RO, end=END))
-        parts.append(pd.DataFrame({"Tự doanh mua (tỷ)": (cot(p, "proprietary_buy_value") / 1e9).round(1).values,
-                                   "Tự doanh bán (tỷ)": (cot(p, "proprietary_sell_value") / 1e9).round(1).values,
-                                   "Tự doanh ròng (tỷ)": (cot(p, "proprietary_net_value") / 1e9).round(1).values}, index=ngay(p["time"]).values))
-    except Exception as e: st.append(log("loi tu doanh", ix, type(e).__name__, str(e)[:150]))
-    if not parts: continue
-    parts = [q[~q.index.duplicated(keep="last")] for q in parts]
-    m = pd.concat(parts, axis=1).sort_index()
-    m = m[m.index < TODAY] if PHIEN_DANG_CHAY else m
-    if "Điểm đóng cửa" in m.columns: m = m[m["Điểm đóng cửa"].notna()]
+    try: ix_gia[ix] = gia_ngay(ix, START_RO)
+    except Exception as e: st.append(log("loi diem", ix, type(e).__name__, str(e)[:150])); ix_gia[ix] = pd.DataFrame()
+cac_phien = [x for x in (list(ix_gia["VNINDEX"]["ngay"]) if len(ix_gia["VNINDEX"]) else []) if not (PHIEN_DANG_CHAY and x >= TODAY)][-N_PHIEN_RO:]
+for ix in ("VNINDEX", "VN30", "VN100"):
+    rows = []
+    for ng in cac_phien:
+        try:
+            r = api("indexSummary", index=ix, tradingDate=d_ssi(ng))
+            if r: rows.append(r[0] if isinstance(r, list) else r)
+        except Exception as e:
+            if len(rows) < 2: log("loi tom tat ro", ix, ng, type(e).__name__, str(e)[:120])
+    if not rows: st.append(log("khong co tom tat ro", ix)); continue
+    h = pd.DataFrame(rows); h.index = h["tradingDate"].map(d_iso)
+    h = h[~h.index.duplicated(keep="last")]
+    m = pd.DataFrame({"Tăng/giảm (%)": so(h, "indexChangePercentage").round(2),
+                      "GTGD (nghìn tỷ)": (so(h, "totalTradeValue") / 1e12).round(2),
+                      "Số mã tăng": so(h, "totalAdvanceStock"), "Số mã giảm": so(h, "totalDeclineStock"), "Số mã đứng giá": so(h, "totalNoChangeStock"),
+                      "Số mã trần": so(h, "totalCeilingStock"), "Số mã sàn": so(h, "totalFloorStock"),
+                      "Khối ngoại ròng (tỷ)": (so(h, "netPurchasesForeignValue") / 1e9).round(1),
+                      "Khối ngoại ròng (triệu cp)": (so(h, "netPurchasesForeignVolume") / 1e6).round(2),
+                      "Tự doanh mua (tỷ)": (so(h, "totalPropBuyValue") / 1e9).round(1), "Tự doanh bán (tỷ)": (so(h, "totalPropSellValue") / 1e9).round(1)})
+    m["Tự doanh ròng (tỷ)"] = ((so(h, "totalPropBuyValue") - so(h, "totalPropSellValue")) / 1e9).round(1)
+    g = ix_gia[ix]
+    if len(g):
+        g = g.set_index("ngay")
+        m["Điểm đóng cửa"] = so(g, "close").reindex(m.index); m["Khối lượng (triệu cp)"] = (so(g, "volume") / 1e6).round(1).reindex(m.index)
+    else:
+        m["Điểm đóng cửa"] = so(h, "indexValue"); m["Khối lượng (triệu cp)"] = (so(h, "totalTrade") / 1e6).round(1)
+    m = m.sort_index()
     if ix in ("VN30", "VN100"):   # SSI khong tra so ma tang/giam theo ro con: tu dem tu gia dong cua tung ma
         tv = px[[x for x in (vn30 if ix == "VN30" else vn100) if x in px.columns]]
         ch = tv.diff().where(tv.notna() & tv.shift(1).notna())
         m["Số mã tăng"] = (ch > 0).sum(axis=1).reindex(m.index); m["Số mã giảm"] = (ch < 0).sum(axis=1).reindex(m.index)
         m["Số mã đứng giá"] = (ch == 0).sum(axis=1).reindex(m.index); m["Số mã trần"] = float("nan"); m["Số mã sàn"] = float("nan")
-    m = m.tail(N_PHIEN_RO); m.insert(0, "Rổ", ix); m.index.name = "Ngày"
+    m.insert(0, "Rổ", ix); m.index.name = "Ngày"
     ro_rows.append(m.reset_index())
     log("ro", ix, len(m), "phien")
 if ro_rows:
@@ -165,19 +172,19 @@ st.append(log(f"Do rong: {len(dr)} phien, moi nhat {dr.index.max()}"))
 ct, loi2 = [], []
 for i, s in enumerate(vn100):
     try:
-        h = goi(lambda: M.equity(s).trade_history(start=START_CT, end=END))
-        if h is None or not len(h): loi2.append(s); continue
-        d = pd.DataFrame({"Ngày": ngay(h["trading_date"]).values, "Mã": s,
-            "Giá đóng cửa (nghìn đ)": (cot(h, "close") / 1000).round(2).values,
-            "Tăng/giảm (%)": (cot(h, "percent_price_change") * 100).round(2).values,
-            "Khối lượng (triệu cp)": (cot(h, "total_volume") / 1e6).round(2).values,
-            "GTGD (tỷ)": (cot(h, "total_value") / 1e9).round(1).values,
-            "Khối ngoại mua (tỷ)": (cot(h, "foreign_buy_value") / 1e9).round(1).values,
-            "Khối ngoại bán (tỷ)": (cot(h, "foreign_sell_value") / 1e9).round(1).values,
-            "Khối ngoại ròng (tỷ)": (cot(h, "foreign_net_value") / 1e9).round(1).values,
-            "Số lệnh đặt mua": cot(h, "total_buy_trade").values, "Số lệnh đặt bán": cot(h, "total_sell_trade").values,
-            "KL TB mỗi lệnh mua": (cot(h, "total_buy_trade_volume") / cot(h, "total_buy_trade")).round(0).values,
-            "KL TB mỗi lệnh bán": (cot(h, "total_sell_trade_volume") / cot(h, "total_sell_trade")).round(0).values})
+        h = pd.DataFrame(api("securitiesSummary", symbol=s, **{"from": d_ssi(START_CT), "to": d_ssi(END)}, pageIndex=1, pageSize=100))
+        if not len(h): loi2.append(s); continue
+        d = pd.DataFrame({"Ngày": h["tradingDate"].map(d_iso).values, "Mã": s,
+            "Giá đóng cửa (nghìn đ)": (so(h, "close") / 1000).round(2).values,
+            "Tăng/giảm (%)": so(h, "priceChangePercentage").round(2).values,
+            "Khối lượng (triệu cp)": ((so(h, "totalMatch").fillna(0) + so(h, "totalDeal").fillna(0)) / 1e6).round(2).values,
+            "GTGD (tỷ)": ((so(h, "totalMatchValue").fillna(0) + so(h, "totalDealValue").fillna(0)) / 1e9).round(1).values,
+            "Khối ngoại mua (tỷ)": (so(h, "totalForeignBuyValue") / 1e9).round(1).values,
+            "Khối ngoại bán (tỷ)": (so(h, "totalForeignSellValue") / 1e9).round(1).values,
+            "Khối ngoại ròng (tỷ)": ((so(h, "totalForeignBuyValue") - so(h, "totalForeignSellValue")) / 1e9).round(1).values,
+            "Số lệnh đặt mua": so(h, "totalBuy").values, "Số lệnh đặt bán": so(h, "totalSell").values,
+            "KL TB mỗi lệnh mua": (so(h, "totalTradeBuy") / so(h, "totalBuy")).round(0).values,
+            "KL TB mỗi lệnh bán": (so(h, "totalTradeSell") / so(h, "totalSell")).round(0).values})
         for c_ in ("Số lệnh đặt mua", "Số lệnh đặt bán", "KL TB mỗi lệnh mua", "KL TB mỗi lệnh bán"): d[c_] = d[c_].round(0).astype("Int64")
         d["Lệnh mua / lệnh bán (lần)"] = (d["KL TB mỗi lệnh mua"].astype(float) / d["KL TB mỗi lệnh bán"].astype(float)).round(2)
         for n in (20, 50, 200):

@@ -17,15 +17,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
-      - name: Cai thu vien (khong dang nhap vnstock, khong ton thiet bi)
-        run: |
-          python -m venv /tmp/v6
-          /tmp/v6/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages "vnstock==6.0.0rc4" "vnstock-oapi==0.1.0rc3"
+      - name: Cai bo cong cu chinh thuc cua SSI (khong dung vnstock)
+        run: pip install -q pandas "ssi-sdk==3.3.2"
       - name: Lay so tu SSI
         env:
           SSI_API_KEY: ${{ secrets.SSI_API_KEY }}
           SSI_API_SECRET: ${{ secrets.SSI_API_SECRET }}
-        run: VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v6/bin/python lay_so_ssi.py
+        run: python lay_so_ssi.py
       - name: Luu ket qua
         if: always()
         run: |
