@@ -1,0 +1,36 @@
+ACB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+BID: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+BSR: 509 dong, 509 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+CTG: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+FPT: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+  trang 2: 0 dong
+  so voi doan 200 ngay: 136 ngay chung, khac 0; vi du []
+GAS: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+GVR: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+HDB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+HPG: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+LPB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+MBB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+MCH: 512 dong, 512 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+MSN: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+MWG: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+SAB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+SHB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+SSB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+SSI: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+STB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+TCB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+TCX: 262 dong, 262 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2025/10/21
+VCB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+VHM: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+VIB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+VIC: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+VJC: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+VNM: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+  trang 2: 0 dong
+  so voi doan 200 ngay: 136 ngay chung, khac 0; vi du []
+VPB: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+VPL: 375 dong, 375 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2025/05/13
+VRE: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+VNINDEX: 517 dong, 517 ngay, trung 0 | meta {'pageSize': 1000, 'pageIndex': 1, 'code': 200, 'msg': ''} | dau 2026/11/09 cuoi 2024/10/11
+TONG DONG TRUNG NGAY: 0
