@@ -1,0 +1,411 @@
+### version
+vnstock       6.0.0rc4 (bản thử nghiệm)
+vnstock-oapi  0.1.0rc3
+Python        3.11.18
+
+Có bản mới: vnstock 6.0.0rc5. Cập nhật: vnstock update
+### register
+◆ Bản vnstock trên máy này
+  Phiên bản 6.0.0rc4 (bản thử nghiệm), dùng được đến hết ngày 07/12/2026
+  Trước ngày đó, cập nhật bằng: vnstock update
+### usage
+Thế hệ 6 không còn hạn mức lượt gọi nên không còn lệnh usage. Xem hoặc tắt việc đếm lượt dùng: vnstock telemetry [on | off].
+### policy
+◆ Đang tạm dừng theo thông báo của vnstocks.com
+  Nguồn dữ liệu:   không có
+  Máy chủ dữ liệu: không có
+  Bản 6.0.0rc4: không bị tạm dừng
+Thông báo nhận lúc 09:51 10/11/2026; tự kiểm tra lại sau mỗi 10 phút.
+### keys
+◆ Nguồn dữ liệu trên máy này
+  ✔ binance  Không cần khoá
+  – dnse     Chưa có khoá. Chỉ cần nếu bạn dùng nguồn này
+  – fhsc     Chưa có khoá. Chỉ cần nếu bạn dùng nguồn này
+  – fmp      Chưa có khoá. Chỉ cần nếu bạn dùng nguồn này
+  – ssi      Chưa có khoá. Chỉ cần nếu bạn dùng nguồn này
+  – tcbs     Chưa có khoá. Chỉ cần nếu bạn dùng nguồn này
+
+Lưu khoá để dùng ở mọi thư mục: vnstock keys set <nguồn>
+### tools 
+◆ Market  giá và giao dịch
+  Bắt đầu bằng Market("<nguồn>")  <nguồn>: nguồn bạn đã có khoá
+
+    Hàm                                                                              Nguồn có dữ liệu        Nội dung
+
+  bond · trái phiếu
+    bond("MÃ").history(start, end, interval)                                         dnse, fhsc, ssi, tcbs
+    bond("MÃ").intraday(start, end, limit)                                           dnse, tcbs
+    bond("MÃ").price_board()                                                         fhsc, tcbs
+    bond("MÃ").price_depth()                                                         dnse, fhsc, tcbs
+
+  commodity · hàng hoá
+    commodity("MÃ").ohlcv(start, end, interval, limit)                               fhsc, fmp               Nến hàng hoá (vàng, bạc, dầu…)
+
+  crypto · tiền mã hoá
+    crypto("BTCUSDT").daily_stats()                                                  binance                 Thống kê ngày giao dịch của tiền mã hoá (ngày UTC)
+    crypto("BTCUSDT").last_price()                                                   binance, fhsc           Giá khớp gần nhất của tiền mã hoá
+    crypto("BTCUSDT").ohlcv(start, end, interval, limit)                             binance, fhsc, fmp      Nến tiền mã hoá
+    crypto("BTCUSDT").order_book()                                                   binance                 Sổ lệnh tiền mã hoá, 10 bước giá
+    crypto("BTCUSDT").quote()                                                        binance, fhsc           Bảng giá tiền mã hoá: giá 24 giờ và bước giá tốt nhất
+    crypto("BTCUSDT").reference_price()                                              fhsc                    Giá tham chiếu của tiền mã hoá
+    crypto("BTCUSDT").rolling_stats()                                                binance                 Thống kê cửa sổ trượt của tiền mã hoá (mặc định 1 ngày)
+    crypto("BTCUSDT").trades(limit)                                                  binance                 Khớp lệnh tiền mã hoá
+    crypto("BTCUSDT").vwap()                                                         binance                 Giá bình quân gia quyền theo khối lượng trong cửa sổ ngắn
+
+  equity · cổ phiếu
+    equity("FPT").active_flow(interval)                                              fhsc                    Khối lượng mua chủ động, bán chủ động theo phút, ngày, tháng (số liệu nguồn tự tính)
+    equity("FPT").block_trades(exchange)                                             tcbs                    Giao dịch thoả thuận đã khớp trong phiên, mọi mã của một sàn
+    equity("FPT").expected_price()                                                   dnse                    Giá, khối lượng khớp dự kiến trong phiên định kỳ ATO, ATC
+    equity("FPT").foreign_flow(start, end, interval)                                 dnse, fhsc, ssi         Khối ngoại mua, bán của một mã theo ngày (1D) hoặc trong phiên
+    equity.foreign_room(symbols)                                                     dnse, fhsc, ssi         Room ngoại còn lại và tổng room của nhiều mã
+    equity("FPT").insider_deal()                                                     fhsc
+    equity("FPT").ohlcv(start, end, interval)                                        dnse, fhsc, ssi, tcbs   Nến giá cổ phiếu, chứng chỉ quỹ ETF
+    equity("FPT").order_book()                                                       dnse, fhsc, tcbs        Ba bậc giá mua, bán tốt nhất
+    equity("FPT").proprietary_flow(start, end)                                       fhsc                    Tự doanh công ty chứng khoán mua, bán một mã, theo ngày
+    equity("FPT").quote()                                                            fhsc, tcbs              Bảng giá: giá, khối lượng phiên, ba bậc giá, khối ngoại của nhiều mã
+    equity("FPT").session_stats(start, end)                                          ssi                     Thống kê gộp một khoảng của một mã: tổng, bình quân mỗi phiên, khối ngoại, lệnh mua bán
+    equity("FPT").summary()                                                          fhsc                    Chỉ số định giá và sinh lời mới nhất của một mã
+    equity("FPT").trade_history(start, end)                                          ssi                     Thống kê từng phiên của một mã: giá, khớp lệnh, thoả thuận, lệnh đặt
+    equity("FPT").trades(start, end, limit)                                          dnse, tcbs              Từng lệnh khớp trong phiên
+    equity("FPT").volume_profile(date)                                               dnse, tcbs              Khối lượng khớp theo từng mức giá, tách mua, bán chủ động
+
+  etf · chứng chỉ quỹ ETF
+    etf("E1VFVN30").block_trades()                                                   tcbs                    Giao dịch thoả thuận đã khớp trong phiên, mọi mã của một sàn
+    etf("E1VFVN30").foreign_flow(start, end, interval)                               dnse, fhsc, ssi         Khối ngoại mua, bán của một mã theo ngày (1D) hoặc trong phiên
+    etf("E1VFVN30").ohlcv(start, end, interval)                                      dnse, fhsc, ssi, tcbs   Nến giá cổ phiếu, chứng chỉ quỹ ETF
+    etf("E1VFVN30").order_book()                                                     dnse, fhsc, tcbs        Ba bậc giá mua, bán tốt nhất
+    etf("E1VFVN30").proprietary_flow(start, end)                                     fhsc                    Tự doanh công ty chứng khoán mua, bán một mã, theo ngày
+    etf("E1VFVN30").quote()                                                          fhsc, tcbs              Bảng giá: giá, khối lượng phiên, ba bậc giá, khối ngoại của nhiều mã
+    etf("E1VFVN30").session_stats(start, end)                                        ssi                     Thống kê gộp một khoảng của một mã: tổng, bình quân mỗi phiên, khối ngoại, lệnh mua bán
+    etf("E1VFVN30").summary()                                                        fhsc                    Chỉ số định giá và sinh lời mới nhất của một mã
+    etf("E1VFVN30").trade_history(start, end)                                        ssi                     Thống kê từng phiên của một mã: giá, khớp lệnh, thoả thuận, lệnh đặt
+    etf("E1VFVN30").trades(start, end, limit)                                        dnse, tcbs              Từng lệnh khớp trong phiên
+    etf("E1VFVN30").volume_profile(date)                                             dnse, tcbs              Khối lượng khớp theo từng mức giá, tách mua, bán chủ động
+
+  forex · tỷ giá
+    forex("USDVND").ohlcv(start, end, interval, limit)                               fhsc, fmp               Nến tỷ giá
+
+  fund · quỹ mở
+    fund("MÃ").history(start, end)                                                   fhsc                    NAV trên một chứng chỉ quỹ mở theo ngày
+    fund("MÃ").performance()                                                         fhsc                    Lợi suất của quỹ mở theo kỳ, tính từ chuỗi NAV
+
+  futures · hợp đồng tương lai
+    futures("VN30F1M").ohlcv(start, end, interval)                                   dnse, ssi               Nến hợp đồng tương lai, theo mã liên tục
+    futures("VN30F1M").order_book()                                                  dnse, tcbs              Ba bậc giá mua, bán tốt nhất của hợp đồng tương lai
+    futures("VN30F1M").quote()                                                       dnse, tcbs              Bảng giá hợp đồng tương lai
+    futures("VN30F1M").trades(start, end, limit)                                     dnse                    Từng lệnh khớp hợp đồng tương lai
+
+  global_index · chỉ số quốc tế
+    index("MÃ", scope="global").ohlcv(start, end, interval, limit)                   fhsc, fmp               Nến chỉ số quốc tế
+
+  index · chỉ số
+    index("VNINDEX").foreign_flow(start, end)                                        fhsc, ssi               Khối ngoại mua, bán theo chỉ số, theo ngày
+    index("VNINDEX").ohlcv(start, end, interval)                                     dnse, fhsc, ssi, tcbs   Nến chỉ số
+    index("VNINDEX").proprietary_flow(start, end)                                    ssi                     Tự doanh công ty chứng khoán mua, bán theo chỉ số, theo ngày
+    index("VNINDEX").quote(start, end)                                               dnse, ssi               Chỉ số trong phiên: giá trị, thay đổi, khối lượng, độ rộng thị trường
+    index("VNINDEX").trade_history(start, end)                                       ssi                     Thống kê từng phiên của một chỉ số: giá trị, thanh khoản, độ rộng
+
+  warrant · chứng quyền
+    warrant("CFPT2601").ohlcv(start, end, interval)                                  tcbs                    Nến chứng quyền
+    warrant("CFPT2601").order_book()                                                 dnse                    Sổ lệnh chứng quyền, 3 bước giá
+    warrant("CFPT2601").quote(symbols)                                               tcbs                    Bảng giá chứng quyền
+    warrant("CFPT2601").trades()                                                     dnse                    Khớp lệnh chứng quyền
+
+◆ Reference  danh mục mã và thông tin tham chiếu
+  Bắt đầu bằng Reference("<nguồn>")  <nguồn>: nguồn bạn đã có khoá
+
+    Hàm                                                                              Nguồn có dữ liệu        Nội dung
+
+  bond · trái phiếu
+    bond.list(exchange, type, group)                                                 dnse, ssi
+
+  company · doanh nghiệp
+    company("FPT").events()                                                          fhsc, ssi
+    company("FPT").info()                                                            fhsc                    Hồ sơ doanh nghiệp: tên, ngành, giới thiệu
+    company("FPT").insider_trading()                                                 fhsc                    Giao dịch của người nội bộ, cổ đông lớn
+    company("FPT").ownership()                                                       fhsc                    Cơ cấu sở hữu theo nhóm cổ đông
+    company("FPT").shareholders()                                                    fhsc                    Cổ đông lớn
+    company("FPT").trading_stats(start, end)                                         ssi
+
+  equity · cổ phiếu
+    equity.by_group(group)                                                           ssi
+    equity.list(exchange, type, group)                                               dnse, ssi               Danh mục chứng khoán niêm yết, lọc theo sàn, loại, rổ chỉ số
+    equity.price_limits(date, exchange)                                              dnse, ssi               Giá tham chiếu, trần, sàn của mọi mã trong một ngày
+    equity("FPT").status()                                                           dnse                    Trạng thái giao dịch của mã: bình thường, cảnh báo, kiểm soát, tạm ngừng
+
+  etf · chứng chỉ quỹ ETF
+    etf.list(exchange, type, group)                                                  dnse, ssi               Danh mục chứng khoán niêm yết, lọc theo sàn, loại, rổ chỉ số
+
+  events · sự kiện doanh nghiệp
+    events.calendar(start, end, symbol)                                              fhsc, ssi               Lịch sự kiện quyền của doanh nghiệp: cổ tức, phát hành, chia tách
+    events.market()                                                                  fmp                     Ngày nghỉ của sàn
+
+  fund · quỹ mở
+    fund.list()                                                                      fhsc                    Danh sách quỹ mở
+    fund("MÃ").nav_report(start, end)                                                fhsc                    NAV trên một chứng chỉ quỹ mở theo ngày
+    fund("MÃ").profile()                                                             fhsc                    Thông tin quỹ mở: tên, NAV gần nhất, tổng NAV
+
+  futures · hợp đồng tương lai
+    futures.info()                                                                   tcbs                    Hợp đồng tương lai đang niêm yết, kèm mã liên tục
+    futures.list(exchange, type, group)                                              dnse, ssi
+
+  index · chỉ số
+    index.groups()                                                                   vnstock                 Nhóm chứng khoán và chỉ số của vnstock
+    index("VNINDEX").info()                                                          ssi                     Thông tin chỉ số: mã, tên, sàn
+    index.list(exchange)                                                             fhsc, ssi               Danh mục chỉ số
+    index("VNINDEX").members()                                                       ssi                     Thành phần của một rổ chỉ số
+
+  industry · ngành
+    industry.list()                                                                  ssi                     Ngành ICB đang có mã niêm yết
+    industry.sectors(exchange, type, group)                                          dnse, ssi
+
+  market · phiên và ngày giao dịch
+    market.sessions(exchange)                                                        dnse                    Mốc chuyển phiên trong ngày theo sàn và bảng
+    market.status()                                                                  fhsc                    Trạng thái hiện tại của từng sàn
+    market.trading_days(start, end)                                                  dnse                    Ngày giao dịch, đã trừ nghỉ lễ
+
+  search · tìm mã
+    search.symbol(query)                                                             fmp                     Tìm mã quốc tế theo mã hoặc tên
+
+  warrant · chứng quyền
+    warrant.info(underlying)                                                         ssi                     Chứng quyền đang niêm yết và đặc tả
+    warrant.list(underlying)                                                         dnse, ssi
+
+◆ Fundamental  báo cáo tài chính
+  Bắt đầu bằng Fundamental("fhsc")  nhóm này chỉ có ở nguồn này
+
+    Hàm                                                                              Nguồn có dữ liệu        Nội dung
+
+  equity · cổ phiếu
+    equity("FPT").balance_sheet(company_type, period, lang, drop_empty, format)      fhsc                    Bảng cân đối kế toán chuẩn hoá về taxonomy VAS, dạng dài (long), rộng (wide) hoặc chuỗi thời gian (time_series)
+    equity("FPT").cash_flow(company_type, period, lang, drop_empty, format)          fhsc                    Lưu chuyển tiền tệ (gián tiếp với doanh nghiệp) chuẩn hoá về taxonomy VAS, dạng dài (long), rộng (wide) hoặc chuỗi thời gian (time_series)
+    equity("FPT").income_statement(company_type, period, lang, drop_empty, format)   fhsc                    Kết quả hoạt động kinh doanh chuẩn hoá về taxonomy VAS, dạng dài (long), rộng (wide) hoặc chuỗi thời gian (time_series)
+
+91 hàm dùng được, thêm 47 tên khác giữ từ vnstock 5 cho cùng dữ liệu.
+Không liệt kê 65 hàm của vnstock 5 chưa có nguồn ở thế hệ 6 và 42 hàm đã ngừng: vnstock tools --all
+Cách gọi một hàm: vnstock doc Market.equity.ohlcv
+### tools Market.equity
+◆ Market  giá và giao dịch
+  Bắt đầu bằng Market("<nguồn>")  <nguồn>: nguồn bạn đã có khoá
+
+    Hàm                                                Nguồn có dữ liệu        Nội dung
+
+  equity · cổ phiếu
+    equity("FPT").active_flow(interval)                fhsc                    Khối lượng mua chủ động, bán chủ động theo phút, ngày, tháng (số liệu nguồn tự tính)
+    equity("FPT").block_trades(exchange)               tcbs                    Giao dịch thoả thuận đã khớp trong phiên, mọi mã của một sàn
+    equity("FPT").expected_price()                     dnse                    Giá, khối lượng khớp dự kiến trong phiên định kỳ ATO, ATC
+    equity("FPT").foreign_flow(start, end, interval)   dnse, fhsc, ssi         Khối ngoại mua, bán của một mã theo ngày (1D) hoặc trong phiên
+    equity.foreign_room(symbols)                       dnse, fhsc, ssi         Room ngoại còn lại và tổng room của nhiều mã
+    equity("FPT").insider_deal()                       fhsc
+    equity("FPT").ohlcv(start, end, interval)          dnse, fhsc, ssi, tcbs   Nến giá cổ phiếu, chứng chỉ quỹ ETF
+    equity("FPT").order_book()                         dnse, fhsc, tcbs        Ba bậc giá mua, bán tốt nhất
+    equity("FPT").proprietary_flow(start, end)         fhsc                    Tự doanh công ty chứng khoán mua, bán một mã, theo ngày
+    equity("FPT").quote()                              fhsc, tcbs              Bảng giá: giá, khối lượng phiên, ba bậc giá, khối ngoại của nhiều mã
+    equity("FPT").session_stats(start, end)            ssi                     Thống kê gộp một khoảng của một mã: tổng, bình quân mỗi phiên, khối ngoại, lệnh mua bán
+    equity("FPT").summary()                            fhsc                    Chỉ số định giá và sinh lời mới nhất của một mã
+    equity("FPT").trade_history(start, end)            ssi                     Thống kê từng phiên của một mã: giá, khớp lệnh, thoả thuận, lệnh đặt
+    equity("FPT").trades(start, end, limit)            dnse, tcbs              Từng lệnh khớp trong phiên
+    equity("FPT").volume_profile(date)                 dnse, tcbs              Khối lượng khớp theo từng mức giá, tách mua, bán chủ động
+
+15 hàm dùng được, thêm 7 tên khác giữ từ vnstock 5 cho cùng dữ liệu.
+Không liệt kê 2 hàm của vnstock 5 chưa có nguồn ở thế hệ 6 và 1 hàm đã ngừng: vnstock tools --all
+Cách gọi một hàm: vnstock doc Market.equity.ohlcv
+### tools Market.index
+◆ Market  giá và giao dịch
+  Bắt đầu bằng Market("<nguồn>")  <nguồn>: nguồn bạn đã có khoá
+
+    Hàm                                             Nguồn có dữ liệu        Nội dung
+
+  index · chỉ số
+    index("VNINDEX").foreign_flow(start, end)       fhsc, ssi               Khối ngoại mua, bán theo chỉ số, theo ngày
+    index("VNINDEX").ohlcv(start, end, interval)    dnse, fhsc, ssi, tcbs   Nến chỉ số
+    index("VNINDEX").proprietary_flow(start, end)   ssi                     Tự doanh công ty chứng khoán mua, bán theo chỉ số, theo ngày
+    index("VNINDEX").quote(start, end)              dnse, ssi               Chỉ số trong phiên: giá trị, thay đổi, khối lượng, độ rộng thị trường
+    index("VNINDEX").trade_history(start, end)      ssi                     Thống kê từng phiên của một chỉ số: giá trị, thanh khoản, độ rộng
+
+5 hàm dùng được, thêm 3 tên khác giữ từ vnstock 5 cho cùng dữ liệu.
+Không liệt kê 1 hàm đã ngừng: vnstock tools --all
+Cách gọi một hàm: vnstock doc Market.equity.ohlcv
+### tools Market.etf
+◆ Market  giá và giao dịch
+  Bắt đầu bằng Market("<nguồn>")  <nguồn>: nguồn bạn đã có khoá
+
+    Hàm                                                  Nguồn có dữ liệu        Nội dung
+
+  etf · chứng chỉ quỹ ETF
+    etf("E1VFVN30").block_trades()                       tcbs                    Giao dịch thoả thuận đã khớp trong phiên, mọi mã của một sàn
+    etf("E1VFVN30").foreign_flow(start, end, interval)   dnse, fhsc, ssi         Khối ngoại mua, bán của một mã theo ngày (1D) hoặc trong phiên
+    etf("E1VFVN30").ohlcv(start, end, interval)          dnse, fhsc, ssi, tcbs   Nến giá cổ phiếu, chứng chỉ quỹ ETF
+    etf("E1VFVN30").order_book()                         dnse, fhsc, tcbs        Ba bậc giá mua, bán tốt nhất
+    etf("E1VFVN30").proprietary_flow(start, end)         fhsc                    Tự doanh công ty chứng khoán mua, bán một mã, theo ngày
+    etf("E1VFVN30").quote()                              fhsc, tcbs              Bảng giá: giá, khối lượng phiên, ba bậc giá, khối ngoại của nhiều mã
+    etf("E1VFVN30").session_stats(start, end)            ssi                     Thống kê gộp một khoảng của một mã: tổng, bình quân mỗi phiên, khối ngoại, lệnh mua bán
+    etf("E1VFVN30").summary()                            fhsc                    Chỉ số định giá và sinh lời mới nhất của một mã
+    etf("E1VFVN30").trade_history(start, end)            ssi                     Thống kê từng phiên của một mã: giá, khớp lệnh, thoả thuận, lệnh đặt
+    etf("E1VFVN30").trades(start, end, limit)            dnse, tcbs              Từng lệnh khớp trong phiên
+    etf("E1VFVN30").volume_profile(date)                 dnse, tcbs              Khối lượng khớp theo từng mức giá, tách mua, bán chủ động
+
+11 hàm dùng được, thêm 7 tên khác giữ từ vnstock 5 cho cùng dữ liệu.
+Không liệt kê 1 hàm của vnstock 5 chưa có nguồn ở thế hệ 6 và 1 hàm đã ngừng: vnstock tools --all
+Cách gọi một hàm: vnstock doc Market.equity.ohlcv
+### tools Reference
+◆ Reference  danh mục mã và thông tin tham chiếu
+  Bắt đầu bằng Reference("<nguồn>")  <nguồn>: nguồn bạn đã có khoá
+
+    Hàm                                        Nguồn có dữ liệu   Nội dung
+
+  bond · trái phiếu
+    bond.list(exchange, type, group)           dnse, ssi
+
+  company · doanh nghiệp
+    company("FPT").events()                    fhsc, ssi
+    company("FPT").info()                      fhsc               Hồ sơ doanh nghiệp: tên, ngành, giới thiệu
+    company("FPT").insider_trading()           fhsc               Giao dịch của người nội bộ, cổ đông lớn
+    company("FPT").ownership()                 fhsc               Cơ cấu sở hữu theo nhóm cổ đông
+    company("FPT").shareholders()              fhsc               Cổ đông lớn
+    company("FPT").trading_stats(start, end)   ssi
+
+  equity · cổ phiếu
+    equity.by_group(group)                     ssi
+    equity.list(exchange, type, group)         dnse, ssi          Danh mục chứng khoán niêm yết, lọc theo sàn, loại, rổ chỉ số
+    equity.price_limits(date, exchange)        dnse, ssi          Giá tham chiếu, trần, sàn của mọi mã trong một ngày
+    equity("FPT").status()                     dnse               Trạng thái giao dịch của mã: bình thường, cảnh báo, kiểm soát, tạm ngừng
+
+  etf · chứng chỉ quỹ ETF
+    etf.list(exchange, type, group)            dnse, ssi          Danh mục chứng khoán niêm yết, lọc theo sàn, loại, rổ chỉ số
+
+  events · sự kiện doanh nghiệp
+    events.calendar(start, end, symbol)        fhsc, ssi          Lịch sự kiện quyền của doanh nghiệp: cổ tức, phát hành, chia tách
+    events.market()                            fmp                Ngày nghỉ của sàn
+
+  fund · quỹ mở
+    fund.list()                                fhsc               Danh sách quỹ mở
+    fund("MÃ").nav_report(start, end)          fhsc               NAV trên một chứng chỉ quỹ mở theo ngày
+    fund("MÃ").profile()                       fhsc               Thông tin quỹ mở: tên, NAV gần nhất, tổng NAV
+
+  futures · hợp đồng tương lai
+    futures.info()                             tcbs               Hợp đồng tương lai đang niêm yết, kèm mã liên tục
+    futures.list(exchange, type, group)        dnse, ssi
+
+  index · chỉ số
+    index.groups()                             vnstock            Nhóm chứng khoán và chỉ số của vnstock
+    index("VNINDEX").info()                    ssi                Thông tin chỉ số: mã, tên, sàn
+    index.list(exchange)                       fhsc, ssi          Danh mục chỉ số
+    index("VNINDEX").members()                 ssi                Thành phần của một rổ chỉ số
+
+  industry · ngành
+    industry.list()                            ssi                Ngành ICB đang có mã niêm yết
+    industry.sectors(exchange, type, group)    dnse, ssi
+
+  market · phiên và ngày giao dịch
+    market.sessions(exchange)                  dnse               Mốc chuyển phiên trong ngày theo sàn và bảng
+    market.status()                            fhsc               Trạng thái hiện tại của từng sàn
+    market.trading_days(start, end)            dnse               Ngày giao dịch, đã trừ nghỉ lễ
+
+  search · tìm mã
+    search.symbol(query)                       fmp                Tìm mã quốc tế theo mã hoặc tên
+
+  warrant · chứng quyền
+    warrant.info(underlying)                   ssi                Chứng quyền đang niêm yết và đặc tả
+    warrant.list(underlying)                   dnse, ssi
+
+31 hàm dùng được, thêm 9 tên khác giữ từ vnstock 5 cho cùng dữ liệu.
+Không liệt kê 10 hàm của vnstock 5 chưa có nguồn ở thế hệ 6 và 3 hàm đã ngừng: vnstock tools --all
+Cách gọi một hàm: vnstock doc Market.equity.ohlcv
+### tools Reference.index
+◆ Reference  danh mục mã và thông tin tham chiếu
+  Bắt đầu bằng Reference("<nguồn>")  <nguồn>: nguồn bạn đã có khoá
+
+    Hàm                          Nguồn có dữ liệu   Nội dung
+
+  index · chỉ số
+    index.groups()               vnstock            Nhóm chứng khoán và chỉ số của vnstock
+    index("VNINDEX").info()      ssi                Thông tin chỉ số: mã, tên, sàn
+    index.list(exchange)         fhsc, ssi          Danh mục chỉ số
+    index("VNINDEX").members()   ssi                Thành phần của một rổ chỉ số
+
+4 hàm dùng được, thêm 3 tên khác giữ từ vnstock 5 cho cùng dữ liệu.
+Cách gọi một hàm: vnstock doc Market.equity.ohlcv
+### tools Fundamental.equity
+◆ Fundamental  báo cáo tài chính
+  Bắt đầu bằng Fundamental("fhsc")  nhóm này chỉ có ở nguồn này
+
+    Hàm                                                                              Nguồn có dữ liệu   Nội dung
+
+  equity · cổ phiếu
+    equity("FPT").balance_sheet(company_type, period, lang, drop_empty, format)      fhsc               Bảng cân đối kế toán chuẩn hoá về taxonomy VAS, dạng dài (long), rộng (wide) hoặc chuỗi thời gian (time_series)
+    equity("FPT").cash_flow(company_type, period, lang, drop_empty, format)          fhsc               Lưu chuyển tiền tệ (gián tiếp với doanh nghiệp) chuẩn hoá về taxonomy VAS, dạng dài (long), rộng (wide) hoặc chuỗi thời gian (time_series)
+    equity("FPT").income_statement(company_type, period, lang, drop_empty, format)   fhsc               Kết quả hoạt động kinh doanh chuẩn hoá về taxonomy VAS, dạng dài (long), rộng (wide) hoặc chuỗi thời gian (time_series)
+
+3 hàm dùng được.
+Không liệt kê 5 hàm của vnstock 5 chưa có nguồn ở thế hệ 6: vnstock tools --all
+Cách gọi một hàm: vnstock doc Market.equity.ohlcv
+### doc Market.equity.ohlcv
+◆ Market.equity.ohlcv  Nến giá cổ phiếu, chứng chỉ quỹ ETF
+
+    from vnstock import Market
+    df = Market("<nguồn>").equity("FPT").ohlcv(start="2026-10-11")
+
+  Tham số    start=None, end=None, interval='1D'
+  Nguồn      dnse, fhsc, ssi, tcbs
+  Tên khác   history
+  Cột        time, open, high, low, close, volume
+
+  Dùng được ở mọi hàm
+    compat="v6"   tên cột mới của thế hệ 6 (mặc định giữ tên như vnstock 5)
+    columns="all" thêm mọi trường nguồn gửi
+    floating=2    số chữ số thập phân của giá
+
+### doc Market.equity.foreign_flow
+◆ Market.equity.foreign_flow  Khối ngoại mua, bán của một mã theo ngày (1D) hoặc trong phiên
+
+    from vnstock import Market
+    df = Market("<nguồn>").equity("FPT").foreign_flow(start="2026-10-11")
+
+  Tham số       start=None, end=None, interval='1D'
+  Nguồn         dnse, fhsc, ssi
+  Cột           time, buy_vol, buy_val, sell_vol, sell_val, net_vol, net_val
+  compat="v6"   time, foreign_buy_volume, foreign_buy_value, foreign_sell_volume, foreign_sell_value, foreign_net_volume, foreign_net_value
+
+  Dùng được ở mọi hàm
+    compat="v6"   tên cột mới của thế hệ 6 (mặc định giữ tên như vnstock 5)
+    columns="all" thêm mọi trường nguồn gửi
+    floating=2    số chữ số thập phân của giá
+
+### doc Market.equity.proprietary_flow
+◆ Market.equity.proprietary_flow  Tự doanh công ty chứng khoán mua, bán một mã, theo ngày
+
+    from vnstock import Market
+    df = Market("fhsc").equity("FPT").proprietary_flow(start="2026-10-11")
+
+  Tham số       start=None, end=None
+  Nguồn         fhsc
+  Cột           time, buy_vol, buy_val, sell_vol, sell_val, net_vol, net_val
+  compat="v6"   time, proprietary_buy_volume, proprietary_buy_value, proprietary_sell_volume, proprietary_sell_value, proprietary_net_volume, proprietary_net_value
+
+  Dùng được ở mọi hàm
+    compat="v6"   tên cột mới của thế hệ 6 (mặc định giữ tên như vnstock 5)
+    columns="all" thêm mọi trường nguồn gửi
+    floating=2    số chữ số thập phân của giá
+
+### doc Reference.index.members
+◆ Reference.index.members  Thành phần của một rổ chỉ số
+
+    from vnstock import Reference
+    df = Reference("ssi").index("VNINDEX").members()
+
+  Tham số       không có
+  Nguồn         ssi
+  Tên khác      by_group, list_by_group
+  Cột           symbol, index_symbol
+  compat="v6"   index_symbol, symbol
+
+  Dùng được ở mọi hàm
+    compat="v6"   tên cột mới của thế hệ 6 (mặc định giữ tên như vnstock 5)
+    columns="all" thêm mọi trường nguồn gửi
+    floating=2    số chữ số thập phân của giá
+
+### doc Fundamental.equity.ratio
+◆ Fundamental.equity.ratio
+  Chưa dùng được: chưa nguồn nào mà thế hệ 6 kết nối có dữ liệu này.
+
