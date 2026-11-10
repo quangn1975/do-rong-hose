@@ -83,15 +83,14 @@ for i, s in enumerate(syms):
     if i % 50 == 0: log(f"gia {i}/{len(syms)} {s} ({round(time.time() - t0)} giay)")
 px = pd.DataFrame(closes).sort_index()
 px = px[px.index < TODAY] if PHIEN_DANG_CHAY else px
-px = px.ffill(limit=5)   # ma khong khop lenh vai phien: giu gia phien truoc, toi da 5 phien
 st.append(log(f"Gia: {px.shape[1]}/{len(syms)} ma, {px.shape[0]} phien ({px.index.min()} -> {px.index.max()}), {len(loi)} ma loi, {round(time.time() - t0)} giay"))
 if px.shape[1] < 300 or px.shape[0] < 220:
     ghi_trang_thai("HONG - thieu du lieu gia, giu nguyen bang cu"); sys.exit(1)
 
 tren = {}
 for n in (20, 50, 200):
-    ma = px.rolling(n, min_periods=n).mean()
-    tren[n] = (px > ma).astype(float).where(ma.notna() & px.notna())   # 1 = tren MA, 0 = duoi, NaN = chua du phien
+    ma = px.rolling(n, min_periods=int(n * 0.8)).mean()   # ma it thanh khoan: can co gia it nhat 80% so phien cua ky
+    tren[n] = (px > ma).astype(float).where(ma.notna() & px.notna())   # 1 = tren MA, 0 = duoi, NaN = khong khop lenh phien do / chua du du lieu
 def do_rong(ma, n):
     t = tren[n][[m for m in ma if m in px.columns]]
     return (t.sum(axis=1) / t.count(axis=1) * 100).round(1), t.count(axis=1)
