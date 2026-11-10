@@ -1,3 +1,43 @@
-Chay luc 2026-11-10 10:24 (gio VN)
-Co khoa trong moi truong: {'VNSTOCK_API_KEY': True, 'SSI_API_KEY': True, 'SSI_API_SECRET': True}
-LOI khoi dong: AuthError Đã đạt số thiết bị tối đa của cấp tài khoản (VNSTOCK_AUTH_DEVICE_LIMIT) (code=VNSTOCK_AUTH_FAILED)
+Chay luc 2026-11-10 10:26 (gio VN)
+vnstock_oapi 0.1.0rc3 | ten: ['Any', 'Envelope', 'Envelopes', 'Source', 'SourceSpec', 'Terms', 'UnsupportedError', 'annotations', 'binance', 'core', 'dnse', 'errors', 'fhsc', 'fmp', 'load', 'load_terms', 'register', 'registry', 'source', 'sources', 'ssi', 'status', 'tcbs', 'terms', 'wrap']
+=== HAM CUA NGUON SSI ===
+  authenticate(otp: 'str | None' = None) -> 'dict[str, Any]'  # Authenticate with the source (open a session), with the OTP when the source asks for one.
+  calendar() -> 'Envelopes'  # Trading calendar.
+  check() -> 'dict[str, Any]'  # Find the keys and make the source's cheapest call. Errors go in the row, not raised.
+  clear_auth() -> 'None'  # Drop the session held for this source. Xoá phiên đang giữ của nguồn.
+  close() -> 'None'  # 
+  corporate_actions(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Corporate actions (dividends, rights, meetings...); ranges split into 5-day calls.
+  events(symbol: 'str | None' = None, *, start: 'str | date | datetime | None' = None, end: 'str | date | datetime | None' = None) -> 'Envelopes'  # Corporate actions.
+  foreign(symbol: 'str', *, start: 'str | date | datetime | None' = None, end: 'str | date | datetime | None' = None, limit: 'int | None' = None) -> 'Envelopes'  # Foreign investor trading.
+  forget_credentials() -> 'None'  # Read the keys again on next use, after they changed.
+  index(name: 'str', *, start: 'str | date | datetime | None' = None, end: 'str | date | datetime | None' = None, limit: 'int | None' = None) -> 'Envelopes'  # Index data.
+  index_list(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Indices with their code, name and board (data-indexList).
+  index_members(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Constituents of an index, with reference fields (data-securitiesByBoard by index).
+  index_summary(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Index summary per trading day: value, breadth, foreign and proprietary flows.
+  ohlc(symbol: 'str', *, start: 'str | date | datetime | None' = None, end: 'str | date | datetime | None' = None, interval: 'str' = '1D', limit: 'int | None' = None, asset: 's  # OHLC bars. The body stays exactly as the source sent it.
+  plan(name: 'str', *args: 'Any', **kwargs: 'Any') -> 'list[Plan]'  # The calls a common verb or extra function would make, without making them.
+  preview(verb_or_op: 'str', *args: 'Any', **kwargs: 'Any') -> 'dict[str, Any]'  # What would be sent, without sending it. Secrets are masked.
+  price_limits(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Reference, ceiling and floor prices of every symbol per day (data-masterdata).
+  quote(symbol: 'str') -> 'Envelopes'  # Latest price and order book.
+  raise_for_status(response: 'Response', operation: 'str') -> 'None'  # 
+  raw(operation: 'str', *, only_page: 'int | None' = None, **params: 'Any') -> 'Envelopes'  # Call a source operation by its own name, with its own parameters.
+  security(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Reference fields of one security: names, ICB, listed shares, lot size, warrant terms.
+  static_headers() -> 'dict[str, str]'  # 
+  status() -> 'dict[str, Any]'  # 
+  summary(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Daily session summary of a symbol or of an index basket (data-securitiesSummary).
+  symbols(*args: 'Any', **filters: 'Any') -> 'Envelopes'  # Instrument list. Arguments follow the source's builder, e.g. ``ssi.symbols("HOSE")``.
+  trades(symbol: 'str', *, start: 'str | date | datetime | None' = None, end: 'str | date | datetime | None' = None, limit: 'int | None' = None, board: 'str | None' = None) -> 'E  # Tick-by-tick trades; ``board`` keeps one trading board where the source mixes several.
+## OK   ohlc FPT -> 1 trang, 8 muc, 1.4 giay | khoa ngoai: ['pageSize', 'pageIndex', 'data', 'code', 'msg']
+   mau: {"symbol": "FPT", "tradingDate": "2026/10/29", "open": "54500", "high": "54800", "low": "52500", "close": "52700", "volume": "12591100", "value": "663550970000"}
+## OK   ohlc VNINDEX -> 1 trang, 8 muc, 0.2 giay | khoa ngoai: ['pageSize', 'pageIndex', 'data', 'code', 'msg']
+   mau: {"symbol": "VNINDEX", "tradingDate": "2026/10/29", "open": "1769.08", "high": "1769.08", "low": "1750.55", "close": "1755.61", "volume": "618903731", "value": "1086553579180.91"}
+## OK   index_members {'index': 'VN100'} -> 1 trang, 100 muc, 1.4 giay | khoa ngoai: list
+   mau: {"symbol": "VCB", "symbolNameVi": "Ngân hàng Thương mại Cổ phần Ngoại thương Việt Nam", "symbolNameEn": "Joint Stock Commercial Bank For Foreign Trade Of Vietnam", "board": "HOSE", "lotSize": "100", "maturityDate": "", "firstTradingDate": "", "lastTradingDate": "", "cwUnderlyingSymbol": null, "cwExercisePrice": "0", "cwExecutionRatio": "0", "listedShare": "8355675094", "icbCode": "8355", "icbName": "Ngân hàng", "iIndex": null, "iNav": null, "openInterest": null, "settlementPrice": null, "stockType": "Stock"}
+## LOI  symbols {'exchange': 'HOSE'} -> TypeError: _symbols() got an unexpected keyword argument 'exchange'
+## OK  [vnstock khong login] gia FPT -> 8 dong, 1.2 giay | cot: ['time', 'open', 'high', 'low', 'close', 'volume']
+## OK  [vnstock khong login] khoi ngoai FPT -> 8 dong, 0.2 giay | cot: ['time', 'buy_vol', 'buy_val', 'sell_vol', 'sell_val', 'net_vol', 'net_val']
+## OK  [vnstock khong login] thong ke phien VNINDEX -> 8 dong, 2.2 giay | cot: ['trading_date', 'price_change', 'percent_price_change', 'reference_price', 'close', 'matched_volume', 'matched_value', 'deal_volume', 'deal_value', 'total_volume']
+## OK  [vnstock khong login] tu doanh ro VN100 -> 8 dong, 2.0 giay | cot: ['time', 'proprietary_buy_volume', 'proprietary_buy_value', 'proprietary_sell_volume', 'proprietary_sell_value', 'proprietary_net_volume', 'proprietary_net_value']
+## OK  [vnstock khong login] thanh phan VN100 -> 100 dong, 0.3 giay | cot: ['symbol', 'index_symbol']
+## OK  [vnstock khong login] danh sach HOSE -> 408 dong, 16.9 giay | cot: ['symbol', 'exchange', 'type', 'organ_name', 'organ_short_name', 'icb_code', 'icb_name', 'name_en', 'listing_date', 'listed_shares']
+## TOC DO: 20 ma gia ~320 ngay: 20/20 duoc, 6.1 giay. Loi cuoi: khong
