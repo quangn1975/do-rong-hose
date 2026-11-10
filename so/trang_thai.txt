@@ -1,7 +1,7 @@
-Lan chay: 10/11/2026 10:50 (gio VN)
+Lan chay: 10/11/2026 10:59 (gio VN)
 Ket qua: OK
 Danh sach: HOSE 408 ma, VN30 30, VN100 100
-Gia: 408/408 ma, 517 phien (2024-10-11 -> 2026-11-09), 0 ma loi, 141 giay
+Gia: 408/408 ma, 517 phien (2024-10-11 -> 2026-11-09), 0 ma loi, 187 giay
 Ro dong tien: 270 dong, phien moi nhat 2026-11-09
 Do rong: 300 phien, moi nhat 2026-11-09
 VN100 chi tiet: 100/100 ma, 2000 dong, phien moi nhat 2026-11-09, 0 ma loi
