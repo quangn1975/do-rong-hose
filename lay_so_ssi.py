@@ -87,7 +87,10 @@ st.append(log(f"Gia: {px.shape[1]}/{len(syms)} ma, {px.shape[0]} phien ({px.inde
 if px.shape[1] < 300 or px.shape[0] < 220:
     ghi_trang_thai("HONG - thieu du lieu gia, giu nguyen bang cu"); sys.exit(1)
 
-tren = {n: (px > px.rolling(n, min_periods=n).mean()).where(px.rolling(n, min_periods=n).mean().notna()) for n in (20, 50, 200)}
+tren = {}
+for n in (20, 50, 200):
+    ma = px.rolling(n, min_periods=n).mean()
+    tren[n] = (px > ma).astype(float).where(ma.notna() & px.notna())   # 1 = tren MA, 0 = duoi, NaN = chua du phien
 def do_rong(ma, n):
     t = tren[n][[m for m in ma if m in px.columns]]
     return (t.sum(axis=1) / t.count(axis=1) * 100).round(1), t.count(axis=1)
@@ -172,7 +175,7 @@ for i, s in enumerate(vn100):
         d["Lệnh mua / lệnh bán (lần)"] = (d["KL TB mỗi lệnh mua"] / d["KL TB mỗi lệnh bán"]).round(2)
         for n in (20, 50, 200):
             if s in px.columns:
-                t = tren[n][s]; d[f"Trên MA{n}"] = d["Ngày"].map(lambda x: "" if pd.isna(t.get(x, float("nan"))) else ("x" if t.get(x) else "-"))
+                t = tren[n][s]; d[f"Trên MA{n}"] = d["Ngày"].map(lambda x: "" if pd.isna(t.get(x, float("nan"))) else ("x" if t.get(x) == 1 else "-"))
             else: d[f"Trên MA{n}"] = ""
         d["Thuộc VN30"] = "x" if s in vn30 else ""
         ct.append(bo_hom_nay(d, "Ngày").sort_values("Ngày").tail(N_PHIEN_CT))
