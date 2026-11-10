@@ -1,8 +1,0 @@
-MA20 2025-12-31: tren 20/29 | sat MA (<0.02): {'SHB': 0.002464, 'SSB': -0.00207425} | khong co gia: [] | MA tinh khi chua du 20 phien: []
-MA20 2026-04-15: tren 23/30 | sat MA (<0.02): {'MWG': -0.0194338, 'SSB': -0.01037125, 'VNM': 0.0} | khong co gia: [] | MA tinh khi chua du 20 phien: []
-MA20 2026-04-28: tren 17/30 | sat MA (<0.02): {'HPG': 0.00223215, 'MSN': 0.01} | khong co gia: [] | MA tinh khi chua du 20 phien: []
-MA50 2026-03-31: tren 1/30 | sat MA (<0.02): {'SHB': -0.0029568} | khong co gia: [] | MA tinh khi chua du 50 phien: []
-MA50 2026-04-29: tren 14/30 | sat MA (<0.02): {'MWG': 3.8e-07} | khong co gia: [] | MA tinh khi chua du 50 phien: []
-MA50 2026-05-15: tren 19/30 | sat MA (<0.02): {'VIB': 0.00066382} | khong co gia: [] | MA tinh khi chua du 50 phien: []
-MA200 2026-09-22: tren 14/30 | sat MA (<0.02): {'TCB': 0.001397065} | khong co gia: [] | MA tinh khi chua du 200 phien: ['MCH']
-so phien moi ma: {'BSR': 509, 'MCH': 512, 'TCX': 262, 'VPL': 375}
