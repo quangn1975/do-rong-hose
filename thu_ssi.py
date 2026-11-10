@@ -1,80 +1,61 @@
-"""Chay thu tren GitHub: goi thang SSI qua vnstock_oapi (KHONG dang nhap vnstock, khong ton 'thiet bi').
-Ket qua: data/thu_ssi.txt (khong in khoa)."""
-import os, sys, time, inspect, json
+"""Tim hieu cach thu vien goi SSI (dia chi, tham so) de viet lai goi THANG SSI, khong can thu vien vnstock.
+Chi in cau truc yeu cau (khoa da duoc che), khong in khoa. Ket qua: data/thu_ssi.txt"""
+import os, sys, json, inspect, re
 from datetime import datetime, timezone, timedelta
-SECRETS = [v for v in (os.environ.get(k, "") for k in ("VNSTOCK_API_KEY", "SSI_API_KEY", "SSI_API_SECRET")) if v]
+SECRETS = [v for v in (os.environ.get(k, "") for k in ("SSI_API_KEY", "SSI_API_SECRET")) if v]
 out = []
 def p(*a):
     s = " ".join(str(x) for x in a)
     for v in SECRETS: s = s.replace(v, "***")
-    out.append(s); print(s, flush=True)
-def ghi():
-    open("data/thu_ssi.txt", "w").write("\n".join(out)[:60000] + "\n")
+    s = re.sub(r"eyJ[A-Za-z0-9_\-\.]{20,}", "***TOKEN***", s)
+    out.append(s); print(s[:300], flush=True)
+def ghi(): open("data/thu_ssi.txt", "w").write("\n".join(out)[:150000] + "\n")
 now = datetime.now(timezone(timedelta(hours=7)))
-p("Chay luc", now.strftime("%Y-%m-%d %H:%M"), "(gio VN)")
-END = now.strftime("%Y-%m-%d"); START = (now - timedelta(days=12)).strftime("%Y-%m-%d")
-try:
-    import vnstock_oapi as oapi
-    p("vnstock_oapi", getattr(oapi, "__version__", "?"), "| ten:", [n for n in dir(oapi) if not n.startswith("_")][:60])
-    src = oapi.source("ssi")
-except Exception as e:
-    p("LOI khoi dong:", type(e).__name__, str(e)[:300]); ghi(); sys.exit(0)
-p("=== HAM CUA NGUON SSI ===")
-for n in dir(src):
-    if n.startswith("_"): continue
-    a = getattr(src, n, None)
-    if callable(a):
-        try: sig = str(inspect.signature(a))
-        except Exception: sig = "(?)"
-        doc = (inspect.getdoc(a) or "").split("\n")[0][:110]
-        p(f"  {n}{sig[:170]}  # {doc}")
-def body(res):
+END = now.strftime("%Y-%m-%d"); START = (now - timedelta(days=6)).strftime("%Y-%m-%d")
+import vnstock_oapi as oapi
+src = oapi.source("ssi")
+def xem(label, *a, **k):
+    try: p("## PREVIEW", label, "->", json.dumps(src.preview(*a, **k), ensure_ascii=False, default=str)[:1500])
+    except Exception as e: p("## PREVIEW LOI", label, type(e).__name__, str(e)[:300])
+    try: p("## PLAN", label, "->", str(src.plan(*a, **k))[:1500])
+    except Exception as e: p("## PLAN LOI", label, type(e).__name__, str(e)[:200])
+xem("ohlc FPT", "ohlc", "FPT", start=START, end=END)
+xem("ohlc VNINDEX", "ohlc", "VNINDEX", start=START, end=END)
+xem("index VN30", "index", "VN30", start=START, end=END)
+xem("foreign FPT", "foreign", "FPT", start=START, end=END)
+xem("index_summary VN100", "index_summary", "VN100", start=START, end=END)
+xem("index_members VN100", "index_members", "VN100")
+xem("index_list", "index_list")
+xem("symbols HOSE", "symbols", "HOSE")
+xem("summary FPT", "summary", "FPT", start=START, end=END)
+xem("security FPT", "security", "FPT")
+def mau(label, fn):
     try:
-        b = [e.body for e in res] if isinstance(res, (list, tuple)) else [getattr(res, "body", res)]
-    except Exception:
-        b = [res]
-    return b
-def thu(label, fn):
-    t = time.time()
-    try:
-        res = fn(); b = body(res); x = b[0] if b else None
+        res = fn(); b = [e.body for e in res]; x = b[0]
         d = x.get("data", x) if isinstance(x, dict) else x
-        n = len(d) if isinstance(d, (list, dict)) else "?"
-        mau = d[-1] if isinstance(d, list) and d else d
-        p("## OK  ", label, f"-> {len(b)} trang, {n} muc, {round(time.time()-t,1)} giay | khoa ngoai:", list(x.keys())[:12] if isinstance(x, dict) else type(x).__name__)
-        p("   mau:", json.dumps(mau, ensure_ascii=False, default=str)[:600])
-        return res
-    except Exception as e:
-        p("## LOI ", label, "->", type(e).__name__ + ":", str(e)[:300]); return None
-thu("ohlc FPT", lambda: src.ohlc("FPT", start=START, end=END))
-thu("ohlc VNINDEX", lambda: src.ohlc("VNINDEX", start=START, end=END))
-for n, kw in (("board", {"basket": "VN30"}), ("board", {"basket": "VN100"}), ("board", {"basket": "HOSE"}),
-              ("foreign_room", {"basket": "VN30"}), ("foreign_flow", {"symbol": "FPT", "start": START, "end": END}),
-              ("index_members", {"index": "VN100"}), ("members", {"index": "VN100"}), ("symbols", {"exchange": "HOSE"})):
-    if hasattr(src, n):
-        thu(f"{n} {kw}", lambda: getattr(src, n)(**kw))
-# thu ca duong vnstock khong dang nhap (neu duoc thi dung ham co san)
+        p("## MAU", label, f"-> {len(b)} trang | khoa ngoai: {list(x.keys())[:12] if isinstance(x, dict) else type(x).__name__} | so muc: {len(d) if hasattr(d,'__len__') else '?'}")
+        p("   ", json.dumps(d[0] if isinstance(d, list) and d else d, ensure_ascii=False, default=str)[:1800])
+        e0 = res[0]
+        p("   envelope:", {k: str(getattr(e0, k, None))[:200] for k in dir(e0) if not k.startswith("_") and k not in ("body",) and not callable(getattr(e0, k, None))})
+    except Exception as e: p("## MAU LOI", label, type(e).__name__, str(e)[:300])
+mau("index_summary VN100", lambda: src.index_summary("VN100", start=START, end=END))
+mau("index_summary VNINDEX", lambda: src.index_summary("VNINDEX", start=START, end=END))
+mau("summary FPT", lambda: src.summary("FPT", start=START, end=END))
+mau("foreign FPT", lambda: src.foreign("FPT", start=START, end=END))
+mau("index VN30", lambda: src.index("VN30", start=START, end=END))
+mau("symbols HOSE", lambda: src.symbols("HOSE"))
+mau("index_members VN30", lambda: src.index_members("VN30"))
+# ma nguon phan SSI: dia chi goc, cach lay token
 try:
-    from vnstock import Market, Reference
-    M = Market("ssi"); R = Reference("ssi")
-    def thu2(label, fn):
-        t = time.time()
-        try:
-            r = fn(); p("## OK  [vnstock khong login]", label, "->", len(r), "dong,", round(time.time()-t,1), "giay | cot:", list(r.columns)[:10]); return r
-        except Exception as e:
-            p("## LOI [vnstock khong login]", label, "->", type(e).__name__ + ":", str(e)[:220]); return None
-    thu2("gia FPT", lambda: M.equity("FPT").ohlcv(start=START, end=END))
-    thu2("khoi ngoai FPT", lambda: M.equity("FPT").foreign_flow(start=START, end=END))
-    thu2("thong ke phien VNINDEX", lambda: M.index("VNINDEX").trade_history(start=START, end=END))
-    thu2("tu doanh ro VN100", lambda: M.index("VN100").proprietary_flow(start=START, end=END))
-    v = thu2("thanh phan VN100", lambda: R.index("VN100").members())
-    thu2("danh sach HOSE", lambda: R.equity().list(exchange="HOSE"))
-    if v is not None:
-        S2 = (now - timedelta(days=320)).strftime("%Y-%m-%d"); t = time.time(); ok = 0; loi = ""
-        for s in list(v["symbol"])[:20]:
-            try: ok += 1 if len(M.equity(s).ohlcv(start=S2, end=END)) else 0
-            except Exception as e: loi = type(e).__name__ + ": " + str(e)[:200]
-        p(f"## TOC DO: 20 ma gia ~320 ngay: {ok}/20 duoc, {round(time.time()-t,1)} giay. Loi cuoi: {loi or 'khong'}")
+    import vnstock_oapi.ssi as m
+    p("## FILE", getattr(m, "__file__", "?"))
+    import pkgutil
+    path = list(getattr(m, "__path__", [])) or [os.path.dirname(m.__file__)]
+    for root, _, files in os.walk(path[0] if os.path.isdir(path[0]) else os.path.dirname(m.__file__)):
+        for f in sorted(files):
+            if f.endswith((".py", ".json", ".yaml", ".yml", ".toml")) and "ssi" in (root + f).lower():
+                t = open(os.path.join(root, f), encoding="utf-8", errors="replace").read()
+                p(f"## SRC {os.path.join(root, f)} ({len(t)} ky tu)"); p(t[:14000])
 except Exception as e:
-    p("LOI vnstock khong login:", type(e).__name__, str(e)[:300])
+    p("## SRC LOI", type(e).__name__, str(e)[:300])
 ghi()
