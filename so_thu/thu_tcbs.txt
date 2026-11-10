@@ -1,6 +1,6 @@
-Chay luc 2026-11-10 14:37 (gio VN) | bien TCBS co trong moi truong: ['TCBS_API_KEY']
-## status: {"source": "tcbs", "profile": "default", "keys": "thiếu: Chưa có khoá: TCBS_API_KEY. Đặt trong biến môi trường, tệp .env, hoặc chạy `vnstock-oapi keys set tcbs`"}
-## check: {"source": "tcbs", "ok": false, "error": "CredentialError: Chưa có khoá: TCBS_API_KEY. Đặt trong biến môi trường, tệp .env, hoặc chạy `vnstock-oapi keys set tcbs` (source=tcbs)"}
+Chay luc 2026-11-10 14:42 (gio VN) | bien TCBS co trong moi truong: ['TCBS_API_KEY']
+## status: {"source": "tcbs", "profile": "default", "keys": {"api_key": "env"}, "auth": "otp_token", "storage": "keyring", "session": "chưa có phiên"}
+## check: {"source": "tcbs", "keys": {"api_key": "env"}, "ok": false, "error": "OtpRequiredError: Phiên tcbs chưa mở. Chạy `vnstock-oapi auth tcbs` và nhập OTP (source=tcbs)"}
 === HAM CUA NGUON TCBS ===
   authenticate(otp: 'str | None' = None) -> 'dict[str, Any]'  # Authenticate with the source (open a session), with the OTP when the source asks for one.
   board(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Price board of several symbols, or of a basket such as VN30 or HOSE (5.1).
@@ -27,11 +27,11 @@ Chay luc 2026-11-10 14:37 (gio VN) | bien TCBS co trong moi truong: ['TCBS_API_K
   supply_demand(*args: 'Any', **kwargs: 'Any') -> 'Envelopes'  # Active buy and sell flow by investor size: ``intraday`` (15m), ``daily`` or ``monthly`` (5.6-5.8).
   symbols(*args: 'Any', **filters: 'Any') -> 'Envelopes'  # Instrument list. Arguments follow the source's builder, e.g. ``ssi.symbols("HOSE")``.
   trades(symbol: 'str', *, start: 'str | date | datetime | None' = None, end: 'str | date | datetime | None' = None, limit: 'int | None' = None, board: 'str |  # Tick-by-tick trades; ``board`` keeps one trading board where the source mixes several.
-## LOI  gia FPT (ohlc) -> CredentialError: Chưa có khoá: TCBS_API_KEY. Đặt trong biến môi trường, tệp .env, hoặc chạy `vnstock-oapi keys set tcbs` (source=tcbs) | code: None | action: 
-## LOI  bang gia ro VN30 (board) -> CredentialError: Chưa có khoá: TCBS_API_KEY. Đặt trong biến môi trường, tệp .env, hoặc chạy `vnstock-oapi keys set tcbs` (source=tcbs) | code: None | action: 
-## LOI  room ngoai VN30 (foreign_room) -> CredentialError: Chưa có khoá: TCBS_API_KEY. Đặt trong biến môi trường, tệp .env, hoặc chạy `vnstock-oapi keys set tcbs` (source=tcbs) | code: None | action: 
-## LOI  lenh khop FPT (stock/price-history) -> CredentialError: Chưa có khoá: TCBS_API_KEY. Đặt trong biến môi trường, tệp .env, hoặc chạy `vnstock-oapi keys set tcbs` (source=tcbs) | code: None | action: 
-## LOI  lenh khop FPT (trades) -> CredentialError: Chưa có khoá: TCBS_API_KEY. Đặt trong biến môi trường, tệp .env, hoặc chạy `vnstock-oapi keys set tcbs` (source=tcbs) | code: None | action: 
+## LOI  gia FPT (ohlc) -> OtpRequiredError: Phiên tcbs chưa mở. Chạy `vnstock-oapi auth tcbs` và nhập OTP (source=tcbs) | code: None | action: 
+## LOI  bang gia ro VN30 (board) -> OtpRequiredError: Phiên tcbs chưa mở. Chạy `vnstock-oapi auth tcbs` và nhập OTP (source=tcbs) | code: None | action: 
+## LOI  room ngoai VN30 (foreign_room) -> OtpRequiredError: Phiên tcbs chưa mở. Chạy `vnstock-oapi auth tcbs` và nhập OTP (source=tcbs) | code: None | action: 
+## LOI  lenh khop FPT (stock/price-history) -> OtpRequiredError: Phiên tcbs chưa mở. Chạy `vnstock-oapi auth tcbs` và nhập OTP (source=tcbs) | code: None | action: 
+## LOI  lenh khop FPT (trades) -> OtpRequiredError: Phiên tcbs chưa mở. Chạy `vnstock-oapi auth tcbs` và nhập OTP (source=tcbs) | code: None | action: 
 ## LOI  mo phien KHONG co OTP (authenticate) -> OtpRequiredError: tcbs cần OTP để mở phiên (source=tcbs) | code: None | action: 
 ## PREVIEW ohlc: {"method": "GET", "url": "https://openapi.tcbs.com.vn/nyx/v2/stock/bars-long-term", "query": {"ticker": "FPT", "type": "stock", "to": 1794329999, "resolution": "D", "countBack": 31}, "headers": {"Content-Type": "application/json", "Authorization": "Bearer *** (token lấy từ kho phiên lúc gửi)"}, "operation": "stock/bars-long-term", "doc": "https://developers.tcbs.com.vn/docs/v1.0.0/stock/bars-long-term/", "calls": 1}
 ## PREVIEW board: {"method": "GET", "url": "https://openapi.tcbs.com.vn/tartarus/v1/tickerCommons", "query": {"index": 2}, "headers": {"Content-Type": "application/json", "Authorization": "Bearer *** (token lấy từ kho phiên lúc gửi)"}, "operation": "stock/market-symbol", "doc": "https://developers.tcbs.com.vn/docs/v1.0.0/stock/market-symbol/", "calls": 1}
