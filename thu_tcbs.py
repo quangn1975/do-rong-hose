@@ -19,7 +19,8 @@ for name in ("status", "check"):
 p("=== HAM CUA NGUON TCBS ===")
 for n in dir(src):
     if n.startswith("_"): continue
-    a = getattr(src, n, None)
+    try: a = getattr(src, n, None)
+    except Exception: continue
     if callable(a):
         try: sig = str(inspect.signature(a))
         except Exception: sig = "(?)"

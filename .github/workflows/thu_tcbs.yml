@@ -15,7 +15,6 @@ jobs:
           /tmp/v6/bin/pip install -q -U --extra-index-url https://vnstocks.com/api/packages "vnstock-oapi==0.1.0rc3"
       - env:
           TCBS_API_KEY: ${{ secrets.TCBS_API_KEY }}
-          TCBS_API_SECRET: ${{ secrets.TCBS_API_SECRET }}
         run: VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v6/bin/python thu_tcbs.py || true
       - if: always()
         run: |
