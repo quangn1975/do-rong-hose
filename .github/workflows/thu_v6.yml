@@ -1,0 +1,44 @@
+name: thu_v6
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Cai vnstock the he 6
+        run: |
+          python -m venv /tmp/v6
+          /tmp/v6/bin/pip install -q -U pandas --extra-index-url https://vnstocks.com/api/packages "vnstock==6.0.0rc4" "vnstock-oapi==0.1.0rc3" \
+            || /tmp/v6/bin/pip install -q -U --pre pandas --extra-index-url https://vnstocks.com/api/packages vnstock
+          /tmp/v6/bin/pip list 2>/dev/null | grep -i vnstock || true
+      - name: Thong tin cong cu (khong in khoa, khong in tai khoan)
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: |
+          mkdir -p data
+          export VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1
+          V=/tmp/v6/bin
+          {
+            echo "### version"; $V/vnstock version
+            echo "### register"; echo "$VNSTOCK_API_KEY" | $V/vnstock register --stdin | tail -3
+            echo "### usage"; $V/vnstock usage
+            echo "### policy"; $V/vnstock policy | head -60
+            echo "### keys"; $V/vnstock keys | head -30
+            for t in "" Market.equity Market.index Market.etf Reference Reference.index Fundamental.equity; do echo "### tools $t"; $V/vnstock tools $t; done
+            for d in Market.equity.ohlcv Market.equity.foreign_flow Market.equity.proprietary_flow Reference.index.members Fundamental.equity.ratio; do echo "### doc $d"; $V/vnstock doc $d | head -45; done
+          } 2>&1 | sed "s/$VNSTOCK_API_KEY/***/g" | sed -E 's/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}/***@***/g' > data/thu_v6_cli.txt || true
+      - name: Chay thu lay so
+        env:
+          VNSTOCK_API_KEY: ${{ secrets.VNSTOCK_API_KEY }}
+        run: VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v6/bin/python thu_v6.py || true
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A data
+          git commit -m "thu v6" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
