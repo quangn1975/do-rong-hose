@@ -19,8 +19,6 @@ jobs:
     if: github.actor == github.repository_owner && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 150
-    env:
-      KHO_TAM: ${{ runner.temp }}/kho_tam
     steps:
       - name: Che ma OTP khoi nhat ky
         run: |
@@ -47,6 +45,7 @@ jobs:
       - name: Xoa phien TCBS khoi may chu
         if: always()
         run: |
+          KHO_TAM="$RUNNER_TEMP/kho_tam"
           if [ -d "$KHO_TAM" ]; then find "$KHO_TAM" -type f -exec shred -u {} + 2>/dev/null || true; rm -rf "$KHO_TAM"; fi
           rm -rf "$HOME/.local/share/python_keyring" "$RUNNER_TEMP/req.txt"
           echo "Da xoa phien."
