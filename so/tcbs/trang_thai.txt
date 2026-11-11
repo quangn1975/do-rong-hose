@@ -1,4 +1,5 @@
-Lan chay: 11/11/2026 10:33 (gio VN)
-Ket qua: THU OK
-VN30: 3/3 ma, 4608 lenh khop, 0.8 phut, TCBS bao qua tai 0 lan, toc do cuoi 0.7 giay/lan goi
-Che do THU trong gio giao dich: chi 3 ma, KHONG ghi vao bang ngay.
+Lan chay: 11/11/2026 15:11 (gio VN)
+Ket qua: OK
+VN30: 30/30 ma, 112774 lenh khop, 19.3 phut, TCBS bao qua tai 0 lan, toc do cuoi 0.7 giay/lan goi
+Tong VN30: {"ngay": "2026-11-11", "mua": 2.096, "ban": 2.077, "rong": 0.019}
+Quy ETF: 21/21 ma
