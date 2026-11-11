@@ -1,7 +1,7 @@
-Lan chay: 10/11/2026 14:44 (gio VN)
-Ket qua: HONG - SSI tu choi dang nhap, giu nguyen bang cu
-SSI tu choi dang nhap: AuthenticationError API error 403: <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<m
+Lan chay: 11/11/2026 15:46 (gio VN)
+Ket qua: OK
+Danh sach: HOSE 408 ma, VN30 30, VN100 100
+Gia: 408/408 ma, 518 phien (2024-10-14 -> 2026-11-11), 0 ma loi, 192 giay
+Ro dong tien: 270 dong, phien moi nhat 2026-11-11
+Do rong: 300 phien, moi nhat 2026-11-11
+VN100 chi tiet: 100/100 ma, 2000 dong, phien moi nhat 2026-11-11, 0 ma loi
