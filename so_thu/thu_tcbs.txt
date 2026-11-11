@@ -1,4 +1,5 @@
-Chay luc 2026-11-11 09:06:02 (gio VN) | co OTP: False | do dai OTP: 0
+Chay luc 2026-11-11 09:07:51 (gio VN) | co OTP: True | do dai OTP: 6
 ## kho luu phien (keyring): PlaintextKeyring | ghi/doc duoc: True
 ## trang thai truoc: {"source": "tcbs", "profile": "default", "keys": {"api_key": "env"}, "auth": "otp_token", "storage": "keyring", "session": "chưa có phiên"}
-Khong co OTP: dung o day, KHONG goi TCBS.
+## Tu luc may chu bat dau chay tep nay den luc gui OTP: 0.4 giay
+## MO PHIEN LOI: InputError | tcbs từ chối yêu cầu: Invalid OTP (source=tcbs, operation=auth.login, http_status=400, code=203033, url=https://openapi.tcbs.com.vn/gaia/v1/oauth2/openapi/token) | http: 400 | code: 203033
