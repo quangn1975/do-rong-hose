@@ -1,5 +1,12 @@
-Chay luc 2026-11-11 09:07:51 (gio VN) | co OTP: True | do dai OTP: 6
+Chay luc 2026-11-11 09:11:55 (gio VN) | co OTP: True | do dai OTP: 6
 ## kho luu phien (keyring): PlaintextKeyring | ghi/doc duoc: True
 ## trang thai truoc: {"source": "tcbs", "profile": "default", "keys": {"api_key": "env"}, "auth": "otp_token", "storage": "keyring", "session": "chưa có phiên"}
-## Tu luc may chu bat dau chay tep nay den luc gui OTP: 0.4 giay
-## MO PHIEN LOI: InputError | tcbs từ chối yêu cầu: Invalid OTP (source=tcbs, operation=auth.login, http_status=400, code=203033, url=https://openapi.tcbs.com.vn/gaia/v1/oauth2/openapi/token) | http: 400 | code: 203033
+## Tu luc may chu bat dau chay tep nay den luc gui OTP: 0.8 giay
+## MO PHIEN: OK | cac truong tra ve: ['auth', 'expires_in_s', 'session', 'storage']
+## trang thai sau: {"source": "tcbs", "profile": "default", "keys": {"api_key": "env"}, "auth": "otp_token", "storage": "keyring", "session": "còn hạn", "expires_in_s": 86399}
+## OK   gia FPT -> 8 muc, 0.3 giay | mau: {"open": 52400.0, "high": 53700.0, "low": 52400.0, "close": 52700.0, "volume": 5693653, "tradingDate": "2026-10-30T00:00:00.000Z"}
+## OK   bang gia ro VN30 -> 30 muc, 0.9 giay | mau: {"symbol": "VJC", "ceilPrice": 145900.0, "floorPrice": 126900.0, "refPrice": 136400.0, "bidPrice01": 135700.0, "bidPrice02": 135500.0, "bidPrice03": 135200.0, "bidQtty01": 700.0, "bidQtty02": 1800.0, "bidQtty03": 1400.0, "offerPrice01": 136400.0, "offerPrice02
+## OK   lenh khop FPT trang 0 -> 0 muc, 1.2 giay | mau: []
+## OK   lenh khop FPT trang 1 -> 0 muc, 1.2 giay | mau: []
+## OK   lenh khop HPG trang 0 -> 0 muc, 1.0 giay | mau: []
+## OK   lenh khop HPG trang 1 -> 0 muc, 1.0 giay | mau: []
