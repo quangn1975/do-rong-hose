@@ -17,7 +17,7 @@ VN = timezone(timedelta(hours=7))
 now = datetime.now(VN)
 OUT = os.getenv("THU_MUC_RA", "so/tcbs"); os.makedirs(OUT, exist_ok=True)
 SHARK, WOLF = 1_000_000_000, 200_000_000
-GIU_PHIEN = 120                            # so phien giu lai trong bang tung ma
+GIU_PHIEN = 180                            # so phien giu lai trong bang tung ma
 
 ev = {}
 try: ev = json.load(open(os.environ.get("GITHUB_EVENT_PATH", "")))
@@ -131,16 +131,21 @@ def gop_nhom(rows):
     return m
 
 NHOM = ("camap", "soigia", "cuunon")
+# Bo cuc DUNG NHU 3 tab cu cua file Google Sheet "VN30 chu dong" (Tong VN30, Tung ma, Quy ETF): cac tab do tu doc cac tep nay,
+# nen KHONG doi thu tu / ten cot. Ngay tang dan (cu o tren) vi bieu do cong don can thu tu do.
 COT_MA = ["Ngày", "Mã", "Số lệnh khớp", "Mua CĐ (tỷ)", "Bán CĐ (tỷ)", "Ròng (tỷ)",
           "Mua: Cá mập", "Mua: Sói già", "Mua: Cừu non", "Bán: Cá mập", "Bán: Sói già", "Bán: Cừu non",
-          "Cá mập ròng", "Sói già ròng", "Cừu non ròng", "% Mua CĐ",
+          "Cá mập ròng", "Sói già ròng", "Cừu non ròng",
           "Giá đóng cửa", "% thay đổi giá", "GTGD (tỷ)", "NN mua (tỷ)", "NN bán (tỷ)", "NN ròng (tỷ)"]
+COT_TONG = ["Ngày", "Mua chủ động (nghìn tỷ)", "Bán chủ động (nghìn tỷ)", "Mua trừ bán (nghìn tỷ)",
+            "Mua CĐ: Cá mập", "Mua CĐ: Sói già", "Mua CĐ: Cừu non", "Bán CĐ: Cá mập", "Bán CĐ: Sói già", "Bán CĐ: Cừu non",
+            "Cá mập ròng (nghìn tỷ)", "Sói già ròng (nghìn tỷ)", "Cừu non ròng (nghìn tỷ)",
+            "Khối ngoại mua (tỷ)", "Khối ngoại bán (tỷ)", "Khối ngoại ròng (tỷ)"]
 def dong_ma(session, t, n, m, bi):
     mua = sum(m[("mua", g)] for g in NHOM); ban = sum(m[("ban", g)] for g in NHOM)
-    return ([session, t, n, round(mua / 1e9, 2), round(ban / 1e9, 2), round((mua - ban) / 1e9, 2)] +
-            [round(m[(s, g)] / 1e9, 2) for s in ("mua", "ban") for g in NHOM] +
-            [round((m[("mua", g)] - m[("ban", g)]) / 1e9, 2) for g in NHOM] +
-            [round(mua / (mua + ban) * 100, 1) if (mua + ban) else ""] +
+    nh = [round(m[(s, g)] / 1e9, 2) for s in ("mua", "ban") for g in NHOM]
+    return ([session, t, n, round(mua / 1e9, 2), round(ban / 1e9, 2), round((mua - ban) / 1e9, 2)] + nh +
+            [round(nh[i] - nh[i + 3], 2) for i in range(3)] +        # rong tung nhom = mua - ban (tu so da lam tron, nhu tab cu)
             [bi.get("close", 0), round(bi.get("pct", 0), 2), round(bi.get("gtgd", 0) / 1e9, 2),
              round(bi.get("nn_mua", 0) / 1e9, 2), round(bi.get("nn_ban", 0) / 1e9, 2), round((bi.get("nn_mua", 0) - bi.get("nn_ban", 0)) / 1e9, 2)])
 def thong_tin_bang(rows, loc=None):
@@ -159,8 +164,7 @@ def ghi_bang(ten, cot, dong_moi, khoa, giu=None):
         with open(p, encoding="utf-8") as f: cu = [r for r in csv.reader(f)][1:]
     moi = {tuple(str(x) for x in r[:khoa]) for r in dong_moi}
     tat = [r for r in cu if r and tuple(r[:khoa]) not in moi] + [[str(x) for x in r] for r in dong_moi]
-    tat.sort(key=lambda r: (r[0], *([r[1]] if khoa > 1 else [])), reverse=False)
-    tat.sort(key=lambda r: r[0], reverse=True)
+    tat.sort(key=lambda r: (r[0], *([r[1]] if khoa > 1 else [])))      # ngay tang dan, trong ngay xep theo ma
     if giu:
         ngay_giu = sorted({r[0] for r in tat}, reverse=True)[:giu]; tat = [r for r in tat if r[0] in ngay_giu]
     with open(p, "w", newline="", encoding="utf-8") as f:
@@ -221,20 +225,17 @@ try:
             w = csv.writer(f); w.writerow(COT_MA); w.writerows(dong)
         dung("THU OK" if len(xong) == len(tickers) else "THU - thieu ma", 0)
 
-    if dong: ghi_bang("vn30_tung_ma.csv", COT_MA, dong, 2, GIU_PHIEN)
+    if dong: ghi_bang("tung_ma.csv", COT_MA, dong, 2, GIU_PHIEN)
     if len(xong) == len(tickers) and not chua_du:
         mua = sum(tot[("mua", g)] for g in NHOM); ban = sum(tot[("ban", g)] for g in NHOM)
         def share(s, g):
-            tt = sum(tot[(s, x)] for x in NHOM); return round(tot[(s, g)] / tt * 100, 1) if tt else 0
+            tt = sum(tot[(s, x)] for x in NHOM); return round(tot[(s, g)] / tt, 3) if tt else 0      # ty le 0-1, nhu tab cu
         nn_mua = sum(info[t]["nn_mua"] for t in tickers); nn_ban = sum(info[t]["nn_ban"] for t in tickers)
         row = [session, round(mua / 1e12, 3), round(ban / 1e12, 3), round((mua - ban) / 1e12, 3)] + \
               [share(s, g) for s in ("mua", "ban") for g in NHOM] + \
               [round((tot[("mua", g)] - tot[("ban", g)]) / 1e12, 3) for g in NHOM] + \
               [round(nn_mua / 1e9, 1), round(nn_ban / 1e9, 1), round((nn_mua - nn_ban) / 1e9, 1)]
-        ghi_bang("vn30_tong.csv", ["Ngày", "Mua chủ động (nghìn tỷ)", "Bán chủ động (nghìn tỷ)", "Mua trừ bán (nghìn tỷ)",
-                 "Mua CĐ: Cá mập (%)", "Mua CĐ: Sói già (%)", "Mua CĐ: Cừu non (%)", "Bán CĐ: Cá mập (%)", "Bán CĐ: Sói già (%)", "Bán CĐ: Cừu non (%)",
-                 "Cá mập ròng (nghìn tỷ)", "Sói già ròng (nghìn tỷ)", "Cừu non ròng (nghìn tỷ)",
-                 "Khối ngoại mua (tỷ)", "Khối ngoại bán (tỷ)", "Khối ngoại ròng (tỷ)"], [row], 1)
+        ghi_bang("tong_vn30.csv", COT_TONG, [row], 1)
         st.append(say("Tong VN30:", json.dumps(dict(zip(["ngay", "mua", "ban", "rong"], row[:4])))))
     else:
         st.append(say("KHONG ghi dong tong VN30 vi chua du 30 ma (tranh so sai)."))
@@ -244,7 +245,7 @@ try:
         etf_info = thong_tin_bang(rows_of(goi(src.board, basket="HOSE")), lambda s: s.startswith("E1") or s.startswith("FUE"))
         etfs = sorted(etf_info); dong_etf = []
         for t, n, m, bi in lam(etfs, etf_info, "ETF"): dong_etf.append(dong_ma(session, t, n, m, bi))
-        if dong_etf: ghi_bang("etf_tung_ma.csv", [c.replace("Mã", "Mã quỹ ETF") if c == "Mã" else c for c in COT_MA], dong_etf, 2, GIU_PHIEN)
+        if dong_etf: ghi_bang("quy_etf.csv", [c.replace("Mã", "Mã quỹ ETF") if c == "Mã" else c for c in COT_MA], dong_etf, 2, GIU_PHIEN)
         st.append(say(f"Quy ETF: {len(dong_etf)}/{len(etfs)} ma"))
     except Exception as e:
         st.append(say("LOI phan quy ETF (phan VN30 da ghi xong):", type(e).__name__, sach(str(e))[:150]))
