@@ -1,5 +1,11 @@
-name: thu_tcbs
-on: workflow_dispatch
+name: TCBS - nhap Smart OTP de lay so (thu)
+on:
+  workflow_dispatch:
+    inputs:
+      otp:
+        description: "Smart OTP (lay tren app TCInvest, go xong bam Run workflow ngay)"
+        required: false
+        default: ""
 permissions:
   contents: write
 jobs:
@@ -7,19 +13,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Che ma OTP khoi nhat ky
+        run: |
+          OTP=$(jq -r '.inputs.otp // ""' "$GITHUB_EVENT_PATH")
+          if [ -n "$OTP" ]; then echo "::add-mask::$OTP"; fi
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.11" }
-      - run: |
-          python -m venv /tmp/v6
-          /tmp/v6/bin/pip install -q -U --extra-index-url https://vnstocks.com/api/packages "vnstock-oapi==0.1.0rc3"
-      - env:
+      - name: Cai cong cu
+        run: pip install -q --user --extra-index-url https://vnstocks.com/api/packages "vnstock-oapi==0.1.0rc3" keyring keyrings.alt
+      - name: Mo phien TCBS va lay thu
+        env:
           TCBS_API_KEY: ${{ secrets.TCBS_API_KEY }}
-        run: VNSTOCK_TELEMETRY=off DO_NOT_TRACK=1 /tmp/v6/bin/python thu_tcbs.py || true
-      - if: always()
+          PYTHON_KEYRING_BACKEND: keyrings.alt.file.PlaintextKeyring
+          VNSTOCK_TELEMETRY: "off"
+          DO_NOT_TRACK: "1"
+        run: python3 thu_tcbs.py
+      - name: Luu ket qua (chi tep ket qua, khong luu phien)
+        if: always()
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add -A so_thu
-          git commit -m "thu tcbs" || exit 0
+          git commit -m "thu tcbs otp" || exit 0
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
