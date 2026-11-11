@@ -1,0 +1,19 @@
+name: thong_tin
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          mkdir w && cd w
+          pip download -q --no-deps --extra-index-url https://vnstocks.com/api/packages "vnstock-oapi==0.1.0rc3" 2>&1 | tail -2
+          ls -la; sha256sum *
+          mkdir x && unzip -q -o *.whl -d x
+          echo "=== REQUIRES"; grep -E "^Requires-(Dist|Python)" x/*.dist-info/METADATA
+          echo "=== FILES"; find x -type f | grep -v dist-info | sort | head -80
+          echo "=== TCBS: logout/revoke/429/retry"; grep -rn -i "logout\|revoke\|retry.after\|429\|RateLimit" x --include=*.py --include=*.json --include=*.yaml --include=*.yml --include=*.toml | grep -i "tcbs\|errors.py\|http\|transport\|client" | cut -c1-260 | head -40
+          echo "=== TCBS spec files"; for f in $(find x -type f | grep -i tcbs | head -8); do echo "--- $f"; grep -n -i "price-history\|oauth2\|token\|expires\|limit\|size\|headIndex\|rate" "$f" | cut -c1-240 | head -40; done
+          echo "=== telemetry / network ngoai"; grep -rn -o -E "https?://[A-Za-z0-9./_-]+" x --include=*.py | sed 's/^[^:]*:[0-9]*://' | sort | uniq -c | sort -rn | head -40
