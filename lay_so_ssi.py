@@ -32,7 +32,7 @@ def ghi_trang_thai(kq):
 
 from ssi_sdk import Auth, Config   # bo cong cu CHINH THUC cua SSI (pypi.org/project/ssi-sdk), khong dung thu vien vnstock
 _auth = Auth(Config(api_key=os.environ["SSI_API_KEY"], api_secret=os.environ["SSI_API_SECRET"]))
-def dang_nhap(lan=5):
+def dang_nhap(lan=1):   # CHI 1 lan dang nhap moi luot chay (2 luot/ngay) de SSI khong khoa tam vi dang nhap don dap
     """Dang nhap SSI (du lieu thi truong: khong can OTP). SSI doi khi chan tam (403): cho roi thu lai."""
     err = None
     for i in range(lan):
