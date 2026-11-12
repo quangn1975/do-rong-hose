@@ -272,4 +272,58 @@ try:
             st.append(log("Trong phien cong don: chua co phien moi du nen, giu tep cu"))
 except Exception as e:
     st.append(log("Trong phien cong don: LOI, bo qua:", type(e).__name__, str(e)[:150]))
+
+# ---------- 6. Tin hieu cho BOT Quant AI (luat anh Son duyet 12/11/2026) ----------
+# CAN KIET = tu 65% so ma HOSE co giao dich dong cua giam VA khoi luong VNINDEX thap hon TB 5 phien truoc.
+# Ung vien von nho = ma VN100 da giam tu 10% trong 20 phien VA RSI14 < 30; uu tien khoi ngoai mua rong 5 phien.
+# Ghi so/bot_tin_hieu.txt (BOT doc) va so/bot_tin_hieu.csv (lich su 60 phien). Chi them 1 lan goi SSI. Hong cung khong anh huong phan tren.
+try:
+    hs6 = [m for m in hose["symbol"].astype(str) if m in px.columns]
+    ph6 = px[hs6]; ch6 = ph6.diff().where(ph6.notna() & ph6.shift(1).notna())
+    co6 = ch6.notna().sum(axis=1)
+    pg6 = ((ch6 < 0).sum(axis=1) / co6 * 100).where(co6 >= 200)
+    pt6 = ((ch6 > 0).sum(axis=1) / co6 * 100).where(co6 >= 200)
+    vg6 = bo_hom_nay(gia_ngay("VNINDEX", START_GIA)).set_index("ngay")
+    vc6, vv6 = so(vg6, "close"), so(vg6, "volume")
+    t6 = pd.DataFrame({"VN-Index": vc6, "MA200": vc6.rolling(200).mean().round(1), "% mã HOSE giảm": pg6.reindex(vc6.index).round(1),
+                       "% mã HOSE tăng": pt6.reindex(vc6.index).round(1), "KL so TB 5 phiên trước (lần)": (vv6 / vv6.shift(1).rolling(5).mean()).round(2)})
+    t6 = t6.dropna(subset=["% mã HOSE giảm"])
+    t6["Cạn kiệt"] = ((t6["% mã HOSE giảm"] >= 65) & (t6["KL so TB 5 phiên trước (lần)"] < 1)).map({True: "x", False: ""})
+    t6["Đè trụ"] = ((t6["VN-Index"].diff() < 0) & (t6["% mã HOSE tăng"] > t6["% mã HOSE giảm"])).map({True: "x", False: ""})
+    t6["Trên MA200"] = (t6["VN-Index"] > t6["MA200"]).map({True: "x", False: ""})
+    t6.index.name = "Ngày"
+    t6.tail(60).sort_index(ascending=False).reset_index().to_csv(f"{OUT}/bot_tin_hieu.csv", index=False)
+    D6 = t6.index[-1]; h6 = t6.loc[D6]
+    ck6 = list(t6.index[t6["Cạn kiệt"] == "x"])
+    # ung vien von nho tai phien D6
+    v6 = px[[m for m in vn100 if m in px.columns]]; v6 = v6[v6.index <= D6]
+    g20 = (v6 / v6.shift(20) - 1) * 100
+    dlt = v6.diff(); len_ = dlt.clip(lower=0).ewm(alpha=1 / 14, adjust=False, min_periods=14).mean(); xuong = (-dlt.clip(upper=0)).ewm(alpha=1 / 14, adjust=False, min_periods=14).mean()
+    rsi6 = 100 - 100 / (1 + len_ / xuong)
+    nhay6 = ((v6 / v6.shift(1) - 1) < -0.075).tail(20).any()          # roi qua bien do 7% trong 1 phien: thuong la chia co tuc/tach, gia chua dieu chinh
+    nn6 = pd.Series(dtype=float)
+    try:
+        c6 = c[c["Ngày"].isin(sorted(c["Ngày"].unique())[-5:])]
+        nn6 = c6.groupby("Mã")["Khối ngoại ròng (tỷ)"].sum().round(1)
+    except Exception: pass
+    uv = pd.DataFrame({"giam20": g20.loc[D6].round(1), "rsi": rsi6.loc[D6].round(1), "gia": v6.loc[D6]}).dropna()
+    uv["nn5"] = nn6.reindex(uv.index)
+    uv["canh_bao"] = ["KIEM TRA chia co tuc/tach (gia chua dieu chinh)" if nhay6.get(m, False) else "" for m in uv.index]
+    dat = uv[(uv["giam20"] <= -10) & (uv["rsi"] < 30)].copy()
+    dat["_nn"] = (dat["nn5"] > 0).astype(int)
+    dat = dat.sort_values(["_nn", "giam20"], ascending=[False, True]).head(5)
+    L = [f"BOT_TIN_HIEU ngay={D6} (lap luc {now.strftime('%d/%m/%Y %H:%M')} gio VN)",
+         f"VNINDEX={h6['VN-Index']} MA200={h6['MA200']} tren_MA200={'CO' if h6['Trên MA200'] == 'x' else 'KHONG'}",
+         f"pct_ma_HOSE_giam={h6['% mã HOSE giảm']} KL_so_TB5={h6['KL so TB 5 phiên trước (lần)']} CAN_KIET={'CO' if h6['Cạn kiệt'] == 'x' else 'KHONG'} DE_TRU={'CO' if h6['Đè trụ'] == 'x' else 'KHONG'}",
+         f"phien_can_kiet_gan_nhat={ck6[-1] if ck6 else 'chua co'}" + (f" (cach {len(t6.index) - 1 - list(t6.index).index(ck6[-1])} phien)" if ck6 else ""),
+         "30_phien_gan_nhat=" + ",".join(t6.index[-30:]),
+         f"ung_vien_von_nho ({len(dat)} ma dat: giam tu 10%/20 phien VA RSI14<30; xep uu tien khoi ngoai mua rong 5 phien; gia = nghin dong):",
+         "ma,giam_20_phien_pct,rsi14,khoi_ngoai_rong_5_phien_ty,gia_dong_cua,canh_bao"]
+    L += [f"{m},{r['giam20']},{r['rsi']},{'' if pd.isna(r['nn5']) else r['nn5']},{r['gia']},{r['canh_bao']}" for m, r in dat.iterrows()]
+    if not len(dat): L.append("(khong co ma nao dat)")
+    L.append("gia_dong_cua_VN100=" + ",".join(f"{m}:{round(float(v6.loc[D6, m]), 2)}" for m in v6.columns if pd.notna(v6.loc[D6, m])))
+    open(f"{OUT}/bot_tin_hieu.txt", "w", encoding="utf-8").write("\n".join(L) + "\n")
+    st.append(log(f"Tin hieu BOT: phien {D6}, can kiet {'CO' if h6['Cạn kiệt'] == 'x' else 'KHONG'}, {len(dat)} ma ung vien"))
+except Exception as e:
+    st.append(log("Tin hieu BOT: LOI, bo qua:", type(e).__name__, str(e)[:150]))
 ghi_trang_thai("OK")
