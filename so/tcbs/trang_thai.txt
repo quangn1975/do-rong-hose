@@ -1,5 +1,5 @@
-Lan chay: 11/11/2026 15:11 (gio VN)
+Lan chay: 12/11/2026 17:40 (gio VN)
 Ket qua: OK
-VN30: 30/30 ma, 112774 lenh khop, 19.3 phut, TCBS bao qua tai 0 lan, toc do cuoi 0.7 giay/lan goi
-Tong VN30: {"ngay": "2026-11-11", "mua": 2.096, "ban": 2.077, "rong": 0.019}
+VN30: 30/30 ma, 118961 lenh khop, 21.0 phut, TCBS bao qua tai 0 lan, toc do cuoi 0.7 giay/lan goi
+Tong VN30: {"ngay": "2026-11-12", "mua": 1.95, "ban": 2.472, "rong": -0.522}
 Quy ETF: 21/21 ma
