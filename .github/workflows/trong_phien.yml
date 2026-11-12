@@ -1,25 +1,19 @@
-name: Kiem tra gio mua trong phien (SSI)
+name: Kiem tra gio mua trong phien (tinh lai tu tep cong don)
+# Khong goi SSI, khong can khoa: chi doc so/trong_phien_cong_don.csv (lich SSI hang ngay tu ghi them moi phien) roi tinh lai bang.
 on:
   workflow_dispatch:
 permissions:
   contents: write
-concurrency:
-  group: lay-so-ssi          # chung nhom voi lich SSI hang ngay: khong bao gio chay 2 viec SSI cung luc
-  cancel-in-progress: false
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
-      - name: Cai bo cong cu chinh thuc cua SSI
-        run: pip install -q pandas "ssi-sdk==3.3.2"
-      - name: Chay
-        env:
-          SSI_API_KEY: ${{ secrets.SSI_API_KEY }}
-          SSI_API_SECRET: ${{ secrets.SSI_API_SECRET }}
+      - run: pip install -q pandas
+      - name: Tinh lai bang
         run: python trong_phien.py
       - name: Luu ket qua
         if: always()

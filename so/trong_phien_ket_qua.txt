@@ -1,14 +1,5 @@
-Lan chay: 12/11/2026 10:04 (gio VN) - 105 lan goi SSI
-Do lui: cach day 45 ngay -> 0 dong
-Lay du lieu trong phien tu 2026/09/28 den 2026/11/11
-VNINDEX: 33 phien du du lieu (2026-09-28 -> 2026-11-11)
-VN100: 100 ma
-  ma 0/100 ACB (2 giay, 6 lan goi)
-  ma 20/100 DPM (58 giay, 26 lan goi)
-  ma 40/100 HT1 (113 giay, 46 lan goi)
-  ma 60/100 PHR (167 giay, 66 lan goi)
-  ma 80/100 VCB (222 giay, 86 lan goi)
-VN100: lay duoc 100 ma, 105 lan goi SSI
+Lan chay: 12/11/2026 10:16 (gio VN) - doc tep cong don, khong goi SSI
+Du lieu: 33 phien (2026-09-28 -> 2026-11-11), 100 ma VN100
 
 BANG 1 - Buoi chieu co hoi khong (VNINDEX)
 Nhom | So ngay | % ngay dong cua cao hon 11h30 | Hoi TB 11h30->dong cua | % ngay 14h20 cao hon 11h30 | % ngay day nam buoi sang

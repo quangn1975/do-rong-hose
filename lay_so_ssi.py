@@ -216,4 +216,60 @@ if len(ct) >= 80:
     st.append(log(f"VN100 chi tiet: {len(ct)}/100 ma, {len(c)} dong, phien moi nhat {c['Ngày'].max()}, {len(loi2)} ma loi"))
 else:
     st.append(log(f"VN100 chi tiet: chi lay duoc {len(ct)} ma, giu bang cu"))
+
+# ---------- 5. Gia trong phien CONG DON (11h30, 13h15, 14h20, dong cua) cho VNINDEX + 100 ma VN100 ----------
+# SSI chi giu nen trong phien khoang 1 thang ruoi, nen moi ngay ghi them vao so/trong_phien_cong_don.csv de dung lau dai.
+# An toan: dung chung lan dang nhap o tren, nghi 1,5 giay giua cac lan goi, da co phien moi nhat thi KHONG goi nua,
+# hong 3 ma thi dung phan nay. Phan nay hong cung khong anh huong cac bang o tren.
+try:
+    F5 = f"{OUT}/trong_phien_cong_don.csv"
+    COT5 = ["ngay", "ma", "p1130", "p1315", "p1420", "dong", "day", "day_sang"]
+    cu = pd.read_csv(F5, dtype={"ngay": str, "ma": str}) if os.path.exists(F5) else pd.DataFrame(columns=COT5)
+    den5 = (now - timedelta(days=1)).strftime("%Y-%m-%d") if PHIEN_DANG_CHAY else TODAY
+    moi5 = cu["ngay"].max() if len(cu) else ""
+    if moi5 and (cu["ngay"] == moi5).sum() < 90:            # phien cuoi ghi do dang: lay lai phien do
+        cu = cu[cu["ngay"] < moi5]; moi5 = cu["ngay"].max() if len(cu) else ""
+    phien_moi = sorted(x for x in px.index if x > moi5 and x <= den5)
+    if not phien_moi:
+        st.append(log(f"Trong phien cong don: da co den {moi5}, khong goi them"))
+    else:
+        tu5 = max(phien_moi[0], (now - timedelta(days=40)).strftime("%Y-%m-%d"))
+        def _gia_luc(g, phut, tf):
+            x = g[g["phut"] + tf <= phut]
+            return x["close"].iloc[-1] if len(x) else float("nan")
+        moi, hong5 = [], 0
+        for ma5, tf5, buoc5 in [("VNINDEX", "5m", 5)] + [(s, "15m", 15) for s in vn100]:
+            try:
+                r5, a5 = [], datetime.strptime(tu5, "%Y-%m-%d")
+                o5 = 18 if buoc5 == 5 else 55                  # moi o thoi gian < 1000 dong
+                while a5.strftime("%Y-%m-%d") <= den5:
+                    b5 = min((a5 + timedelta(days=o5 - 1)).strftime("%Y-%m-%d"), den5)
+                    r5 += api("ohlc", symbol=ma5, **{"from": d_ssi(a5.strftime("%Y-%m-%d")) + " 00:00:00", "to": d_ssi(b5) + " 23:59:59"},
+                              timeFrame=tf5, pageIndex=1, pageSize=1000)
+                    time.sleep(1.5)
+                    a5 = datetime.strptime(b5, "%Y-%m-%d") + timedelta(days=1)
+            except Exception as e:
+                hong5 += 1; log("loi trong phien", ma5, type(e).__name__, str(e)[:120])
+                if hong5 >= 3: log("Trong phien: hong 3 ma, dung phan nay"); break
+                continue
+            df5 = pd.DataFrame(r5)
+            if not len(df5): continue
+            df5["t"] = pd.to_datetime(df5["tradingDate"], format="%Y/%m/%d %H:%M:%S", errors="coerce")
+            for c5 in ("low", "close"): df5[c5] = pd.to_numeric(df5[c5], errors="coerce")
+            df5 = df5.dropna(subset=["t", "close"]).drop_duplicates("t").sort_values("t")
+            df5["ngay"] = df5["t"].dt.strftime("%Y-%m-%d"); df5["phut"] = df5["t"].dt.hour * 60 + df5["t"].dt.minute
+            for ngay5, g5 in df5.groupby("ngay"):
+                if ngay5 <= moi5 or ngay5 > den5: continue
+                if len(g5[g5["phut"] < 690]) < 3 or g5["phut"].max() < 870: continue      # ngay thieu nen (chua chot) thi bo, lan sau lay
+                moi.append({"ngay": ngay5, "ma": ma5, "p1130": _gia_luc(g5, 690, buoc5), "p1315": _gia_luc(g5, 795, buoc5),
+                            "p1420": _gia_luc(g5, 860, buoc5), "dong": g5["close"].iloc[-1], "day": g5["low"].min(),
+                            "day_sang": int(g5.loc[g5["low"].idxmin(), "phut"] < 690)})
+        if moi:
+            tat = pd.concat([cu[COT5], pd.DataFrame(moi)[COT5]], ignore_index=True).drop_duplicates(["ngay", "ma"], keep="last")
+            tat.sort_values(["ngay", "ma"]).to_csv(F5, index=False)
+            st.append(log(f"Trong phien cong don: them {len(moi)} dong, {tat['ngay'].nunique()} phien ({tat['ngay'].min()} -> {tat['ngay'].max()}), {hong5} ma loi"))
+        else:
+            st.append(log("Trong phien cong don: chua co phien moi du nen, giu tep cu"))
+except Exception as e:
+    st.append(log("Trong phien cong don: LOI, bo qua:", type(e).__name__, str(e)[:150]))
 ghi_trang_thai("OK")
