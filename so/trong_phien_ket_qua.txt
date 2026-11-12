@@ -1,4 +1,4 @@
-Lan chay: 12/11/2026 10:17 (gio VN) - doc tep cong don, khong goi SSI
+Lan chay: 12/11/2026 17:37 (gio VN) - doc tep cong don, khong goi SSI
 Du lieu: 33 phien (2026-09-28 -> 2026-11-11), 100 ma VN100
 
 BANG 1 - Buoi chieu co hoi khong (VNINDEX)
