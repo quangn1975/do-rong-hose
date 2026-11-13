@@ -1,4 +1,4 @@
-BOT_TIN_HIEU ngay=2026-11-13 (lap luc 13/11/2026 23:33 gio VN)
+BOT_TIN_HIEU ngay=2026-11-13 (lap luc 14/11/2026 03:50 gio VN)
 VNINDEX=1734.93 MA200=1787.3 tren_MA200=KHONG
 pct_ma_HOSE_giam=53.1 KL_so_TB5=0.85 CAN_KIET=KHONG DE_TRU=KHONG
 phien_can_kiet_gan_nhat=2026-07-27 (cach 76 phien)
