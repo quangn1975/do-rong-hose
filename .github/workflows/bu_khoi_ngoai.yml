@@ -1,0 +1,33 @@
+name: Bu khoi ngoai VN100 (buoi sang)
+on:
+  schedule:
+    - cron: "40 23 * * 0-4"   # 06:40 gio Viet Nam, thu 2 - thu 6 (truoc gio mo cua)
+    - cron: "10 3 * * 1-5"    # 10:10 gio Viet Nam: thu lai; da du so thi thoat ngay, khong goi SSI
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: lay-so-ssi           # chung nhom voi lich lay so chinh: khong bao gio chay cung luc
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Cai bo cong cu chinh thuc cua SSI
+        run: pip install -q "ssi-sdk==3.3.2"
+      - name: Lay bu khoi ngoai (cham, chi khi con thieu)
+        env:
+          SSI_API_KEY: ${{ secrets.SSI_API_KEY }}
+          SSI_API_SECRET: ${{ secrets.SSI_API_SECRET }}
+        run: python bu_khoi_ngoai.py
+      - name: Luu ket qua
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A so
+          git commit -m "Bu khoi ngoai VN100" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
