@@ -7,3 +7,4 @@ Do rong: 300 phien, moi nhat 2026-11-13
 VN100 chi tiet: 100/100 ma, 2000 dong, phien moi nhat 2026-11-13, 0 ma loi
 Trong phien cong don: da co den 2026-11-13, khong goi them
 Tin hieu BOT: phien 2026-11-13, can kiet KHONG, 5 ma ung vien
+Bu khoi ngoai 16/11/2026 09:59 (gio VN): dien 99 o cho phien 2026-11-12, 0 ma loi
