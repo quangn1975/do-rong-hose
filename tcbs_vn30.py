@@ -219,6 +219,12 @@ try:
     if chua_du: st.append(say("CANH BAO chua lay du lenh:", "; ".join(chua_du)))
     if thieu: st.append(say("CON THIEU MA:", ", ".join(thieu)))
 
+    if not THU and sum(v[0] for v in xong.values()) == 0:
+        # Chua co lenh khop nao (chay truoc gio mo cua / ngay nghi): TCBS chi giu lenh khop cua phien hien tai,
+        # nen KHONG ghi dong toan so 0 vao bang (tranh lam hong bieu do va de len so that).
+        st.append(say("Chua co lenh khop nao cua phien", session, "- KHONG ghi gi vao bang. Hay chay lai sau 15:00 ngay giao dich."))
+        dung("CHUA CO GIAO DICH - khong ghi (chay lai sau 15:00)", 0)
+
     if THU:
         st.append("Che do THU trong gio giao dich: chi 3 ma, KHONG ghi vao bang ngay.")
         with open(f"{OUT}/thu_trong_phien.csv", "w", newline="", encoding="utf-8") as f:

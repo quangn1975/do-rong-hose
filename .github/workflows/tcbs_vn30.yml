@@ -1,5 +1,5 @@
 name: TCBS - nhap Smart OTP lay so VN30
-# Cach dung: sau 15:00, bam "Run workflow", go Smart OTP (app TCInvest), bam nut xanh. Chay 30-60 phut, khong can bat may tinh.
+# Cach dung: CHI sau 15:00 ngay giao dich (TCBS chi giu lenh khop cua phien hien tai, khong lay bu duoc phien cu). Sau 15:00, bam "Run workflow", go Smart OTP (app TCInvest), bam nut xanh. Chay 30-60 phut, khong can bat may tinh.
 # Bao mat: xem dau tep tcbs_vn30.py. OTP khong nam trong bien moi truong, khong hien trong nhat ky.
 on:
   workflow_dispatch:
