@@ -31,7 +31,6 @@ VPL,Công ty Cổ phần Vinpearl,Dịch vụ giải trí,x,x
 VRE,Công ty Cổ phần Vincom Retail,Bất động sản,x,x
 ANV,Công ty Cổ phần Nam Việt,Nuôi trồng nông & hải sản,,x
 BAF,Công ty Cổ phần Nông nghiệp BAF Việt Nam,Nuôi trồng nông & hải sản,,x
-BCM,Tập đoàn Đầu tư và Phát triển Công nghiệp Becamex - CTCP,Bất động sản,,x
 BMP,Công ty Cổ phần Nhựa Bình Minh,Vật liệu xây dựng & Nội thất,,x
 BSI,Công ty Cổ phần Chứng khoán BIDV,Môi giới chứng khoán,,x
 BVH,Tập đoàn Bảo Việt,Bảo hiểm nhân thọ,,x
@@ -56,6 +55,7 @@ GEE,Công ty Cổ phần Công nghiệp Gelex,Thiết bị điện,,x
 GEX,Công ty Cổ phần Tập đoàn Gelex,Thiết bị điện,,x
 GMD,Công ty Cổ phần Tập đoàn Gemadept,"Kho bãi, hậu cần và bảo dưỡng",,x
 HAG,Công ty Cổ phần Hoàng Anh Gia Lai,Nuôi trồng nông & hải sản,,x
+HAH,Công ty Cổ phần Vận tải và Xếp dỡ Hải An,"Kho bãi, hậu cần và bảo dưỡng",,x
 HCM,Công ty Cổ phần Chứng khoán Thành phố Hồ Chí Minh,Môi giới chứng khoán,,x
 HDG,Công ty Cổ phần Tập đoàn Hà Đô,Sản xuất & Phân phối Điện,,x
 HHV,Công ty Cổ phần Đầu tư Hạ tầng Giao thông Đèo Cả,Xây dựng,,x
@@ -123,6 +123,7 @@ ASM,Công ty Cổ phần Tập đoàn Sao Mai,Nuôi trồng nông & hải sản,
 ASP,Công ty Cổ phần Tập đoàn Dầu khí An Pha,Phân phối xăng dầu & khí đốt,,
 AST,Công ty Cổ phần Dịch vụ Hàng không Taseco,Phân phối hàng chuyên dụng,,
 BCE,Công ty Cổ phần Xây dựng và Giao thông Bình Dương,Xây dựng,,
+BCM,Tập đoàn Đầu tư và Phát triển Công nghiệp Becamex - CTCP,Bất động sản,,
 BFC,Công ty Cổ phần Phân bón Bình Điền,"Sản phẩm hóa dầu, Nông dược & Hóa chất khác",,
 BHN,Tổng Công ty Cổ phần Bia - Rượu - Nước giải khát Hà Nội,Sản xuất bia,,
 BIC,Tổng Công ty Cổ phần Bảo hiểm Ngân hàng Đầu tư và Phát triển Việt Nam,Bảo hiểm phi nhân thọ,,
@@ -207,7 +208,6 @@ GIL,Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khẩu Bình Th�
 GMH,Công ty Cổ phần Minh Hưng Quảng Trị,Vật liệu xây dựng & Nội thất,,
 GSP,Công ty Cổ phần Vận tải Sản phẩm Khí Quốc tế,Vận tải Thủy,,
 GTA,Công ty Cổ phần Chế biến Gỗ Thuận An,Lâm sản và Chế biến gỗ,,
-HAH,Công ty Cổ phần Vận tải và Xếp dỡ Hải An,"Kho bãi, hậu cần và bảo dưỡng",,
 HAP,Công ty Cổ phần Tập Đoàn Hapaco,Sản xuất giấy,,
 HAR,Công ty Cổ phần Đầu tư Thương mại Bất động sản An Dương Thảo Điền,Bất động sản,,
 HAS,Công ty Cổ phần Hacisco,Xây dựng,,
