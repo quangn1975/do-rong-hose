@@ -7,7 +7,6 @@ FPT,Công ty Cổ phần FPT,Phần mềm,x,x
 GAS,Tổng Công ty Khí Việt Nam - Công ty Cổ phần,Phân phối xăng dầu & khí đốt,x,x
 GVR,Tập đoàn Công nghiệp Cao su Việt Nam - Công ty Cổ phần,"Nhựa, cao su & sợi",x,x
 HDB,Ngân hàng Thương mại Cổ phần Phát Triển Thành phố Hồ Chí Minh,Ngân hàng,x,x
-HPG,Công ty Cổ phần Tập đoàn Hòa Phát,Thép và sản phẩm thép,x,x
 LPB,Ngân hàng Thương mại Cổ phần Lộc Phát Việt Nam,Ngân hàng,x,x
 MBB,Ngân hàng Thương mại Cổ phần Quân đội,Ngân hàng,x,x
 MCH,Công ty Cổ phần Hàng Tiêu Dùng MaSan,Thực phẩm,x,x
@@ -115,6 +114,7 @@ ADS,Công ty Cổ phần DAMSAN,Hàng May mặc,,
 AFX,Công ty Cổ phần Xuất Nhập khẩu Nông sản Thực phẩm An Giang,Phân phối thực phẩm,,
 AGG,Công ty Cổ phần Đầu tư và Phát triển Bất động sản An Gia,Bất động sản,,
 AGR,Công ty Cổ phần Chứng khoán AGRIBANK,Môi giới chứng khoán,,
+AMY,Công ty Cổ phần Công nghiệp Á Mỹ,Vật liệu xây dựng & Nội thất,,
 ANT,Công ty Cổ phần Rau quả Thực phẩm An Giang,Thực phẩm,,
 APG,Công ty Cổ phần Chứng khoán APG,Môi giới chứng khoán,,
 APH,Công ty Cổ phần Tập đoàn An Phát Holdings,Containers & Đóng gói,,
@@ -130,6 +130,7 @@ BIC,Tổng Công ty Cổ phần Bảo hiểm Ngân hàng Đầu tư và Phát tr
 BKG,Công ty Cổ phần Đầu tư BKG Việt Nam,Thiết bị gia dụng,,
 BMC,Công ty Cổ phần Khoáng sản Bình Định,Khai khoáng,,
 BMI,Tổng Công ty Cổ phần Bảo Minh,Bảo hiểm phi nhân thọ,,
+BMJ,Công ty Cổ phần Khoáng sản Miền Đông AHP,Khai khoáng,,
 BRC,Công ty Cổ phần Cao su Bến Thành,"Nhựa, cao su & sợi",,
 BTP,Công ty Cổ phần Nhiệt điện Bà Rịa,Sản xuất & Phân phối Điện,,
 BTT,Công ty Cổ phần Thương mại - Dịch vụ Bến Thành,Bán lẻ phức hợp,,
@@ -211,7 +212,6 @@ GTA,Công ty Cổ phần Chế biến Gỗ Thuận An,Lâm sản và Chế biế
 HAP,Công ty Cổ phần Tập Đoàn Hapaco,Sản xuất giấy,,
 HAR,Công ty Cổ phần Đầu tư Thương mại Bất động sản An Dương Thảo Điền,Bất động sản,,
 HAS,Công ty Cổ phần Hacisco,Xây dựng,,
-HAX,Công ty Cổ phần Dịch vụ Ô tô Hàng Xanh,Sản xuất ô tô,,
 HCD,Công ty Cổ phần Đầu tư Sản xuất và Thương mại HCD,"Nhựa, cao su & sợi",,
 HDC,Công ty Cổ phần Phát triển Nhà Bà Rịa Vũng Tàu,Bất động sản,,
 HHP,Công ty Cổ phần HHP Global,Sản xuất giấy,,
