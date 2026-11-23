@@ -1,9 +1,9 @@
-Lan chay: 21/11/2026 04:46 (gio VN)
+Lan chay: 24/11/2026 03:21 (gio VN)
 Ket qua: OK
-Danh sach: HOSE 410 ma, VN30 30, VN100 100
-Gia: 411/411 ma, 519 phien (2024-10-22 -> 2026-11-20), 0 ma loi, 126 giay
-Ro dong tien: 270 dong, phien moi nhat 2026-11-20
-Do rong: 300 phien, moi nhat 2026-11-20
-VN100 chi tiet: 100/100 ma, 2000 dong, phien moi nhat 2026-11-20, 0 ma loi
-Trong phien cong don: da co den 2026-11-20, khong goi them
-Tin hieu BOT: phien 2026-11-20, can kiet KHONG, 5 ma ung vien
+Danh sach: HOSE 412 ma, VN30 30, VN100 100
+Gia: 412/412 ma, 517 phien (2024-10-25 -> 2026-11-23), 0 ma loi, 181 giay
+Ro dong tien: 270 dong, phien moi nhat 2026-11-23
+Do rong: 300 phien, moi nhat 2026-11-23
+VN100 chi tiet: 100/100 ma, 2000 dong, phien moi nhat 2026-11-23, 0 ma loi
+Trong phien cong don: them 101 dong, 41 phien (2026-09-28 -> 2026-11-23), 0 ma loi
+Tin hieu BOT: phien 2026-11-23, can kiet KHONG, 5 ma ung vien
